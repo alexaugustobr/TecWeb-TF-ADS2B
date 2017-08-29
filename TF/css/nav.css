@@ -1,0 +1,98 @@
+*{
+  margin:0;
+  padding: 0;
+}
+
+.menu{
+  width: 70px;
+  height: 70px;
+  margin: 0px 0px 40px;
+  position: relative;
+}
+
+#check{
+  position: absolute;
+  z-index:1;
+  display:none;
+}
+
+.menu label{
+  width: 100%;
+  height: 100%;
+  background-color: #069;
+  position: absolute;
+  transition: all .3s linear;
+}
+
+.part-menu{
+  width: 42px;
+  height: 6px;
+  top: 40px;
+  left:14px;
+  position: absolute;
+  background-color: #fff;
+  transition: all .3s linear;
+}
+
+.part-menu:before{
+  content:'';
+  width: 42px;
+  height: 6px;
+  top: -20px;
+  position: absolute;
+  background-color: #fff;
+  transition: all .3s linear;
+}
+
+.part-menu:after{
+  content:'';
+  width: 42px;
+  height: 6px;
+  bottom: -20px;
+  position: absolute;
+  background-color: #fff;
+  transition: all .3s linear;
+}
+
+#check:checked ~ .part-menu{
+  background-color: transparent;
+}
+
+#check:checked ~ .part-menu:after{
+  transform: translate(0px, -20px) rotate(-45deg);
+}
+
+
+#check:checked ~ .part-menu:before{
+  transform: translate(0px,20px) rotate(45deg);
+}
+
+#check:checked ~ label{
+  border-radius: 50%;
+
+}
+
+.teste{
+  display:none;
+  position: absolute;
+
+  border-bottom: 1px solid #fff;
+}
+
+.teste ul{
+  list-style: none;
+  background-color: #069;
+  color: #fff;
+  padding: 50px;
+
+}
+
+.menu{
+  display: block;
+}
+
+#check:checked ~ .teste{
+  display: inline;
+  transition: all .4s;
+  margin-top:100px;
+}
