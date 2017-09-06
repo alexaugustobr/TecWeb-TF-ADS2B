@@ -2,17 +2,17 @@ body{
   font-family:Arial, sans-serif;
 }
 
-#title {
+.title {
   background-color: #fff;
   margin-top: 10%;
 
 }
 
-#cursos{
+.cursos{
 	margin-left:18%;
 	
 }
-#curso{
+.curso{
   background-color: #fff;
   width:25%;
   height: 20%;
@@ -23,20 +23,7 @@ body{
   border: 2px solid #008CBA;
 }
 
-#noticia{
-  background-color: #fff;
-  width:31%;
-  height: 40%;
-  float: left;
-  margin-left:2%;
-  margin-top: 5%;
-  border: 2px solid #008CBA;
-
-	
-}
-
-
-.button {
+.button{
     background-color: #4CAF50; 
     border: none;
     color: white;
@@ -61,21 +48,21 @@ body{
     color: white;
 }
 
-a:link {
+.links:link {
     color: #000;
     text-decoration:none; 
 }
 
-a:visited {
+.links:visited {
     color: #4682B4;
 }
 
-a:hover {
+.links:hover {
     color: #87CEEB;
     
 }
 
-a:active {
+.links:active {
     color: #4682B4;
 }
 
