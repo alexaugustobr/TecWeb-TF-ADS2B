@@ -74,5 +74,10 @@ a:active {
 .p_paragrafo{
   font-size: 25px;
   border: 1px solid blue;
+<<<<<<< HEAD
   padding: 20px;
 }
+=======
+  padding: 20px; /*teste*/
+}
+>>>>>>> a358e9b90f6edd3e1307ea7bca63b2a6f621a811
