@@ -2,7 +2,7 @@ body{
   font-family:Arial, sans-serif;
 }
 
-#title {
+.title {
   background-color: #fff;
   margin-top: 10%;
 
@@ -29,16 +29,11 @@ body{
 
 }
 
-img{
-  display: flex;
-  align-content:left;
-}
-
-#cursos{
+.cursos{
 	margin-left:18%;
 
 }
-#curso{
+.curso{
   background-color: #fff;
   width:25%;
   height: 20%;
@@ -47,18 +42,6 @@ img{
   margin-top: 5%;
   padding-top:5%;
   border: 2px solid #008CBA;
-}
-
-#noticia{
-  background-color: #fff;
-  width:31%;
-  height: 40%;
-  float: left;
-  margin-left:2%;
-  margin-top: 5%;
-  border: 2px solid #008CBA;
-
-
 }
 
 
@@ -104,3 +87,17 @@ a:hover {
 a:active {
     color: #4682B4;
 }
+@media screen and (max-width: 1195px) {
+	body{
+  }
+  .curso{
+    background-color: #fff;
+    width:95%;
+    height: 20%;
+    float: left;
+    margin-left:-5%;
+    margin-top: 5%;
+    padding-top:5%;
+    border: 2px solid #008CBA;
+
+  }
