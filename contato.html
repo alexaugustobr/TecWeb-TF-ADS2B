@@ -1,0 +1,34 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Contato</title>
+</head>
+
+<body>
+<div>
+<h2>Contato</h2>
+<fieldset>
+<form>
+	<label for="nome">Nome*</label><br/>
+    	<input type="text" name="nome" id="nome1" maxlength="150" required="true" placeholder="Digite seu nome"><p>
+	<label for="email">E-mail*</label><br/>
+    	<input type="email" name="email" id="mail" required="true" placeholder="Digite seu e-mail"><p>
+	<label for="assunto">Assunto*</label><br/>
+    	<select name="assunto" id="assunto1" required>
+        	<option value="">-- Selecione --</option>
+			<option value="SAC">Atendimento ao Cliente</option>
+			<option value="SG">Secretaria de Graduação</option>
+            <option value="SPG">Secretaria de Pós Graduação</option>
+            <option value="Financeiro">Financeiro</option>
+            <option value="Ouvidoria">Ouvidoria</option>
+		</select><p>
+	<label for="mensagem">Mensagem*</label><br/>
+    	<textarea name="mensagem" id="msg" maxlength="500" placeholder="Digite sua mensagem"></textarea><p>
+	<button type="submit" name="enviar" id="send">Enviar</button>        
+</form>    
+</fieldset>
+         
+        
+</body>
+</html>
