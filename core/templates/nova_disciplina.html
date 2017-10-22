@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css"/>
+<title>Nova Disciplina</title>
+</head>
+
+<body>
+<div class="corpo">
+<h2>Nova Disciplina</h2>
+<fieldset class="field">
+<form>
+	<label for="disciplina">Disciplina*</label><br/>
+    	<input class="campo" type="text" name="disciplina" id="dis" maxlength="60" required="true"><p>
+	<label for="prof">Professor*</label><br/>
+    	<input class="campo" type="text" name="prof" id="prof1" maxlength="150" required="true"><p>
+	<label for="horas">Quantidade de Horas Mensais*</label><br/>
+    	<input class="campo" type="number" name="horas" id="hr" maxlength="3" required="true"><p>
+	<label for="duracao">Duração da Aula*</label><br/>
+    	<input class="campo" type="number" name="duracao" id="time" maxlength="2" required="true"><p>
+    <label for="dia">Ministrada*<label><br/>
+    	<select class="campo" name="dia" id="day" required="true">
+        	<option value="">-- Selecione --</option>
+			<option value="Seg">às Segundas-Feiras</option>
+			<option value="Ter">às Terças-Feiras</option>
+            <option value="Ter">às Quartas-Feiras</option>
+            <option value="Ter">às Quintas-Feiras</option>
+            <option value="Ter">às Sextas-Feiras</option>
+            <option value="Ter">aos Sábados</option>
+		</select><p>
+	<label for="conteudo">Conteúdo Resumido</label><br/>
+    	<textarea class="campo" name="conteudo" id="cont" maxlength="255" placeholder="Digite uma descrição com até 255 caracteres"></textarea><p>
+	<button type="submit" name="enviar" id="send">Enviar</button>        
+</form>    
+</fieldset>
+</body>
+</html>
