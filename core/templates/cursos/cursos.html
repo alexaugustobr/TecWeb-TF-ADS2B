@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/cursos.css' %}">
+{% endblock %}
+
+{% block title %}
+	Cursos  - {{ block.super }}
+{% endblock %}
+
+{% block main %}
+<section>
+	<div class="title">
+		<h1>Cursos</h1>
+	</div>
+	<div class = "cursos">
+		<div class = "curso">
+			<a href="/cursos/detalhes"><h4>Analise e Desenvolvimeto de Sistemas</h4></a>
+		</div>
+		<div class = "curso">
+			<a href="/cursos/banco-dados"><h4>Banco de dados</h4></a>
+		</div>
+		<div class = "curso">
+			<a href="/cursos/detalhes"><h4>Redes</h4></a>
+		</div>
+	</div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    console.log('script home, pos main');
+  </script>
+{% endblock %}
+

@@ -3,7 +3,10 @@ body{
 	
 }
 
-
+section{
+    margin-top: 8%;
+  }
+  
 
 .TitleSobreCurso{
 	background-color: #B0C4DE;

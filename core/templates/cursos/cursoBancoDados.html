@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/cursos.css' %}">
+{% endblock %}
+
+{% block title %}
+	Cursos  - {{ block.super }}
+{% endblock %}
+
+{% block main %}
+<section class="p_paragrafo ">
+    
+  <h1 class="titulo">Banco de Dados</h1>
+  <p class="container">
+    Domine os Fundamentos de Banco de Dados e a Modelagem Conceitual. Conheça o Esquema Lógico Relacional a partir
+    do Esquema Conceitual, utilize a normalização de relações para elevar a qualidade do Projeto Lógico de BD.
+    Aprendendo na prática, realize projetos de Bando de Dados, identifique problemas e apresente soluções, utilizando conceitos,
+    modelos e esquemas de banco de dados. Prepare-se para trazer melhorias nos processos de Engenharia de Software adotados pelas empresas
+    ao incorporar práticas consagradasde Modelagem e Projeto de Banco de Dados.
+  </p>
+
+</section>
+
+<figure class="container">
+  <img src="img/banco.jpg" alt="">
+</figure>
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    console.log('script home, pos main');
+  </script>
+{% endblock %}
+
+

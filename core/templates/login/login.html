@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block title %}
+	Login  - {{ block.super }}
+{% endblock %}
+
+{% block main %}
+<div class="corpo">
+    <h2>Login</h2>
+    <fieldset class="field">
+    <form>
+        <label for="login">Login*</label><br/>
+            <input class="campo" type="email" name="login" id="login1" maxlength="60" required="true" placeholder="Digite seu e-mail"><p>
+        <label for="senha">Senha*</label><br/>
+            <input class="campo" type="password" name="senha" id="senha1" maxlenght="10" required="true" placeholder="Digite sua senha"> <a class="link" href="/esqueci-senha">Esqueci a senha</a><p>
+        <label for="lembrar">Lembre-se de mim:</label>
+            <input type="checkbox" name="lembrar" id="lembrar1"><p>
+        <button type="submit" name="enviar" id="send">Enviar</button>
+    </form>
+    </fieldset>
+</div>
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    console.log('script home, pos main');
+  </script>
+{% endblock %}

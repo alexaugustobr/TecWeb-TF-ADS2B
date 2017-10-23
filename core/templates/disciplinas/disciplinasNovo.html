@@ -1,14 +1,16 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="style.css"/>
-<title>Nova Disciplina</title>
-</head>
+{% extends "layout.html" %}
+{% load static %}
 
-<body>
-<div class="corpo">
+{% block css %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block title %}
+	Disciplina  - {{ block.super }}
+{% endblock %}
+
+{% block main %}
 <h2>Nova Disciplina</h2>
 <fieldset class="field">
 <form>
@@ -35,5 +37,12 @@
 	<button type="submit" name="enviar" id="send">Enviar</button>        
 </form>    
 </fieldset>
-</body>
-</html>
+{% endblock %}
+
+{% block scripts %}
+  {{ block.super }}
+  <script>
+    console.log('script home, pos main');
+  </script>
+{% endblock %}
+

@@ -15,9 +15,29 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from core.views import index
+#metodo alternativo, importando pasta inteira
+#from core.views import index 
+from core.views.home import index
+from core.views.contato import contato
+from core.views.cursos import cursos
+from core.views.cursos import detalheCurso
+from core.views.cursos import bancoDados
+from core.views.noticias import noticias
+from core.views.login import login
+from core.views.login import esqueciSenha
+from core.views.disciplinas import disciplinasNovo
+from core.views.usuarios import usuariosNovo
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', index),
+    url(r'^contato/$', contato),
+    url(r'^cursos/$', cursos),
+    url(r'^cursos/detalhes/$', detalheCurso),
+    url(r'^cursos/banco-dados/$', bancoDados),
+    url(r'^noticias/$', noticias),
+    url(r'^login/$', login),
+    url(r'^esqueci-senha/$', esqueciSenha),
+    url(r'^disciplinas/novo/$', disciplinasNovo),
+    url(r'^usuarios/novo/$', usuariosNovo),
 ]

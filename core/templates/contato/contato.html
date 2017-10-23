@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/contato.css' %}">
+{% endblock %}
+
+{% block title %}
+	Contato  - {{ block.super }}
+{% endblock %}
+
+{% block main %}
+<div class="corpo">
+    <h2>Contato</h2>
+    <fieldset class="field">
+      <form>
+        <label for="nome">Nome*</label><br/>
+            <input class="campo"type="text" name="nome" id="nome1" maxlength="150" required="true" placeholder="Digite seu nome"><p>
+        <label for="email">E-mail*</label><br/>
+            <input class="campo"type="email" name="email" id="mail" required="true" placeholder="Digite seu e-mail"><p>
+        <label for="assunto">Assunto*</label><br/>
+            <select class="campo" name="assunto" id="assunto1" required>
+                <option value="">-- Selecione --</option>
+            <option value="SAC">Atendimento ao Cliente</option>
+            <option value="SG">Secretaria de Graduação</option>
+                  <option value="SPG">Secretaria de Pós Graduação</option>
+                  <option value="Financeiro">Financeiro</option>
+                  <option value="Ouvidoria">Ouvidoria</option>
+            </select>
+        <label for="mensagem">Mensagem*</label><br/>
+            <textarea class="text_area"name="mensagem" id="msg" maxlength="500" placeholder="Digite sua mensagem"></textarea><p>
+        <button type="submit" name="enviar" id="send">Enviar</button>        
+      </form> 
+    </fieldset>  
+</div>
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    console.log('script home, pos main');
+  </script>
+{% endblock %}
+
