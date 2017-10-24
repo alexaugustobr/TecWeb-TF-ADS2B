@@ -15,9 +15,11 @@
 		<h1>Cursos</h1>
 	</div>
 	<div class = "cursos">
-		<div class = "curso">
-			<a href="/cursos/detalhes"><h4>Analise e Desenvolvimeto de Sistemas</h4></a>
-		</div>
+		{%for curso in cursos %}
+			<div class = "curso">
+				<a href="/cursos/detalhes"><h4>{{curso.sigla}}</h4></a>
+			</div>
+		{% endfor %}
 		<div class = "curso">
 			<a href="/cursos/banco-dados"><h4>Banco de dados</h4></a>
 		</div>
