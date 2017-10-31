@@ -13,13 +13,15 @@
 <div class="corpo">
     <h2>Contato</h2>
     <fieldset class="field">
-      <form>
+      <form method="POST" action="/contato/">
+        {{ form.erros }}
+        {% csrf_token %}
         <label for="nome">Nome*</label><br/>
-            <input class="campo"type="text" name="nome" id="nome1" maxlength="150" required="true" placeholder="Digite seu nome"><p>
+            <input class="campo"type="text" name="nome" id="nome1" maxlength="150" placeholder="Digite seu nome"><p>
         <label for="email">E-mail*</label><br/>
-            <input class="campo"type="email" name="email" id="mail" required="true" placeholder="Digite seu e-mail"><p>
+            <input class="campo"type="email" name="email" id="mail"  placeholder="Digite seu e-mail"><p>
         <label for="assunto">Assunto*</label><br/>
-            <select class="campo" name="assunto" id="assunto1" required>
+            <select class="campo" name="assunto" id="assunto1" >
                 <option value="">-- Selecione --</option>
             <option value="SAC">Atendimento ao Cliente</option>
             <option value="SG">Secretaria de Graduação</option>
