@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/slide.css">
+    <title>HandCode</title>
+  </head>
+  <body>
+    <header  id="cabecalho" class="cabecalho">
+        <input type= "checkbox" id = "btn_menu">
+        <label for="btn_menu">&#9776;</label>
+         <nav  id="menu" class = "menu">
+              <ul>
+                  <li> <a href="index.html"> Home</a></li>
+                  <li> <a href="cursos.html"> Cursos</a></li>
+                  <li> <a href="noticias.html"> Noticias</a></li>
+                  <li> <a href="login.html"> Login</a></li>
+                  <li> <a href="nova_disciplina.html"> Disciplina</a></li>
+                  <li> <a href="cadastro.html"> Cadastro</a></li>
+                  <li> <a href="contato.html"> Contato</a></li>
+              <ul>
+         </nav>
+        <div id="logo" class = "logo"><img id = "img" src="img/handcodeicon1.png"> <div>
+    </header>
+    <div class = "teste">
+    <figure>
+            <span class="trs next"></span>
+            <span class="trs prev"></span>
+         
+            <div id="slider">
+               <a href="#" class="trs"><img class = "imgslide"src="img/03.jpg" alt="Legenda da imagem 1" /> </a>
+               <a href="#" class="trs"><img class = "imgslide" src="img/02.jpg" alt="Legenda da imagem 2" /></a>
+            </div>
+         
+            <figcaption></figcaption>
+         </figure>
+        </div>
+    <footer>
+        <div class = "footer1">
+            <p class = "f">
+                    <img src="img/handcode-color.png">
+
+                        <b> HandCode Faculdade de Tecnlogia </b>
+                    
+                    A Faculdade HandCode Tecnologia nasceu da percepção de um Grupo, que desde 1998 é referência em TI, Gestão e Design, para suprir a falta de mão de obra especializada do mercado de tecnologia e oferecer uma formação completa e multidisciplinar aos alunos.
+            </p>
+           <p class = "f1">
+                <b class = "titulo"> PÁGINAS</b>
+           </p>
+           <p class = "f1">
+                <b class = "titulo"> CONTATO</b>
+                
+            </p>
+            <p class = "f1">
+                    <b class = "titulo"> ATENDIMENTO</b>
+                    
+             </p>
+        </div>
+        <div class = "footer2"> 
+            Copyright 2017 - HandCode Faculdade de Tecnologia - Todos os Direitos Reservados 
+        </div>
+    </footer>
+
+    <script>
+        window.onscroll = function() {myFunction()};
+        
+        function myFunction() {
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                document.getElementById("cabecalho").className = "cabecalho2";
+                document.getElementById("menu").className = "menu2";
+                document.getElementById("logo").className = "logo2";
+                document.getElementById("img").src = "img/handcodeicon2.png";
+                
+                                                
+            } else {
+                document.getElementById("cabecalho").className = "cabecalho";
+                document.getElementById("menu").className = "menu";
+                document.getElementById("logo").className = "logo";
+                document.getElementById("img").src = "img/handcodeicon1.png";
+
+            }
+        }
+        function setaImagem(){
+    var settings = {
+        primeiraImg: function(){
+            elemento = document.querySelector("#slider a:first-child");
+            elemento.classList.add("ativo");
+            this.legenda(elemento);
+        },
+
+        slide: function(){
+            elemento = document.querySelector(".ativo");
+
+            if(elemento.nextElementSibling){
+                elemento.nextElementSibling.classList.add("ativo");
+                settings.legenda(elemento.nextElementSibling);
+                elemento.classList.remove("ativo");
+            }else{
+                elemento.classList.remove("ativo");
+                settings.primeiraImg();
+            }
+
+        },
+
+        proximo: function(){
+            clearInterval(intervalo);
+            elemento = document.querySelector(".ativo");
+
+            if(elemento.nextElementSibling){
+                elemento.nextElementSibling.classList.add("ativo");
+                settings.legenda(elemento.nextElementSibling);
+                elemento.classList.remove("ativo");
+            }else{
+                elemento.classList.remove("ativo");
+                settings.primeiraImg();
+            }
+            intervalo = setInterval(settings.slide,4000);
+        },
+
+        anterior: function(){
+            clearInterval(intervalo);
+            elemento = document.querySelector(".ativo");
+
+            if(elemento.previousElementSibling){
+                elemento.previousElementSibling.classList.add("ativo");
+                settings.legenda(elemento.previousElementSibling);
+                elemento.classList.remove("ativo");
+            }else{
+                elemento.classList.remove("ativo");                     
+                elemento = document.querySelector("a:last-child");
+                elemento.classList.add("ativo");
+                this.legenda(elemento);
+            }
+            intervalo = setInterval(settings.slide,4000);
+        },
+
+        legenda: function(obj){
+            var legenda = obj.querySelector("img").getAttribute("alt");
+            document.querySelector("figcaption").innerHTML = legenda;
+        }
+
+    }
+
+    //chama o slide
+    settings.primeiraImg();
+
+    //chama a legenda
+    settings.legenda(elemento);
+
+    //chama o slide à um determinado tempo
+    var intervalo = setInterval(settings.slide,4000);
+    document.querySelector(".next").addEventListener("click",settings.proximo,false);
+    document.querySelector(".prev").addEventListener("click",settings.anterior,false);
+}
+
+window.addEventListener("load",setaImagem,false);
+        
+    </script>
+  </body>
+</hmtl>
