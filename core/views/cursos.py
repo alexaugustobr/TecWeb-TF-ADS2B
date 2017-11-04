@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from core.models.Curso import Curso
+from core.submodels.Curso import Curso
 
 def cursos (request):
     

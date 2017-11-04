@@ -1,5 +1,5 @@
 from django import forms
-from core.models.Curso import Curso
+from core.submodels.Curso import Curso
 class ContatoForm(forms.Form):
     nome = forms.CharField()
     email = forms.EmailField()
