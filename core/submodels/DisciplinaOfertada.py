@@ -1,10 +1,10 @@
 
 from django.db import models
 from .Periodo import Periodo
-from .Disicplina import Disicplina
+from .Disciplina import Disciplina
 
 class DisciplinaOfertada(models.Model):
-    disciplina = models.ForeignKey(Disicplina, db_column = 'nome_disicplina')
+    disciplina = models.ForeignKey(Disciplina, db_column = 'nome_disicplina')
     ano_grade = models.SmallIntegerField(null=False)
     semestre = models.CharField(max_length=1)
 
