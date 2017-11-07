@@ -102,3 +102,8 @@ ENV/
 # mypy
 .mypy_cache/
 .vscode/settings.json
+lmsimpacta/__pycache__/__init__.cpython-35.pyc
+lmsimpacta/__pycache__/urls.cpython-35.pyc
+lmsimpacta/__pycache__/wsgi.cpython-35.pyc
+lmsimpacta/__pycache__/settings.cpython-35.pyc
+lmsimpacta/__pycache__/__init__.cpython-35.pyc
