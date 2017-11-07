@@ -168,7 +168,7 @@ figure.img_not figcaption:hover {
  }
 
 div.full_width {
-    background-image: url(file:///L:/TECWEB/LMS/img/01.jpg);
+    background-image: url(../img/01.jpg);
     background-attachment: fixed;
     text-align: center;
     width: 100%;
@@ -177,7 +177,7 @@ div.full_width {
 }
 
 div.full_width_title {
-    background-image: url(file:///L:/TECWEB/LMS/img/02.jpg);
+    background-image: url(../img/02.jpg);
     background-attachment: fixed;
     text-align: center;
     width: 100%;
