@@ -11,4 +11,4 @@ class PeriodoDisciplina(models.Model):
 
     class Meta:
         db_table = 'PeriodoDisciplina'
-        unique_together = ['periodo', 'ano_grade', 'semestre_grade', 'periodo', 'disciplina']
+       

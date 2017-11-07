@@ -9,4 +9,4 @@ class GradeCurricular(models.Model):
 
     class Meta:
         db_table = 'GradeCurricular'
-        unique_together = ['curso', 'ano', 'semestre']
+       

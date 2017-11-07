@@ -10,4 +10,4 @@ class Periodo(models.Model):
 
     class Meta:
         db_table = 'Periodo'
-        unique_together = ['gradeCurricular', 'ano_grade', 'semestre_grade', 'numero']
+       

@@ -2,7 +2,7 @@
 from django.db import models
 
 class Professor(models.Model):
-    ra = models.IntegerField(primary_key=True)
+    ra = models.IntegerField(unique = True, null = False)
     apelido = models.CharField(max_length=30,unique = True, null = True)
     nome = models.CharField(max_length =  120)
     email = models.CharField(max_length =  80)
