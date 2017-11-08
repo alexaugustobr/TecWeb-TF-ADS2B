@@ -3,7 +3,7 @@
 
 {% block css %}
   {{ block.super }}
-  <link rel="stylesheet" href="{% static 'css/home.css' %}">
+
 {% endblock %}
 
 {% block title %}
@@ -11,13 +11,151 @@
 {% endblock %}
 
 {% block main %}
-	Conteúdo do meu index.html
+<div class = "banner">
+    <figure>
+          <span class="trs next"></span>
+          <span class="trs prev"></span>
+       
+          <div id="slider">
+             <a href="#" class="trs"><img class = "imgslide"src="{% static 'img/02.jpg' %}" alt="<p>{A TECNOLOGIA MUDA SEU FUTURO}</p>" /> </a>
+             <a href="#" class="trs"><img class = "imgslide" src="{% static 'img/03.jpg' %}" alt="<p>{VESTIBULAR 2018}</p><p>Inscrições abertas</p>" /></a>
+          </div>
+       
+          <figcaption></figcaption>
+    </figure>
+</div>
+<section>
+  <h1>HandCode - Faculdade de Tecnologia</h1>
+  <h2>Graduações</h2>
+  <div class="links">
+      <a href="analise_e_desenvolvimento_de_sistemas.html">
+          <figure class="img_bt">
+              <img src="{% static 'img/graduacoes/ads.jpg' %}"/>
+              <figcaption><h3>Análise e Desenvolvimento de Sistemas</h3></figcaption>
+          </figure>
+      </a>
+      <a href="sistemas_de_informacao.html">
+          <figure class="img_bt">
+              <img src="{% static 'img/graduacoes/sistemas_informacao.jpg' %}"/>
+              <figcaption><h3>Sistemas de Informação</h3></figcaption>
+          </figure>
+      </a>
+      <a href="banco_de_dados.html">
+          <figure class="img_bt">
+              <img class = "img_bt"src="{% static 'img/graduacoes/banco_dados.jpg' %}"/>
+              <figcaption><h3>Banco de Dados</h3></figcaption>
+          </figure>
+      </a>
+      <a href="redes_de_computadores.html">
+          <figure class="img_bt">
+              <img class = "img_bt"src="{% static 'img/graduacoes/redes.jpg' %}"/>
+              <figcaption><h3>Redes de Computadores</h3></figcaption>
+          </figure>    
+      </a>
+  </div>
+</section>  
+  <div class="full_width">
+      <section>
+          <h3>Você dentro de uma faculdade que é referência em tecnologia.<br>Venha para a HandCode!</h3>
+      </section>
+  </div>
+<section>
+      <h2>Notícias</h2>
+      <div class="links">
+          <a href="alunos-da-faculdade-handcode-vencem-a-5-a-edicao-do-hackathon-da-fiesp.html">
+              <figure class="img_not">
+                  <img src="{% static 'img/noticias/01.jpg' %}"/>
+                  <figcaption><h3>Alunos da Faculdade HandCode vencem a 5.ª edição do Hackathon da FIESP</h3></figcaption>
+              </figure>
+          </a>
+          <a href="alunos-do-curso-de-administracao-da-faculdade-impacta-apresentam-trabalho-de-conclusao-de-curso.html">
+              <figure class="img_not">
+                  <img src="{% static 'img/noticias/02.jpg' %}"/>
+                  <figcaption><h3>Alunos do Curso de Administração da Faculdade HandCode apresentam trabalho de conclusão de curso</h3></figcaption>
+              </figure>
+          </a>
+      </div>        
+    
+</section>  
 {% endblock %}
 
 {% block scripts %}
   {{ block.super }}
   <script>
-    console.log('script home, pos main');
-  </script>
+    function setaImagem(){
+      var settings = {
+            primeiraImg: function(){
+            elemento = document.querySelector("#slider a:first-child");
+            elemento.classList.add("ativo");
+            this.legenda(elemento);
+        },
+
+        slide: function(){
+            elemento = document.querySelector(".ativo");
+
+            if(elemento.nextElementSibling){
+                elemento.nextElementSibling.classList.add("ativo");
+                settings.legenda(elemento.nextElementSibling);
+                elemento.classList.remove("ativo");
+            }else{
+                elemento.classList.remove("ativo");
+                settings.primeiraImg();
+            }
+
+        },
+
+        proximo: function(){
+            clearInterval(intervalo);
+            elemento = document.querySelector(".ativo");
+
+            if(elemento.nextElementSibling){
+                elemento.nextElementSibling.classList.add("ativo");
+                settings.legenda(elemento.nextElementSibling);
+                elemento.classList.remove("ativo");
+            }else{
+                elemento.classList.remove("ativo");
+                settings.primeiraImg();
+            }
+            intervalo = setInterval(settings.slide,4000);
+        },
+
+        anterior: function(){
+            clearInterval(intervalo);
+            elemento = document.querySelector(".ativo");
+
+            if(elemento.previousElementSibling){
+                elemento.previousElementSibling.classList.add("ativo");
+                settings.legenda(elemento.previousElementSibling);
+                elemento.classList.remove("ativo");
+            }else{
+                elemento.classList.remove("ativo");                     
+                elemento = document.querySelector("a:last-child");
+                elemento.classList.add("ativo");
+                this.legenda(elemento);
+            }
+            intervalo = setInterval(settings.slide,4000);
+        },
+
+        legenda: function(obj){
+            var legenda = obj.querySelector("img").getAttribute("alt");
+            document.querySelector("figcaption").innerHTML = legenda;
+        }
+
+    }
+
+    //chama o slide
+    settings.primeiraImg();
+
+    //chama a legenda
+    settings.legenda(elemento);
+
+    //chama o slide à um determinado tempo
+    var intervalo = setInterval(settings.slide,4000);
+    document.querySelector(".next").addEventListener("click",settings.proximo,false);
+    document.querySelector(".prev").addEventListener("click",settings.anterior,false);
+    }
+
+    window.addEventListener("load",setaImagem,false);
+</script>
 {% endblock %}
 
