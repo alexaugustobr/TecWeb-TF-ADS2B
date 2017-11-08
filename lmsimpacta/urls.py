@@ -18,6 +18,7 @@ from django.contrib import admin
 #metodo alternativo, importando pasta inteira
 #from core.views import index 
 from core.views.home import index
+from core.views.handcode import handcode
 from core.views.contato import contato
 from core.views.cursos import cursos
 from core.views.cursos import detalheCurso
@@ -31,6 +32,7 @@ from core.views.usuarios import usuariosNovo
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', index),
+    url(r'^handcode/$', handcode),
     url(r'^contato/$', contato),
     url(r'^cursos/$', cursos),
     url(r'^cursos/detalhes/$', detalheCurso),
