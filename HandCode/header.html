@@ -5,26 +5,7 @@
     <link rel="stylesheet" href="css/header.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
     <title>HandCode - Faculdade de Tecnologia</title>
-    <script>
-        window.onscroll = function() {myFunction()};
-        
-        function myFunction() {
-            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-                document.getElementById("cabecalho").className = "cabecalho2";
-                document.getElementById("menu").className = "menu2";
-                document.getElementById("logo").className = "logo2";
-                document.getElementById("img").src = "img/handcodeicon2.png";
-                
-                                                
-            } else {
-                document.getElementById("cabecalho").className = "cabecalho";
-                document.getElementById("menu").className = "menu";
-                document.getElementById("logo").className = "logo";
-                document.getElementById("img").src = "img/handcodeicon1.png";
-
-            }
-        }
-    </script>
+    
   </head>
   <body>
     <header  id="cabecalho" class="cabecalho">
@@ -47,4 +28,24 @@
     </header>
         
   </body>
+  <script>
+    window.onscroll = function() {myFunction()};
+    
+    function myFunction() {
+        if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+            document.getElementById("cabecalho").className = "cabecalho2";
+            document.getElementById("menu").className = "menu2";
+            document.getElementById("logo").className = "logo2";
+            document.getElementById("img").src = "img/handcodeicon2.png";
+            
+                                            
+        } else {
+            document.getElementById("cabecalho").className = "cabecalho";
+            document.getElementById("menu").className = "menu";
+            document.getElementById("logo").className = "logo";
+            document.getElementById("img").src = "img/handcodeicon1.png";
+
+        }
+    }
+  </script>
 </hmtl>
