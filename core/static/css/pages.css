@@ -288,7 +288,25 @@ label {
     margin-top: 100px;
     margin-bottom: 60px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.46);
-	
+}
+
+.field-section{
+    border:2px;
+    border-radius:2px;
+    padding: 50px;
+    border-color: #9E9C9C;
+    box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.46);
+    margin-bottom: 30px;
+}
+legend{
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #A7A7A7;
+    background-color: #F6F6F6;
+    padding: 10px; 
+
+
 }
 
 .text_area{

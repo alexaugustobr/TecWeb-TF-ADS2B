@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block css %}
-  <link rel="stylesheet" href="{% static 'css/cadastroUsuario.css' %}">
+  
 {% endblock %}
 
 {% block title %}
@@ -10,85 +10,90 @@
 {% endblock %}
 
 {% block main %}
-<div class="corpo">
-    <h2>Cadastro de Usuário</h2>
-    <fieldset class="field">
-    <form>
-    <fieldset class="field1">
-    <legend>Dados Pessoais</legend>
-        <label for="nome">Nome Completo*</label><br/>
-            <input class="campo" type="text" name="nome" id="nome1" placeholder="Digite seu nome" required="true" maxlength="150"><p>
-        <label for="sexo">Gênero*</label><br/>
-            <select class="campo" name="sexo" id="sex" required="true">
-                <option value="">-- Selecione --</option>
-                <option value="M">Masculino</option>
-                <option value="F">Feminino</option>
-            </select><p>
-        <label for="data_nascimento">Data de Nascimento*</label><br/>
-            <input class="campo" type="date" name="data_nascimento" id="data_n" required="true"><p>
-        <label for="ra">RA*</label><br/>
-            <input class="campo" type="number" name="ra" id="ra1"required="true" maxlength="7"><p>
-        <label for="email">E-mail*</label><br/>
-            <input class="campo" type="email" name="email" id="mail" required="true" placeholder="Digite seu e-mail"><p>
-        <label for="telefone">Telefone*</label><br/>
-            <input class="campo" type="number" name="telefone" id="tel" required="true" maxlength="10"><p>
-        <label for="curso">Curso*</label><br/>
-            <select class="campo" name="curso" id="curso1" required="true">
-                <option value="">-- Selecione --</option>
-                <option value="ADS">Análise e Desenvolvimento de Sistemas</option>
-                <option value="SI">Sistemas de Informação</option>
-                <option value="BD">Banco de Dados</option>
-            </select><p>
-        <label for="senha">Senha*</label><br/>
-            <input class="campo" type="password" name="senha" id="senha1" maxlenght="10" required="true" placeholder="Digite uma senha"><p>
-        <label for="confirmacao">Confime a senha*</label><br/>
-            <input class="campo" type="password" name="confirmacao" id="confirm" maxlenght="10" required="true" placeholder="Repita a senha"><p>
-    </fieldset><p>
-    <fieldset class="field1">
-    <legend>Dados Cadastrais</legend>
-        <label for="endereco">Endereço*</label><br/>
-            <input class="campo" type="text" name="endereco" id="adress" required="true" placeholder="Digite seu endereço sem número"><p>
-        <label for="numero">Número*</label><br/>
-            <input class="campo" type="number" name="numero" id="num" required="true"><p>
-        <label for="bairro">Bairro*</label><br/>
-            <input class="campo" type="text" name="bairro" id="bairro1" required="true"><p>
-        <label for="cidade">Cidade*</label><br/>
-            <input class="campo"type="text" name="cidade" id="city" required="true"><p>
-        <label for="estado">Estado*</label><br/>
-            <select class="campo" name="estado" id="state" required="true">
-                <option value="">--Selecione--</option>
-                <option value="AC">Acre</option>
-                <option value="AL">Alagoas</option>
-                <option value="AP">Amapá</option>
-                <option value="AM">Amazonas</option>
-                <option value="BA">Bahia</option>
-                <option value="CE">Ceará</option>
-                <option value="DF">Distrito Federal</option>
-                <option value="ES">Espírito Santo</option>
-                <option value="GO">Goiás</option>
-                <option value="MA">Maranhão</option>
-                <option value="MT">Mato Grosso</option>
-                <option value="MS">Mato Grosso do Sul</option>
-                <option value="MG">Minas Gerais</option>
-                <option value="PA">Pará</option>
-                <option value="PB">Paraíba</option>
-                <option value="PR">Paraná</option>
-                <option value="PE">Pernambuco</option>
-                <option value="PI">Piauí</option>
-                <option value="RJ">Rio de Janeiro</option>
-                <option value="RN">Rio Grande do Norte</option>
-                <option value="RS">Rio Grande do Sul</option>
-                <option value="RO">Rondônia</option>
-                <option value="RR">Roraima</option>
-                <option value="SC">Santa Catarina</option>
-                <option value="SP">São Paulo</option>
-                <option value="SE">Sergipe</option>
-                <option value="TO">Tocantins</option>
-            </select><p>
-    </fieldset><p>                
-    <button type="submit" name="enviar" id="send">Enviar</button>                
-    </form>
-    </fieldset> 
+<div class="full_width_title">
+    <section>
+        <h2 class="title_page">Novo Usuário</h2>
+            <div class="corpo">
+                <fieldset class="field">
+                    <h2>Cadastro</h2>
+                        <form>
+                            <fieldset class="field-section">
+                            <legend>Dados Pessoais</legend>
+                                <label for="nome">Nome Completo*</label>
+                                    <input class="campo" type="text" name="nome" id="nome1" placeholder="Digite seu nome" required="true" maxlength="150">
+                                <label for="sexo">Gênero*</label>
+                                    <select class="campo" name="sexo" id="sex" required="true">
+                                        <option value="">-- Selecione --</option>
+                                        <option value="M">Masculino</option>
+                                        <option value="F">Feminino</option>
+                                    </select>
+                                <label for="data_nascimento">Data de Nascimento*</label>
+                                    <input class="campo" type="date" name="data_nascimento" id="data_n" required="true">
+                                <label for="ra">RA*</label>
+                                    <input class="campo" type="number" name="ra" id="ra1"required="true" maxlength="7">
+                                <label for="email">E-mail*</label>
+                                    <input class="campo" type="email" name="email" id="mail" required="true" placeholder="Digite seu e-mail">
+                                <label for="telefone">Telefone*</label>
+                                    <input class="campo" type="number" name="telefone" id="tel" required="true" maxlength="10">
+                                <label for="curso">Curso*</label>
+                                    <select class="campo" name="curso" id="curso1" required="true">
+                                        <option value="">-- Selecione --</option>
+                                        <option value="ADS">Análise e Desenvolvimento de Sistemas</option>
+                                        <option value="SI">Sistemas de Informação</option>
+                                        <option value="BD">Banco de Dados</option>
+                                    </select>
+                                <label for="senha">Senha*</label>
+                                    <input class="campo" type="password" name="senha" id="senha1" maxlenght="10" required="true" placeholder="Digite uma senha">
+                                <label for="confirmacao">Confime a senha*</label>
+                                    <input class="campo" type="password" name="confirmacao" id="confirm" maxlenght="10" required="true" placeholder="Repita a senha">
+                            </fieldset>
+                            <fieldset class="field-section">
+                            <legend>Dados Cadastrais</legend>
+                                <label for="endereco">Endereço*</label>
+                                    <input class="campo" type="text" name="endereco" id="adress" required="true" placeholder="Digite seu endereço sem número">
+                                <label for="numero">Número*</label>
+                                    <input class="campo" type="number" name="numero" id="num" required="true">
+                                <label for="bairro">Bairro*</label>
+                                    <input class="campo" type="text" name="bairro" id="bairro1" required="true">
+                                <label for="cidade">Cidade*</label>
+                                    <input class="campo"type="text" name="cidade" id="city" required="true">
+                                <label for="estado">Estado*</label>
+                                    <select class="campo" name="estado" id="state" required="true">
+                                        <option value="">--Selecione--</option>
+                                        <option value="AC">Acre</option>
+                                        <option value="AL">Alagoas</option>
+                                        <option value="AP">Amapá</option>
+                                        <option value="AM">Amazonas</option>
+                                        <option value="BA">Bahia</option>
+                                        <option value="CE">Ceará</option>
+                                        <option value="DF">Distrito Federal</option>
+                                        <option value="ES">Espírito Santo</option>
+                                        <option value="GO">Goiás</option>
+                                        <option value="MA">Maranhão</option>
+                                        <option value="MT">Mato Grosso</option>
+                                        <option value="MS">Mato Grosso do Sul</option>
+                                        <option value="MG">Minas Gerais</option>
+                                        <option value="PA">Pará</option>
+                                        <option value="PB">Paraíba</option>
+                                        <option value="PR">Paraná</option>
+                                        <option value="PE">Pernambuco</option>
+                                        <option value="PI">Piauí</option>
+                                        <option value="RJ">Rio de Janeiro</option>
+                                        <option value="RN">Rio Grande do Norte</option>
+                                        <option value="RS">Rio Grande do Sul</option>
+                                        <option value="RO">Rondônia</option>
+                                        <option value="RR">Roraima</option>
+                                        <option value="SC">Santa Catarina</option>
+                                        <option value="SP">São Paulo</option>
+                                        <option value="SE">Sergipe</option>
+                                        <option value="TO">Tocantins</option>
+                                    </select>
+                                </fieldset>
+                            <button type="submit" name="enviar" id="send">Enviar</button>                
+                        </form>
+                    </fieldset> 
+                </div>
+    </section>
 </div>
 {% endblock %}
 
