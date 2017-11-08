@@ -3,7 +3,7 @@ from core.submodels.Curso import Curso
 
 def cursos (request):
     
-    return render(request,"cursos/curso.html",contexto)
+    return render(request,"cursos/cursos.html")
 
 def cursosListar (request):
     
@@ -11,7 +11,7 @@ def cursosListar (request):
         "usuario":"usuario",
         "cursos":Curso.objects.all()
     }
-    return render(request,"cursos/cursos.html",contexto)
+    return render(request,"cursos/cursos.html")
 
 
 def bancoDados (request):
