@@ -1,14 +1,14 @@
 
 from django.db import models
-from .Periodo import Periodo
-from .Disciplina import Disciplina
 
 class PeriodoDisciplina(models.Model):
-    periodo = models.ForeignKey(Periodo, db_column='numero_periodo')
+    periodo = models.ForeignKey(to='Periodo', related_name="periodosDisciplina", null=False, blank=False) #onetomany
+    disciplina = models.ForeignKey(to='Disciplina', related_name="periodosDisciplina", null=False, blank=False) #onetomany
     ano_grade = models.SmallIntegerField(null=False)
     semestre_grade = models.CharField(max_length=1,null=False)
-    disciplina = models.ForeignKey(Disciplina, db_column = 'nome_disicplina')
-
+    
     class Meta:
         db_table = 'PeriodoDisciplina'
-        unique_together = ['periodo', 'ano_grade', 'semestre_grade', 'periodo', 'disciplina']
+
+from .Periodo import Periodo
+from .Disciplina import Disciplina

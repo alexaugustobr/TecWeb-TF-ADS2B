@@ -1,12 +1,14 @@
-
 from django.db import models
-from .Curso import Curso
 
 class Aluno(models.Model):
-    curso = models.ForeignKey(Curso, db_column='sigla_curso')
-    nome = models.CharField(max_length=120,null=False,primary_key=True)
+    curso = models.ForeignKey(to='Curso', related_name="alunos", null=False, blank=False) #onetomany
+    nome = models.CharField(max_length=120,null=False)
     email = models.CharField(max_length=80)
     celular = models.CharField(max_length=11)
-
+    ra = models.IntegerField(unique=True,null=False)
+    
     class Meta:
         db_table = 'Aluno'
+
+from .Matricula import Matricula
+from .Curso import Curso
