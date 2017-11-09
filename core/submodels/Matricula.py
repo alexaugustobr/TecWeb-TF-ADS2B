@@ -1,14 +1,14 @@
 from django.db import models
 
-class Aluno(models.Model):
-    curso = models.ForeignKey(to='Curso', related_name="alunos", null=False, blank=False) #onetomany
+class Matricula(models.Model):
+    aluno = models.ForeignKey(to='Aluno', related_name="matriculas", null=False, blank=False) #onetomany
     nome = models.CharField(max_length=120,null=False)
     email = models.CharField(max_length=80)
     celular = models.CharField(max_length=11)
     ra = models.IntegerField(unique=True,null=False)
     
     class Meta:
-        db_table = 'Aluno'
+        db_table = 'Matricula'
 
-from .Matricula import Matricula
-from .Curso import Curso
+from .Turma import Turma
+from .Aluno import Aluno
