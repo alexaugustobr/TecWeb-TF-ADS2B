@@ -1,6 +1,7 @@
 from .submodels.Curso import Curso
 from .submodels.GradeCurricular import GradeCurricular
 from .submodels.Turma import Turma
+from .submodels.CursoTurma import CursoTurma
 from .submodels.Professor import Professor
 from .submodels.Disciplina import Disciplina
 from .submodels.PeriodoDisciplina import PeriodoDisciplina
@@ -8,3 +9,6 @@ from .submodels.DisciplinaOfertada import DisciplinaOfertada
 from .submodels.Aluno import Aluno
 from .submodels.Questao import Questao
 from .submodels.ArquivosQuestao import ArquivosQuestao
+from .submodels.Resposta import Resposta
+from .submodels.ArquivosResposta import ArquivosResposta
+from .submodels.GradeCurricular import GradeCurricular
