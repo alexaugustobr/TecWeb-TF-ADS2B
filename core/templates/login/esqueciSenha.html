@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block css %}
-  <link rel="stylesheet" href="{% static 'css/login.css' %}">
+  
 {% endblock %}
 
 {% block title %}
@@ -10,20 +10,24 @@
 {% endblock %}
 
 {% block main %}
-<div class="corpo">
-    <h2>Esqueci minha senha</h2>
-    <fieldset class="field">
-    <form>
-        <label for="email">E-mail*</label><br/>
-            <input class="campo" type="email" name="email" id="mail" maxlength="60" required="true" placeholder="Digite seu e-mail"><p>
-        <label for="senha">Senha*</label><br/>
-            <input class="campo" type="password" name="senha" id="senha1" maxlenght="10" required="true" placeholder="Digite uma senha"><p>
-        <label for="confirmacao">Confime a senha*</label><br/>
-            <input class="campo" type="password" name="confirmacao" id="confirm" maxlenght="10" required="true" placeholder="Repita a senha"><p>
-        <button type="submit" name="enviar" id="send">Enviar</button>
-    </form>
-    </fieldset>
-</div>
+<div class="full_width_title">
+    <section>
+        <h2 class="title_page">SENHA</h2>
+            <div class="corpo">
+                <fieldset class="field">
+                        <h2>Esqueci minha senha</h2>
+                        <form>
+                            <label for="email">E-mail*</label>
+                                <input class="campo" type="email" name="email" id="mail" maxlength="60" required="true" placeholder="Digite seu e-mail">
+                            <label for="senha">Senha*</label>
+                                <input class="campo" type="password" name="senha" id="senha1" maxlenght="10" required="true" placeholder="Digite uma senha">
+                            <label for="confirmacao">Confime a senha*</label>
+                                <input class="campo" type="password" name="confirmacao" id="confirm" maxlenght="10" required="true" placeholder="Repita a senha">
+                            <button type="submit" name="enviar" id="send">Enviar</button>
+                        </form>
+                    </fieldset>
+            </div>
+    </section>
 {% endblock %}
 
 {% block scripts %}
