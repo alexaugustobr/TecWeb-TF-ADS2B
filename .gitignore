@@ -110,3 +110,4 @@ lmsimpacta/__pycache__/settings.cpython-35.pyc
 lmsimpacta/__pycache__/__init__.cpython-35.pyc
 lmsimpacta/__pycache__/
 lmsimpacta/core/migrations
+lmsimpacta/core/__pycache__
