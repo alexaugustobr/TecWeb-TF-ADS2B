@@ -111,3 +111,5 @@ lmsimpacta/__pycache__/__init__.cpython-35.pyc
 lmsimpacta/__pycache__/
 lmsimpacta/core/migrations
 lmsimpacta/core/__pycache__
+core/migrations/__init__.py
+core/migrations/0002_auto_20171104_1801.py
