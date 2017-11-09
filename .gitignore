@@ -129,3 +129,4 @@ tests/.coverage
 build/
 tests/report/
 .vscode/settings.json
+db.sqlite3
