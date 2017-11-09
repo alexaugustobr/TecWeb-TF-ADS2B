@@ -130,3 +130,4 @@ build/
 tests/report/
 .vscode/settings.json
 db.sqlite3
+core/migrations/0001_initial.py
