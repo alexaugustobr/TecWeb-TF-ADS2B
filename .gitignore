@@ -133,3 +133,4 @@ tests/report/
 core/migrations/*
 core/migrations/
 core/migrations
+.pwd
