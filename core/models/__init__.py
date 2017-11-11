@@ -8,3 +8,5 @@ from .DisciplinaOfertada import DisciplinaOfertada
 from .Aluno import Aluno
 from .Questao import Questao
 from .ArquivosQuestao import ArquivosQuestao
+from .ArquivosResposta import ArquivosResposta
+from .Resposta import Resposta

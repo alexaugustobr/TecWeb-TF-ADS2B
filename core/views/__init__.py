@@ -5,3 +5,4 @@ from .Home import *
 from .Login import *
 from .Noticias import *
 from .Usuarios import *
+from .Handcode import *

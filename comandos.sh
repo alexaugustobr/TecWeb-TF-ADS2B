@@ -1,13 +1,18 @@
 #iniciando o servidor
 
-python3 manage.py runserver
+python manage.py runserver
 
 
 #criando mudancas no bd
 
 
-python3 manage.py makemigrations
+python manage.py makemigrations
 
 #migrando mudancas para o banco
 
-python3 manage.py migrate
+python manage.py migrate
+
+
+#criando usuario admin
+
+python manage.py createsuperuser

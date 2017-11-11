@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block css %}
-  <link rel="stylesheet" href="{% static 'css/curso.css' %}">
+  
 {% endblock %}
 
 {% block title %}
@@ -10,20 +10,7 @@
 {% endblock %}
 
 {% block main %}
-<div class="corpo">
-    <h2>Contato</h2>
-    <fieldset class="field">
-      <form method="POST" action="/curso/">
-        {{ form.as_p }}
-        {% for input in form %}
-            <div>{{input.label_tag}}</div>
-            <div>{{input}}</div>
-        {% endfor %}
-        {% csrf_token %}
-        <button type="submit" name="sigla" id="send">Enviar</button>        
-      </form> 
-    </fieldset>  
-</div>
+
 {% endblock %}
 
 {% block scripts %}

@@ -22,6 +22,7 @@ from core.views import *
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', index),
+    url(r'^handcode/$', handcode),
     url(r'^contato/$', contato),
     url(r'^cursos/$', cursos),
     url(r'^cursos/detalhes/$', detalheCurso),
