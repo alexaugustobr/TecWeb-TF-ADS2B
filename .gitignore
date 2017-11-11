@@ -129,5 +129,5 @@ tests/.coverage
 build/
 tests/report/
 .vscode/settings.json
-db.sqlite3
+*.sqlite3
 core/migrations/0001_initial.py
