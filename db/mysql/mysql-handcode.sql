@@ -116,7 +116,7 @@ CREATE TABLE Questao (
         REFERENCES Turma (nome_disciplina,ano_ofertado,semestre_ofertado,id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE ArquivoResposta (
+CREATE TABLE ArquivoQuestao (
     nome_disciplina VARCHAR(240) NOT NULL,
     ano_ofertado SMALLINT NOT NULL,
     semestre_ofertado CHAR(1) NOT NULL,
@@ -153,4 +153,39 @@ CREATE TABLE Matricula (
     CONSTRAINT fk_matricula_aluno
     FOREIGN KEY (ra_aluno)  
         REFERENCES Aluno (ra)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE Resposta (
+    nome_disciplina VARCHAR(240) NOT NULL,
+    ano_ofertado SMALLINT NOT NULL,
+    semestre_ofertado CHAR(1) NOT NULL,
+    id_turma CHAR(1) NOT NULL,
+    numero_questao INT(11) NOT NULL,
+    ra_aluno INT(11) NOT NULL,
+    descricao TEXT,
+    data_avaliacao DATE,
+    nota DECIMAL(4,2),
+    avaliacao TEXT,
+    data_de_envio DATE,
+    PRIMARY KEY (nome_disciplina,ano_ofertado,semestre_ofertado,id_turma,numero_questao, ra_aluno),  
+    CONSTRAINT fk_resposta_aluno
+    FOREIGN KEY (ra_aluno)
+        REFERENCES Aluno(ra),
+    CONSTRAINT fk_resposta_questao
+    FOREIGN KEY (nome_disciplina, ano_ofertado, semestre_ofertado, id_turma,numero_questao)  
+        REFERENCES Questao (nome_disciplina,ano_ofertado,semestre_ofertado,id_turma,numero)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE ArquivoResposta (
+    nome_disciplina VARCHAR(240) NOT NULL,
+    ano_ofertado SMALLINT NOT NULL,
+    semestre_ofertado CHAR(1) NOT NULL,
+    id_turma CHAR(1) NOT NULL,
+    arquivo VARCHAR(500) NOT NULL,
+    numero_questao INT(11) NOT NULL,
+    ra_aluno INT(11) NOT NULL,
+    PRIMARY KEY (nome_disciplina,ano_ofertado,semestre_ofertado,id_turma,arquivo),  
+    CONSTRAINT fk_arquivo_reposta
+    FOREIGN KEY (nome_disciplina, ano_ofertado,semestre_ofertado,id_turma,numero_questao,ra_aluno)  
+        REFERENCES Resposta (nome_disciplina,ano_ofertado,semestre_ofertado,id_turma,numero_questao,ra_aluno)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

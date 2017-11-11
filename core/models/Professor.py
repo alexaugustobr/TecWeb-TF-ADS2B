@@ -1,12 +1,12 @@
+
 from django.db import models
 
-class Usuarios(models.Model):
-    ra = 111111
-    senha = 'teste123'
-
 class Professor(models.Model):
-    curso = models.CharField()
-    endereco = 'la em casa'
-    idade = 19
-    senha = 'teste123'
-    cursos = []
+    ra = models.IntegerField(unique = True, null = False)
+    apelido = models.CharField(max_length=30,unique = True, null = True)
+    nome = models.CharField(max_length =  120)
+    email = models.CharField(max_length =  80)
+    celular = models.CharField(max_length =  11)
+
+    class Meta:
+        db_table = 'Professor'

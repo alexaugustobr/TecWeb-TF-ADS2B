@@ -2,7 +2,6 @@
 {% load static %}
 
 {% block css %}
-  <link rel="stylesheet" href="{% static 'css/cursos.css' %}">
 {% endblock %}
 
 {% block title %}
@@ -10,29 +9,66 @@
 {% endblock %}
 
 {% block main %}
-<section>
-	<div class="title">
-		<h1>Cursos</h1>
+<div class="full_width_title">
+  <section>
+      <h2 class="title_page">CURSOS</h2>
+  </section>
 	</div>
-	<div class = "cursos">
-		{%for curso in cursos %}
-			<div class = "curso">
-				<a href="/cursos/detalhes"><h4>{{curso.sigla}}</h4></a>
-			</div>
-		{% endfor %}
-		<div class = "curso">
-			<a href="/cursos/banco-dados"><h4>Banco de dados</h4></a>
-		</div>
-		<div class = "curso">
-			<a href="/cursos/detalhes"><h4>Redes</h4></a>
-		</div>
-	</div>
+	<section>
+  <h1>Cursos com conceituação máxima no MEC!</h1>
+  <h2>Graduações</h2>
+  <div class="links">
+      <a href="/analise_e_desenvolvimento_de_sistemas">
+          <figure class="img_bt">
+              <img src="{% static 'img/graduacoes/ads.jpg' %}"/>
+              <figcaption><h3>Análise e Desenvolvimento de Sistemas</h3></figcaption>
+          </figure>
+      </a>
+      <a href="/sistemas_de_informacao">
+          <figure class="img_bt">
+              <img src="{% static 'img/graduacoes/sistemas_informacao.jpg' %}"/>
+              <figcaption><h3>Sistemas de Informação</h3></figcaption>
+          </figure>
+      </a>
+      <a href="/banco_de_dados">
+          <figure class="img_bt">
+							<img class = "img_bt"src="{% static 'img/graduacoes/banco_dados.jpg' %}"/>
+              <figcaption><h3>Banco de Dados</h3></figcaption>
+          </figure>
+      </a>
+      <a href="/redes_de_computadores">
+          <figure class="img_bt">
+							<img class = "img_bt"src="{% static 'img/graduacoes/redes.jpg' %}"/>
+              <figcaption><h3>Redes de Computadores</h3></figcaption>
+          </figure>    
+      </a>
+</div>
 </section>
+<div class="full-width-color">
+		<section>
+      <h2>Infraestrutura</h2>
+        <div class="col_left">
+          <ul class="ul_estrutura">
+              <li>Salas de aula e laboratórios com equipamentos de última geração;</li>
+              <li>210 Computadores DELL com processadores Intel Core i7;</li>
+              <li>4 servidores DELL PowerEdge R620;</li>
+              <li>Mais de 10.000m² de área construída;</li>
+              <li>Conectividade via Wi-Fi Xirrus;</li>
+              <li>Auditório para mais de 200 pessoas;</li>
+              <li>Biblioteca com mais de 20.000 volumes;</li>
+              <li>Estúdio completo de AV;</li>
+              <li>Praça de alimentação;</li>
+              <li>Estacionamento integrado;</li>
+              <li>Acesso total a deficientes físicos.</li>
+          </ul>
+        </div>
+      <div><img class="img_col" src="{% static 'img/lab.jpg' %}"/></div>
+  	</section>
+</div>
+<div class="full_width_line"></div> 
+
 {% endblock %}
 
-{% block scripts %}
-  <script>
-    console.log('script home, pos main');
-  </script>
+{% block scripts %}  
 {% endblock %}
 
