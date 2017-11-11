@@ -17,16 +17,7 @@ from django.conf.urls import url
 from django.contrib import admin
 #metodo alternativo, importando pasta inteira
 #from core.views import index 
-from core.views.home import index
-from core.views.contato import contato
-from core.views.cursos import cursos
-from core.views.cursos import detalheCurso
-from core.views.cursos import bancoDados
-from core.views.noticias import noticias
-from core.views.login import login
-from core.views.login import esqueciSenha
-from core.views.disciplinas import disciplinasNovo
-from core.views.usuarios import usuariosNovo
+from core.views import *
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
