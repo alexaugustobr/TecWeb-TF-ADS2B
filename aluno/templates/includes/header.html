@@ -1,0 +1,41 @@
+{% load static %}
+<header  id="cabecalho" class="cabecalho">
+    <div class="header_conteiner">
+      <div id="logo" class = "logo"><img id = "img" src="{% static 'img/handcodeicon1.png' %}"> </div>
+      <input type= "checkbox" id = "btn_menu">
+      <label for="btn_menu">&#9776;</label>
+       <nav  id="menu" class = "menu">
+            <ul>
+                <li> <a href="/">Home</a></li>
+                <li> <a href="/handcode">HandCode</a></li>
+                <li> <a href="/cursos">Cursos</a></li>
+                <li> <a href="/noticias">Notícias</a></li>
+                <li> <a href="/contato">Contato</a></li>
+                <li> <a href="/login">Login</a></li>
+            <ul>
+       </nav>
+      
+    </div>
+</header>
+      
+
+<script>
+  window.onscroll = function() {myFunction()};
+  
+  function myFunction() {
+      if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+          document.getElementById("cabecalho").className = "cabecalho2";
+          document.getElementById("menu").className = "menu2";
+          document.getElementById("logo").className = "logo2";
+          document.getElementById("img").src = "{% static 'img/handcodeicon2.png' %}";
+          
+                                          
+      } else {
+          document.getElementById("cabecalho").className = "cabecalho";
+          document.getElementById("menu").className = "menu";
+          document.getElementById("logo").className = "logo";
+          document.getElementById("img").src = "{% static 'img/handcodeicon1.png' %}";
+
+      }
+  }
+</script>
