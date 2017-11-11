@@ -130,6 +130,10 @@ build/
 tests/report/
 .vscode/settings.json
 *.sqlite3
+<<<<<<< HEAD
 core/migrations/*
 core/migrations/
 core/migrations
+=======
+core/migrations/0001_initial.py
+>>>>>>> master
