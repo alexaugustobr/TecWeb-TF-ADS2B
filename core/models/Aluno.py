@@ -6,9 +6,10 @@ class Aluno(models.Model):
     email = models.CharField(max_length=80)
     celular = models.CharField(max_length=11)
     ra = models.IntegerField(unique=True,null=False)
-    
+
     class Meta:
         db_table = 'Aluno'
+    
 
 from .Matricula import Matricula
 from .Curso import Curso
