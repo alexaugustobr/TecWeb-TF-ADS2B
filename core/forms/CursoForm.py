@@ -1,5 +1,6 @@
 from django import forms
 from core.models import *
+
 class ContatoForm(forms.Form):
     nome = forms.CharField()
     email = forms.EmailField()
@@ -11,10 +12,3 @@ class ContatoForm(forms.Form):
               "Email: " + self.cleaned_data["email"] + "\n"+
               "Mensagem: " + self.cleaned_data["mensagem"]
         )
-
-
-class CursoForm(forms.ModelForm):
-    
-    class Meta:
-        model = Curso
-        fields = "__all__"
