@@ -8,5 +8,7 @@ class DisciplinaOfertada(models.Model):
     ano_grade = models.SmallIntegerField(null=False)
     semestre = models.CharField(max_length=1)
 
+    def __str__(self):
+        return "{}: {} - {}".format(self.disciplina, self.ano_grade, self.semestre)
     class Meta:
         db_table = 'DisciplinaOfertada'
