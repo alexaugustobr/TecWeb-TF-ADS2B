@@ -7,12 +7,9 @@ from datetime import datetime
 
 def turma(request):
     assert isinstance(request, HttpRequest)
-    return render(
-        request,
-        '../professor/templates/matricula.html',
-        context_instance = RequestContext(request,
-        {
-            'title':'',
-            'turmas': Turma.objects.all(),
-        })
-    )
+
+    contexto = {
+        'title':'',
+        'turmas': Turma.objects.all(),
+    }
+    return render(request,"matricula.html", contexto)
