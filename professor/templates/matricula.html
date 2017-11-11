@@ -1,0 +1,20 @@
+
+{% block content %}
+
+<div>
+    <h1>Lista de Turmas para matricula</h1>
+</div>
+
+<table class="table">
+    <tr><th>Turmas </th></tr>
+        {% for turma in turmas %}
+          <tr><td>{{ turma.turma_sigla }}</td>
+            <td>{{ turma.turno }}</td>
+            <td>{{ turma.professor }}</td>
+            <td>{{ turma.disciplinaOfertada}}</td>
+        </tr>
+          
+        {% endfor %}
+</table>
+
+{% endblock %}

@@ -18,6 +18,7 @@ from django.contrib import admin
 #metodo alternativo, importando pasta inteira
 #from core.views import index 
 from core.views import *
+from professor.views.matricula import turma
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -32,4 +33,6 @@ urlpatterns = [
     url(r'^esqueci-senha/$', esqueciSenha),
     url(r'^disciplinas/novo/$', disciplinasNovo),
     url(r'^usuarios/novo/$', usuariosNovo),
+    url(r'^turmas/$', turma),
+    
 ]
