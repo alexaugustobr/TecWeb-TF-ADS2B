@@ -134,3 +134,4 @@ core/migrations/*
 core/migrations/
 core/migrations
 .pwd
+mail.pwd
