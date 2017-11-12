@@ -1,8 +1,7 @@
 from django.db import models
 
-class Aluno(models.Model):
+class Aluno(Usuario):
     curso = models.ForeignKey(to='Curso', related_name="alunos", null=False, blank=False) #onetomany
-    nome = models.CharField(max_length=120,null=False)
     email = models.CharField(max_length=80)
     celular = models.CharField(max_length=11)
     ra = models.IntegerField(unique=True,null=False)
@@ -16,3 +15,4 @@ class Aluno(models.Model):
 
 from .Matricula import Matricula
 from .Curso import Curso
+from .CadastroUsuarios import Usuario
