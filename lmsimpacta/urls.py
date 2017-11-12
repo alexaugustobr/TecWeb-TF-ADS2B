@@ -17,6 +17,7 @@ from django.conf.urls import url
 from django.contrib import admin
 #metodo alternativo, importando pasta inteira
 #from core.views import index 
+from professor.views import *
 from core.views import *
 
 urlpatterns = [
@@ -32,4 +33,5 @@ urlpatterns = [
     url(r'^esqueci-senha/$', esqueciSenha),
     url(r'^disciplinas/novo/$', disciplinasNovo),
     url(r'^usuarios/novo/$', usuariosNovo),
+    url(r'^professor/$', painelProfessor),
 ]
