@@ -1,1 +1,1 @@
-#from .Contato import *
+from .painelProfessor import painelProfessor
