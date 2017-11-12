@@ -19,8 +19,15 @@ def turma(request):
 
 def enviarEmailTurma(request):
     if request.method == 'POST':
-
         turma_id = request.POST.get('turma_id')
-        print(turma_id)
-    #/turma/enviar-email
-    return HttpResponse(status=200)
+        if turma_id:
+            turma = Turma.objects.get(id=turma_id)
+
+            #TODO
+            #gerar token
+            token = 123456 # =)
+            
+            return HttpResponse(status=200)
+
+
+    return HttpResponse(status=403)
