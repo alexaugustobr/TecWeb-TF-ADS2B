@@ -19,6 +19,7 @@ from django.contrib import admin
 #from core.views import index 
 from professor.views import *
 from core.views import *
+from professor.views.matricula import *
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -34,4 +35,10 @@ urlpatterns = [
     url(r'^disciplinas/novo/$', disciplinasNovo),
     url(r'^usuarios/novo/$', usuariosNovo),
     url(r'^professor/$', painelProfessor),
+    url(r'^turmas/$', turma),
+    url(r'^detalheCurso/$', detalheCurso),
+    url(r'^detalheNoticia/$', detalheNoticia),
+   
+
+    
 ]
