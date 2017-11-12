@@ -15,7 +15,7 @@ def turma(request):
         'title':'',
         'turmas': Turma.objects.all(),
     }
-    return render(request,"matricula.html", contexto)
+    return render(request,"matricula/matricula.html", contexto)
 
 
 def enviarEmailTurma(request):

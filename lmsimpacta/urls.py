@@ -20,6 +20,9 @@ from django.contrib import admin
 from professor.views import *
 from core.views import *
 from professor.views.matricula import *
+from aluno.views import * 
+from aluno.views.matricula import * 
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -39,6 +42,9 @@ urlpatterns = [
     url(r'^detalheCurso/$', detalheCurso),
     url(r'^detalheNoticia/$', detalheNoticia),
     url(r'^professor/turmas/enviar-email/$', enviarEmailTurma),
+    url(r'^confirmaToken/$', confirmaToken),
+    url(r'^formMatricula/$', formMatricula),
+
    
 
     
