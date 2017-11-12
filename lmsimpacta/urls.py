@@ -34,5 +34,9 @@ urlpatterns = [
     url(r'^disciplinas/novo/$', disciplinasNovo),
     url(r'^usuarios/novo/$', usuariosNovo),
     url(r'^turmas/$', turma),
+    url(r'^detalheCurso/$', detalheCurso),
+    url(r'^detalheNoticia/$', detalheNoticia),
+   
+
     
 ]
