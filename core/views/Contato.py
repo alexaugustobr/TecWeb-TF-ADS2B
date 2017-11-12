@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from core.forms import ContatoForm
+from core.forms.ContatoForm import ContatoForm
 from core.components.GerenciadorEmail import Email
 
 def enviarEmailAluno(form):
