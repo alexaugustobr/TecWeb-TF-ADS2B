@@ -14,5 +14,8 @@ class Disciplina(models.Model):
     bibliografia_complementar = models.TextField()
     bibliografia_basica = models.TextField()
 
+    def __str__(self):
+        return "{}: {} - {}".format(self.nome, self.carga_horaria, self.teoria)
+
     class Meta:
         db_table = 'Disciplina'

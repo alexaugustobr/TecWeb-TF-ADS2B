@@ -130,4 +130,8 @@ build/
 tests/report/
 .vscode/settings.json
 *.sqlite3
-core/migrations/0001_initial.py
+core/migrations/*
+core/migrations/
+core/migrations
+.pwd
+mail.pwd

@@ -13,5 +13,8 @@ class Resposta(models.Model):
     descricao = models.TextField()
     data_de_envio = models.TextField()
 
+    def __str__(self):
+        return "{} - {}: {}".format(self.questao.id, self.aluno.ra, self.descricao)
+
     class Meta:
         db_table = 'Resposta'
