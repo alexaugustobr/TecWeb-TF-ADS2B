@@ -135,3 +135,4 @@ core/migrations/
 core/migrations
 .pwd
 mail.pwd
+*.pyc
