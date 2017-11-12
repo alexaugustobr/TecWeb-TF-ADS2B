@@ -38,6 +38,7 @@ urlpatterns = [
     url(r'^turmas/$', turma),
     url(r'^detalheCurso/$', detalheCurso),
     url(r'^detalheNoticia/$', detalheNoticia),
+    url(r'^turma/enviar-email/$', enviarEmailTurma),
    
 
     
