@@ -16,3 +16,14 @@ python manage.py migrate core
 #criando usuario admin
 
 python manage.py createsuperuser
+
+
+#executanto testes
+
+python manage.py test testes
+
+#senha do bd
+
+usuario root
+
+senha asdf1234
