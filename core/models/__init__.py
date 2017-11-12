@@ -13,3 +13,5 @@ from .ArquivosResposta import ArquivosResposta
 from .Resposta import Resposta
 from .CursoTurma import CursoTurma
 from .Matricula import Matricula
+from .Candidato import Candidato
+from .ArquivosFoto import ArquivosFoto

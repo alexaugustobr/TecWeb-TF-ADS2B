@@ -5,8 +5,8 @@ from .Disciplina import Disciplina
 
 class DisciplinaOfertada(models.Model):
     disciplina = models.ForeignKey(to='Disciplina', related_name="disciplinasOfertadas", null=False, blank=False) #onetomany
-    ano_grade = models.SmallIntegerField(null=False)
-    semestre = models.CharField(max_length=1)
+    ano = models.SmallIntegerField(null=False)
+    semestre = models.CharField(max_length=1,null=False)
 
     def __str__(self):
         return "{}: {} - {}".format(self.disciplina, self.ano_grade, self.semestre)
