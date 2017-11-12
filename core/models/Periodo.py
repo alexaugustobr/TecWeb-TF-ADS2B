@@ -8,6 +8,9 @@ class Periodo(models.Model):
     semestre_grade = models.CharField(max_length=1,null=False)
     numero = models.SmallIntegerField(null=False) #tinyint
 
+    def __str__(self):
+        return "{}: {} - {}".format(self.gradeCurricular, self.ano_grade, self.semestre_grade)
+
     class Meta:
         db_table = 'Periodo'
        

@@ -11,7 +11,10 @@ class Resposta(models.Model):
     nota = models.DecimalField(max_digits=4,decimal_places=2)
     avaliacao = models.TextField()
     descricao = models.TextField()
-    data_de_envio = models.TextField()
+    data_de_envio = models.DateField()
+
+    def __str__(self):
+        return "{} - {}: {}".format(self.questao.id, self.aluno.ra, self.descricao)
 
     class Meta:
         db_table = 'Resposta'

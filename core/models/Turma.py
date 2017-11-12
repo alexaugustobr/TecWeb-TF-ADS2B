@@ -9,6 +9,9 @@ class Turma(models.Model):
     turno = models.CharField(max_length=15)
     turma_sigla = models.CharField(max_length=1)
 
+    def __str__(self):
+        return "{} - {}".format(self.turma_sigla, self.turno)
+
     class Meta:
         db_table = 'Turma'
 

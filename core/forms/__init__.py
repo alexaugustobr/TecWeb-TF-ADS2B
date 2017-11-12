@@ -1,2 +1,2 @@
-from .ContatoForm import *
-from .CursoForm import *
+from .ContatoForm import ContatoForm
+from .CursoForm import CursoForm

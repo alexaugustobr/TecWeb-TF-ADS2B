@@ -3,6 +3,7 @@ from .GradeCurricular import GradeCurricular
 from .Turma import Turma
 from .Professor import Professor
 from .Disciplina import Disciplina
+from .Periodo import Periodo
 from .PeriodoDisciplina import PeriodoDisciplina
 from .DisciplinaOfertada import DisciplinaOfertada
 from .Aluno import Aluno
@@ -10,3 +11,7 @@ from .Questao import Questao
 from .ArquivosQuestao import ArquivosQuestao
 from .ArquivosResposta import ArquivosResposta
 from .Resposta import Resposta
+from .CursoTurma import CursoTurma
+from .Matricula import Matricula
+from .Candidato import Candidato
+from .ArquivosFoto import ArquivosFoto
