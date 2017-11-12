@@ -32,7 +32,7 @@ def enviarEmailTurma(request):
     if turma == None:
         return HttpResponse(status=403)
 
-    link = "localhost:8000/aluno/turma/{}/matricular/".format(turma_id)
+    link = "http://localhost:8000/matricular-aluno/{}".format(turma_id)
     
     disciplina = turma.disciplinaOfertada.disciplina
     professor = turma.professor
@@ -46,12 +46,12 @@ def enviarEmailTurma(request):
         contexto = {
             "aluno":aluno, 
             "professor":professor, 
-            "disciplina":disciplina,
             "token":token, 
+            "turma":turma,
             "link":link
         }
-        email = Email("contato@handcode.com", "Faculdade Handcode - matricula para a disciplina de {}".format(disciplina.nome))
-        email.html("emails/contatoFaculdade.html", contexto)
+        email = Email("contato@handcode.com", "Faculdade Handcode - matricula de {} turma {}".format(disciplina.nome,turma.turma_sigla))
+        email.html("emails/solicitacaoMatricula.html", contexto)
         email.enviar(aluno.email)
 
     contexto = {
