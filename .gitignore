@@ -1,4 +1,5 @@
 # Byte-compiled / optimized / DLL files
+*.pyc
 __pycache__/
 *.py[cod]
 *$py.class
@@ -133,3 +134,5 @@ tests/report/
 core/migrations/*
 core/migrations/
 core/migrations
+.pwd
+mail.pwd
