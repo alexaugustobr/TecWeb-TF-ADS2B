@@ -25,10 +25,15 @@ class Email(object):
         self._configurar()
         
     def _configurar(self):
-        config = dict(line.replace(' ','').strip().split('=') for line in open('mail.pwd') if not line.startswith('#') and not line.startswith('\n')) 
+        try:
+            config = dict(line.replace(' ','').strip().split('=') for line in open('mail.pwd') if not line.startswith('#') and not line.startswith('\n')) 
+            self.EMAIL_HOST_USER = config['EMAIL_HOST_USER']
+            self.EMAIL_HOST_PASSWORD = config['EMAIL_HOST_PASSWORD']
+        except Exception as err:
+            print(err)
+            self.EMAIL_HOST_USER = ""
+            self.EMAIL_HOST_PASSWORD = ""
         
-        self.EMAIL_HOST_USER = config['EMAIL_HOST_USER']
-        self.EMAIL_HOST_PASSWORD = config['EMAIL_HOST_PASSWORD']
 
     def _renderizar(self, template, conteudo):
         return render_to_string(template,conteudo)
@@ -58,9 +63,11 @@ class Email(object):
         server.ehlo()
         server.starttls()
         server.ehlo()
-        server.login(self.EMAIL_HOST_USER, self.EMAIL_HOST_PASSWORD)
         try:
+            server.login(self.EMAIL_HOST_USER, self.EMAIL_HOST_PASSWORD)
             server.sendmail(self.remetente, destinatario, email.as_string())
+        except Exception as err:
+            print(err)
         finally:
             server.quit()
 
