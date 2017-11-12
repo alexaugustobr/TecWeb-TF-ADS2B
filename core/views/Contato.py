@@ -13,7 +13,7 @@ def enviarEmailAluno(form):
     email.html("emails/contatoAluno.html", contexto)
     email.enviar(form.cleaned_data['email'])
 
-def enviarEmailAluno(form):
+def enviarEmailFaculdade(form):
     contexto = {
         "aluno":form.cleaned_data['nome'], 
         "email":form.cleaned_data['email'], 
@@ -31,7 +31,7 @@ def contato (request):
         form = ContatoForm(request.POST)
         if form.is_valid():
             enviarEmailAluno(form)
-            enviarEmailAluno(form)
+            enviarEmailFaculdade(form)
     else:
         form = ContatoForm()
 
