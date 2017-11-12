@@ -77,7 +77,6 @@ class TesteMatricula(TestCase):
         m.turma = t
         m.save()
 
-
     def test_aluno_cadastrado(self):
         aluno = Aluno.objects.get(nome="Alex")
         #cat = Animal.objects.get(name="cat")
@@ -90,8 +89,13 @@ class TesteMatricula(TestCase):
         alunos = Aluno.objects.raw('SELECT * FROM ALUNO LEFT JOIN MATRICULA ON ALUNO.ID = MATRICULA.ALUNO_ID WHERE MATRICULA.ID IS NULL')
         for aluno in alunos:
             self.assertEqual(aluno.nome, "Alex")
-            
+
     def test_aluno_matriculados(self):
         alunos = Aluno.objects.raw('SELECT * FROM ALUNO INNER JOIN MATRICULA ON ALUNO.ID = MATRICULA.ALUNO_ID')
         for aluno in alunos:
             self.assertEqual(aluno.nome, "Dani")
+
+    def test_buscar_matriculas_do_aluno(self):
+        dani = Aluno.objects.get(nome="Dani")
+        matriculas_do_dani = dani.matriculas.all()
+        self.assertEqual(len(matriculas_do_dani), 1)
