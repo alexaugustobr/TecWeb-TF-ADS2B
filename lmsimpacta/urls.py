@@ -18,7 +18,7 @@ from django.contrib import admin
 #metodo alternativo, importando pasta inteira
 #from core.views import index 
 from core.views import *
-from professor.views.matricula import turma
+from professor.views.matricula import *
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
