@@ -8,5 +8,8 @@ class Professor(models.Model):
     email = models.CharField(max_length =  80)
     celular = models.CharField(max_length =  11)
 
+    def __str__(self):
+        return "{} - {}".format(self.ra, self.apelido)
+
     class Meta:
         db_table = 'Professor'

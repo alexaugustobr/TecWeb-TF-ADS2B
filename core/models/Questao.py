@@ -11,5 +11,8 @@ class Questao(models.Model):
     numero = models.IntegerField()
     data = models.DateField()
 
+    def __str__(self):
+        return "{} - {}: {}".format(self.turma.turma_sigla, self.id, self.descricao)
+
     class Meta:
         db_table = 'Questao'

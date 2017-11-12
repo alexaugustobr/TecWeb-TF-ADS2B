@@ -1,0 +1,50 @@
+{% extends "layoutprofessor.html" %}
+{% load static %}
+
+{% block css %}
+  <!--<link rel="stylesheet" href="{% static 'css/ccs-da-pagina.css' %}"> -->
+{% endblock %}
+
+{% block title %}
+	Cadastro Usuário  - {{ block.super }}
+{% endblock %}
+
+{% block main %}
+<div class="full_width_title">
+    <section>
+        <h2 class="title_page">Área do Professor</h2>
+        <div>
+        <div class="sidemenu-box">
+            <h2>Acesso Rápido</h2>    
+            <nav  id="side-menu" class = "side-menu">
+                <ul>
+                    <li> <a href="">Aplicar Testes Online</a></li>
+                    <li> <a href="">Disponibilizar Materiais Instrucionais</a></li>
+                    <li> <a href="">Disponibilizar Trabalhos</a></li>
+                    <li> <a href="">Disponibilizr Exercícios</a></li>
+                    <li> <a href="">Trabalhos Recebidos</a></li>
+                    <li> <a href="">Exercícios Recebidos</a></li>
+                    <li> <a href="">Avaliação Participativa</a></li>
+                    <li> <a href="">Controle de Entregas de Artefatos por Projeto</a></li>
+                    <li> <a href="">Cancelamento de Matrícula</a></li>
+                <ul>
+            </nav>
+          </div>
+        <div class="painel-box">
+
+        </div>
+
+
+      </div>
+
+</div>
+    </section>
+</div>
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    
+  </script>
+{% endblock %}
+
