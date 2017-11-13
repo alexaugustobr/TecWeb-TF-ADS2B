@@ -1,0 +1,57 @@
+
+{% block content %}
+
+<div>
+    <h1>Lista de Turmas para matricula</h1>
+</div>
+
+<table class="table">
+    <tr><th>Turmas </th></tr>
+        {% for turma in turmas %}
+          <tr><td>{{ turma.turma_sigla }}</td>
+            <td>{{ turma.turno }}</td>
+            <td>{{ turma.professor }}</td>
+            <td>{{ turma.disciplinaOfertada}}</td>
+            <td><input onclick="enviarEmail(this)" data-turma-id="{{turma.id}}" type="button" value="Solicitar Matricula"></td>
+        </tr>
+          
+        {% endfor %}
+</table>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function postAjax(url, data, success) {
+	    var params = typeof data == 'string' ? data : Object.keys(data).map(
+	            function(k){ return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) }
+	        ).join('&');
+	
+	    var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
+	    xhr.open('POST', url);
+	    xhr.onreadystatechange = function() {
+	        if (xhr.readyState>3 && xhr.status==200) { success(xhr.responseText); }
+	    };
+	    xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+	    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	    xhr.send(params);
+	    return xhr;
+	}
+	
+	// example request
+	//postAjax('http://foo.bar/', 'p1=1&p2=Hello+World', function(data){ console.log(data); });
+	
+	// example request with data object
+	
+
+    function enviarEmail(botao) {
+        turma_id = botao.getAttribute('data-turma-id');
+
+        postAjax('/professor/turmas/enviar-email/', { turma_id: turma_id, csrfmiddlewaretoken: '{{ csrf_token }}'}, 
+                function(data) {
+                    alert("Email enviado para os alunos!");
+                }
+            );
+    }
+</script>
+{% endblock %}
