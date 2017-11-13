@@ -9,6 +9,7 @@ PERFIS = (
      (COORDENADOR, 'Coordenador')
 )
 
+#Criando a classe do Super Usuário
 class UsuarioManager(BaseUserManager):
        use_in_migrations = True
 
@@ -27,6 +28,7 @@ class UsuarioManager(BaseUserManager):
         return self._create_user(ra, password, **extra_fields)
 
 
+#Criando a classe do Usuarios
 class Usuario(AbstractBaseUser):
     ra = models.IntegerField("RA", unique = True)
     senha = models.CharField("Senha", max_length = 100)
