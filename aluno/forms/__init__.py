@@ -1,1 +1,1 @@
-#from .ContatoForm import *
+from .CandidatoForm import *

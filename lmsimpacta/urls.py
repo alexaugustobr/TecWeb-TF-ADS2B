@@ -21,7 +21,7 @@ from professor.views import *
 from core.views import *
 from professor.views.matricula import *
 from aluno.views import * 
-from aluno.views.matricula import * 
+from aluno.views.candidato import * 
 
 
 urlpatterns = [
@@ -43,7 +43,7 @@ urlpatterns = [
     url(r'^detalheNoticia/$', detalheNoticia),
     url(r'^professor/turmas/enviar-email/$', enviarEmailTurma),
     url(r'^confirmaToken/$', confirmaToken),
-    url(r'^formMatricula/$', formMatricula),
+    url(r'^candidato-matricula/$', candidatoForm),
 
    
 

@@ -1,0 +1,20 @@
+{% block content %}
+<form action="/candidato-matricula/" method="POST">
+    {% csrf_token %}
+    {{ form.erros }}
+    Nome Completo:<br>
+    <input type="text" name="nome">
+    <br>
+    RA:<br>
+    <input type="text" name="ra">
+    <br>
+    Email:<br>
+    <input type="text" name="email">
+    <br>
+    Celular:<br>
+    <input type="text" name="celular">
+    <br>   
+    <br><br>
+    <input type="submit" value= "enviar">
+  </form> 
+{% endblock %}

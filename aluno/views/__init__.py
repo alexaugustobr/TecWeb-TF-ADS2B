@@ -1,1 +1,1 @@
-#from .Contato import *
+from .candidato import *
