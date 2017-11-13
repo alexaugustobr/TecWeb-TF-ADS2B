@@ -42,7 +42,7 @@ def enviarEmailTurma(request):
     for aluno in alunos:
         #TODO
         #gerar token
-        token = 123456 # =)
+        token = "{}.{}.{}".format(aluno.id,turma.id,5654) # =)
         contexto = {
             "aluno":aluno, 
             "professor":professor, 
