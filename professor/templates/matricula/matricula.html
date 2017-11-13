@@ -49,7 +49,7 @@
 
         postAjax('/professor/turmas/enviar-email/', { turma_id: turma_id, csrfmiddlewaretoken: '{{ csrf_token }}'}, 
                 function(data) {
-                    alert("Email envaido para os alunos!");
+                    alert("Email enviado para os alunos!");
                 }
             );
     }
