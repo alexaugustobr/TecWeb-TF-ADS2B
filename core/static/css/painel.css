@@ -9,6 +9,21 @@ section#painel {
     position: relative;
 }
 
+h2#title{
+    color: #494949; 
+    font-family: "Cutive Mono"; 
+    font-size: 30px;
+    font-weight: 600; 
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    padding-bottom: 30px;
+    margin-bottom: 20px;
+    border-bottom: 3px solid #00C1CF;
+    width: 10%;
+    white-space: nowrap;
+}
+
 .sidemenu-box{
 	border:1px;
 	border-radius:2px;
