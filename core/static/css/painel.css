@@ -1,12 +1,22 @@
+section#painel {
+    width: 1200px;
+    margin: auto;
+    z-index: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #5e5e5e;
+    font-size: 10px;
+    padding: 60px 0px 60px 0px;
+    position: relative;
+}
+
 .sidemenu-box{
 	border:1px;
 	border-radius:2px;
 	background-color:#F6F6F6;
     padding:50px;
     width: 300px;
-    margin-top: 100px;
-    margin-bottom: 60px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.46);
+    margin-bottom: 60px;
     display:block;
     position: relative;
     float: left;
@@ -18,8 +28,6 @@
 	background-color:#F6F6F6;
     padding:50px;
     width:650px;
-    margin-top: 100px;
-    margin-bottom: 60px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.46);
     display: block;
     position: relative;
@@ -89,3 +97,39 @@ div#identificacao button:hover{
     cursor: pointer;
 }
 
+@media screen and (max-width: 1300px) {
+    section#painel {
+        width: 90%;
+    }
+
+    .sidemenu-box{
+        padding:50px;
+        width: 300px;
+    }
+    
+    .painel-box{
+        padding:50px;
+        width:550px;
+        margin-left: 2%;
+    }
+}
+
+@media screen and (max-width: 820px) {
+    .sidemenu-box{
+        padding:40px;
+        width: 80%;
+        display: inline-block;
+        position: relative;
+        float: none;
+        
+    }
+    
+    .painel-box{
+        padding:40px;
+        width:80%;
+        margin-left: 0px;
+        display: inline-block;
+        position: relative;
+        float: none;
+    }
+}

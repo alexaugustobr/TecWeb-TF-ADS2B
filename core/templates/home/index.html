@@ -29,21 +29,22 @@
   <h2>Graduações</h2>
   <div class="links">
     {% for curso in cursos %}
+    <div class="curso-box">
         <a href="{{curso.sigla}}">
             <figure class="img_bt">
                 <img src="{% static 'img/graduacoes/' %}{{curso.sigla}}.jpg"/>
                 <figcaption><h3>{{curso.nome}}</h3></figcaption>
             </figure>
         </a>
+    </div>
     {% endfor %}
   </div>
-
 </section>  
-  <div class="full_width">
-      <section>
-          <h3>Você dentro de uma faculdade que é referência em tecnologia.<br>Venha para a HandCode!</h3>
-      </section>
-  </div>
+<div class="full_width">
+    <section>
+        <h3>Você dentro de uma faculdade que é referência em tecnologia.<br>Venha para a HandCode!</h3>
+    </section>
+</div>
 <section>
       <h2>Notícias</h2>
       <div class="links">
