@@ -20,10 +20,46 @@
             {% include "includes/header.html" %}
            
         {% endblock %}
+        <div class="full_width_title">
+            <section>
+                <h2 class="title_page">Área do Professor</h2>
+            </section>
+        </div>
+        <div>
+            <section id="painel">
+                <div class="sidemenu-box">
+                    <h2>Acesso Rápido</h2>    
+                    <nav  id="side-menu" class = "side-menu">
+                        <ul>
+                            <li> <a href="">Aplicar Testes Online</a></li>
+                            <li> <a href="">Disponibilizar Materiais Instrucionais</a></li>
+                            <li> <a href="">Disponibilizar Trabalhos</a></li>
+                            <li> <a href="">Disponibilizar Exercícios</a></li>
+                            <li> <a href="">Trabalhos Recebidos</a></li>
+                            <li> <a href="">Exercícios Recebidos</a></li>
+                            <li> <a href="">Avaliação Participativa</a></li>
+                            <li> <a href="">Controle de Entregas de Artefatos por Projeto</a></li>
+                            <li> <a href="">Solicitar Matrícula</a></li>
+                            <li> <a href="">Cancelamento de Matrícula</a></li>
+                        <ul>
+                    </nav>
+                </div>
+                <div class="painel-box">
+                    <div id="identificacao">
+                        Professor: Zezinho | RA: 170012345
+                        <button type="button" id="sair">Sair</button>
+                    </div>
+                    <div>
+                    {% block main %}
+                    
+                    {% endblock %}
+                    </div>
+                </div>
+            </section>
+            </div>
+            <div class="full_width_line"></div>
        
-        {% block main %}
-            
-        {% endblock %}
+        
         
         {% block footer %}
             {% include "includes/footer.html" %}
