@@ -9,6 +9,6 @@ class DisciplinaOfertada(models.Model):
     semestre = models.CharField(max_length=1,null=False)
 
     def __str__(self):
-        return "{}: {} - {}".format(self.disciplina, self.ano_grade, self.semestre)
+        return "{}: {} - {}".format(self.disciplina, self.ano, self.semestre)
     class Meta:
         db_table = 'DisciplinaOfertada'
