@@ -1,9 +1,12 @@
 from django.shortcuts import render
 from core.models.Curso import Curso
 
+
 def cursos (request):
-    
-    return render(request,"cursos/cursos.html")
+    contexto = {
+        'cursos': Curso.objects.all(),
+    }
+    return render(request,"cursos/cursos.html",contexto)
 
 def cursosListar (request):
     
