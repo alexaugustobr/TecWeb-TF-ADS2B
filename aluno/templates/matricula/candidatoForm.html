@@ -1,20 +1,37 @@
-{% block content %}
-<form action="/candidato-matricula/" method="POST">
+{% extends "layoutAluno.html" %}
+{% load static %}
+
+{% block css %}
+  <!--<link rel="stylesheet" href="{% static 'css/ccs-da-pagina.css' %}"> -->
+{% endblock %}
+
+{% block title %}
+	Área do Aluno - {{ block.super }}
+{% endblock %}
+
+{% block main %}
+<div>
+  <h2 id="title">Candidatar-se</h2>
+</div>
+<form action="/candidato-matricula/" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.erros }}
-    Nome Completo:<br>
-    <input type="text" name="nome">
-    <br>
-    RA:<br>
-    <input type="text" name="ra">
-    <br>
-    Email:<br>
-    <input type="text" name="email">
-    <br>
-    Celular:<br>
-    <input type="text" name="celular">
-    <br>   
-    <br><br>
-    <input type="submit" value= "enviar">
+    <label for="nome">Nome Completo</label>
+      <input type="text" name="nome" id="nome" class="campo">
+    <label for="ra">RA</label>
+      <input type="text" name="ra" id="ra" class="campo">
+    <label for="email">Email</label>
+      <input type="text" name="email" id="email" class="campo">
+    <label for="celular">Celular</label>
+      <input type="text" name="celular" id="celular" class="campo">
+    <label for="foto">Foto</label>  
+      <input type="file" name="foto" id="foto" class="campo">
+    <button type="submit">Enviar</button>
   </form> 
-{% endblock %}
+  {% endblock %}
+  
+  {% block scripts %}
+    <script>
+      
+    </script>
+  {% endblock %}
