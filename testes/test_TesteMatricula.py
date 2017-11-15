@@ -1,6 +1,7 @@
 from django.test import TestCase
 from core.models import *
-
+from core.components.GerenciadorToken import *
+import datetime
 class TesteMatricula(TestCase):
     def setUp(self):
         curso = Curso()
@@ -99,3 +100,19 @@ class TesteMatricula(TestCase):
         dani = Aluno.objects.get(nome="Dani")
         matriculas_do_dani = dani.matriculas.all()
         self.assertEqual(len(matriculas_do_dani), 1)
+
+    def test_token(self):
+        aluno = Aluno()
+        aluno.id = 1
+        turma = Turma()
+        turma.id = 1
+        
+        dataAtual = datetime.datetime.now(datetime.timezone.utc)
+        segundos = dataAtual.strftime('%s')
+        g = GerenciadorToken()
+        token = g.gerar(aluno,turma)
+
+        self.assertEqual(g.autenticar(token),True)
+        self.assertEqual(token.__str__(),"{}.{}.{}".format(1,1,segundos))
+
+
