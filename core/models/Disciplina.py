@@ -19,3 +19,7 @@ class Disciplina(models.Model):
 
     class Meta:
         db_table = 'Disciplina'
+
+
+
+from .Periodo import Periodo
