@@ -1,0 +1,51 @@
+{% extends "layoutprofessor.html" %}
+{% load static %}
+
+{% block main %}
+<div>
+    <h2 id="title">Lista de Turmas</h2>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Sigla</th>
+            <th>Turno</th>
+            <th>Disciplina</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for turma in turmas  %}
+        <tr>
+            <td><a href="turmas/{{ turma.id }}">{{ turma.turma_sigla }}</a></td>
+            <td>{{ turma.turno }}</td>
+            <td>{{ turma.disciplinaOfertada.disciplina.nome}}</td>
+            <td>
+                <input  onclick="enviarEmail(this)" 
+                        data-turma-id="{{turma.id}}" 
+                        type="button" value="Solicitar Matricula">
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function enviarEmail(botao) {
+        turma_id = botao.getAttribute('data-turma-id');
+
+        botao.value = 'Enviando...'
+        botao.disabled = true;
+        postAjax('/professor/turmas/enviar-email/', { turma_id: turma_id, csrfmiddlewaretoken: '{{ csrf_token }}'}, 
+                function(data) {
+                    alert("Email enviado para os alunos!");
+                    botao.disabled = false;
+                    botao.value = 'Solicitar novamente'
+                }
+            );
+    }
+</script>
+{% endblock %}
