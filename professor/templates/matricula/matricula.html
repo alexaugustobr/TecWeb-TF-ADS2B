@@ -2,26 +2,38 @@
 {% load static %}
 
 {% block main %}
-{% block content %}
-
 <div>
     <h2 id="title">Lista de Turmas</h2>
 </div>
 
 <table class="table">
-    <tr><th>Turmas</th></tr>
-        {% for turma in turmas %}
-          <tr><td>{{ turma.turma_sigla }}</td>
-            <td>{{ turma.turno }}</td>
-            <td>{{ turma.professor }}</td>
-            <td>{{ turma.disciplinaOfertada}}</td>
-            <td><input onclick="enviarEmail(this)" data-turma-id="{{turma.id}}" type="button" value="Solicitar Matricula"></td>
+    <thead>
+        <tr>
+            <th>Sigla</th>
+            <th>Turno</th>
+            <th>Professor</th>
+            <th>Disciplina</th>
         </tr>
-          
+    </thead>
+    <tbody>
+        <tr>
+            <td>ADS2</td>
+            <td>Manhã</td>
+            <td>Yuri José da Silva</td>
+            <td>TecWeb</td>
+            <td><button onclick="enviarEmail(this)" data-turma-id="{{turma.id}}" type="button">Solicitar Matricula</button></td>
+        </tr>
+        {% for turma in turmas %}
+            <tr>
+                <td>{{ turma.turma_sigla }}</td>
+                <td>{{ turma.turno }}</td>
+                <td>{{ turma.professor }}</td>
+                <td>{{ turma.disciplinaOfertada}}</td>
+                <td><button onclick="enviarEmail(this)" data-turma-id="{{turma.id}}" type="button">Solicitar Matricula</button></td>
+            <tr>   
         {% endfor %}
+    </tbody>
 </table>
-
-{% endblock %}
 {% endblock %}
 
 {% block scripts %}
