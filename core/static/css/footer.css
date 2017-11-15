@@ -6,7 +6,7 @@ footer {
     clear: both;
     bottom: 0px;
     background-color:#e8e8e8;
-    box-shadow: 0px 0px 10px rgb(241, 241, 241);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
 .footer_top {
