@@ -1,13 +1,35 @@
-{% block content %}
+{% extends "layoutAluno.html" %}
+{% load static %}
+
+{% block css %}
+  <!--<link rel="stylesheet" href="{% static 'css/ccs-da-pagina.css' %}"> -->
+{% endblock %}
+
+{% block title %}
+	Área do Aluno - {{ block.super }}
+{% endblock %}
+
+{% block main %}
+<div>
+  <h2 id="title">Matricule-se</h2>
+</div>
+
 <form action="/action_page.php">
     <label for="nome">Nome Completo</label>
-      <input type="text" name="Nome" id="nome">
+      <input type="text" name="Nome" id="nome" class="campo">
     <label for="email">Email</label>
-      <input type="text" name="email" id="email">
+      <input type="text" name="email" id="email" class="campo">
     <label for="celular">Celular</label>
-      <input type="text" name="celular" id="celular">
+      <input type="text" name="celular" id="celular" class="campo">
     <label for="file">Foto</label>
-      <input type="file" name="file" id="file">
+      <input type="file" name="file" id="file" class="campo">
     <button type="submit">Enviar</button>
   </form> 
+
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    
+  </script>
 {% endblock %}
