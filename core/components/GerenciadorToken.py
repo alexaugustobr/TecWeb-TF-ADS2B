@@ -21,3 +21,7 @@ class GerenciadorToken:
         dataAtual = datetime.datetime.now(datetime.timezone.utc)
         segundos = dataAtual.strftime('%s')
         return Token(aluno.id,turma.id,segundos)
+
+    def traduzir(self, codigo):
+        t = codigo.split('.')
+        return Token(t[0],t[1],t[2])
