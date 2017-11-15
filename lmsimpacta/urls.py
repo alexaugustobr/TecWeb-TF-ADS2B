@@ -37,6 +37,8 @@ urlpatterns = [
     url(r'^esqueci-senha/$', esqueciSenha),
     url(r'^disciplinas/novo/$', disciplinasNovo),
     url(r'^usuarios/novo/$', usuariosNovo),
+    url(r'^aluno/$', painelAluno),
+    url(r'^matricular/$', matricular),
     url(r'^professor/$', painelProfessor),
     url(r'^professor/turmas$', turma),
     url(r'^detalheCurso/$', detalheCurso),
