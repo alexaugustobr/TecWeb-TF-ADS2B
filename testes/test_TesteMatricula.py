@@ -46,11 +46,8 @@ class TesteMatricula(TestCase):
         d.teoria        = 5
         d.pratica       = 5
         d.save()
-
-        pd              = PeriodoDisciplina()
-        pd.periodo      = p
-        pd.disciplina   = d
-        pd.save()
+        d.periodos.add(p)
+        d.save()
 
         do              = DisciplinaOfertada()
         do.disciplina   = d
@@ -72,11 +69,11 @@ class TesteMatricula(TestCase):
         t.professor          = p
         t.disciplinaOfertada = do
         t.save()
+        t.cursos.add(curso)
+        t.save()
 
-        m       = Matricula()
-        m.aluno = aluno2
-        m.turma = t
-        m.save()
+        aluno2.turmas.add(t)
+        aluno2.save()
 
     def test_aluno_cadastrado(self):
         aluno = Aluno.objects.get(nome="Alex")
@@ -98,7 +95,7 @@ class TesteMatricula(TestCase):
 
     def test_buscar_matriculas_do_aluno(self):
         dani = Aluno.objects.get(nome="Dani")
-        matriculas_do_dani = dani.matriculas.all()
+        matriculas_do_dani = dani.turmas.all()
         self.assertEqual(len(matriculas_do_dani), 1)
 
     def test_token(self):
@@ -128,4 +125,16 @@ class TesteMatricula(TestCase):
 
         self.assertEqual(g.autenticar(token),False)
         #self.assertEqual(token.__str__(),"{}.{}.{}".format(1,1,segundos))
+    def test_token_3(self):
+        
+        g     = GerenciadorToken()
+        token = g.traduzir("1.1.324343")
 
+        self.assertEqual(g.autenticar(token),True)
+
+    def test_token_4(self):
+        
+        g     = GerenciadorToken()
+        token = g.traduzir("0.0.324343")
+
+        self.assertEqual(g.autenticar(token),False)

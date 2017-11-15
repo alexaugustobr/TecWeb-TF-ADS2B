@@ -8,7 +8,7 @@ class Periodo(models.Model):
     disciplinas = models.ManyToManyField('Disciplina', db_table='PeriodoDisicplina', related_name='periodos', blank=False)
 
     def __str__(self):
-        return "{}: {} - {}".format(self.gradeCurricular, self.ano_grade, self.semestre_grade)
+        return "{}: {} - {}".format(self.numero)
 
     class Meta:
         db_table = 'Periodo'
