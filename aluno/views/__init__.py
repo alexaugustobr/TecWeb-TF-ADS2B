@@ -1,1 +1,3 @@
-#from .Contato import *
+from .candidato import *
+from .painelAluno import *
+from .matricular import *

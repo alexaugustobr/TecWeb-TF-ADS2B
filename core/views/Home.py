@@ -1,4 +1,7 @@
 from django.shortcuts import render
-
+from core.models.Curso import Curso
 def index (request):
-    return render(request,"home/index.html")
+    contexto = {
+        'cursos': Curso.objects.all(),
+    }
+    return render(request,"home/index.html",contexto)

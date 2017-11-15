@@ -1,12 +1,15 @@
+{% extends "layoutprofessor.html" %}
+{% load static %}
 
+{% block main %}
 {% block content %}
 
 <div>
-    <h1>Lista de Turmas para matricula</h1>
+    <h2 id="title">Lista de Turmas</h2>
 </div>
 
 <table class="table">
-    <tr><th>Turmas </th></tr>
+    <tr><th>Turmas</th></tr>
         {% for turma in turmas %}
           <tr><td>{{ turma.turma_sigla }}</td>
             <td>{{ turma.turno }}</td>
@@ -18,6 +21,7 @@
         {% endfor %}
 </table>
 
+{% endblock %}
 {% endblock %}
 
 {% block scripts %}
@@ -49,7 +53,7 @@
 
         postAjax('/professor/turmas/enviar-email/', { turma_id: turma_id, csrfmiddlewaretoken: '{{ csrf_token }}'}, 
                 function(data) {
-                    alert("Email envaido para os alunos!");
+                    alert("Email enviado para os alunos!");
                 }
             );
     }
