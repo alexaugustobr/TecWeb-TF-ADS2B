@@ -46,7 +46,7 @@ urlpatterns = [
     url(r'^professor/turmas/enviar-email/$', enviarEmailTurma),
     url(r'^confirmaToken/$', confirmaToken),
     url(r'^candidato-matricula/$', candidatoForm),
-
+    url(r'^professor/turmas/(?P<idTurma>\d+)/$', turmaDetalhe),
    
 
     

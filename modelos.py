@@ -1,6 +1,6 @@
 # This is an auto-generated Django model module.
 # You'll have to do the following manually to clean this up:
-#   * Rearrange models' order
+#   * Rearrange models' order #faculdade handcode
 #   * Make sure each model has one field with primary_key=True
 #   * Make sure each ForeignKey has `on_delete` set to the desired behavior.
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
@@ -9,7 +9,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 
-
+#faculdade handcode
 class AuthGroup(models.Model):
     id = models.IntegerField(primary_key=True)  # AutoField?
     name = models.CharField(unique=True, max_length=80)
