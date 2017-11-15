@@ -7,6 +7,7 @@ class Candidato(models.Model):
     celular = models.CharField(max_length =  11, null=True)
     codigo_acesso = models.CharField(max_length =  120, null=True)
     confirmado = models.BooleanField(default=False)
+    matricula_aceita = models.BooleanField(default=False)
     turma = models.ForeignKey(to='Turma', related_name="candidatos", null=True, blank=True) #onetomany
     foto = models.ForeignKey(to='ArquivosFoto', related_name="candidatos", null=True, blank=True) #onetomany
     
