@@ -6,7 +6,8 @@ class Aluno(models.Model):
     email = models.CharField(max_length=80)
     celular = models.CharField(max_length=11)
     ra = models.IntegerField(unique=True,null=False)
-    
+    turmas = models.ManyToManyField('Turma', db_table='Matricula', related_name='alunos', blank=True)
+    foto = models.ForeignKey(to='ArquivosFoto', related_name="alunos", null=True, blank=True) #onetomany
 
     def __str__(self):
         return "{} - {}".format(self.ra,self.nome)
@@ -15,5 +16,6 @@ class Aluno(models.Model):
         db_table = 'Aluno'
     
 
-from .Matricula import Matricula
 from .Curso import Curso
+from .Turma import Turma
+from .ArquivosFoto import ArquivosFoto

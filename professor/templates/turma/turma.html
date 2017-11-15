@@ -1,0 +1,41 @@
+{% extends "layoutprofessor.html" %}
+{% load static %}
+
+{% block main %}
+<div>
+    <h2 id="title">Alunos</h2>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>RA</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for aluno in alunos  %}
+        <tr>
+            <td><a href="/professor/alunos/{{ aluno.ra }}">{{ aluno.ra }}</a></td>
+            <td>{{ aluno.nome }}</td>
+            <td>{{ aluno.email }}</td>
+            <td>
+                <input  onclick="removerAluno(this)" 
+                        data-turma-id="{{turma.id}}" 
+                        data-aluno-id="{{aluno.id}}" 
+                        type="button" value="Remover aluno">
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    
+</script>
+{% endblock %}

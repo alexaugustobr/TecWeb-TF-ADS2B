@@ -1,0 +1,50 @@
+{% extends "layoutprofessor.html" %}
+{% load static %}
+
+{% block main %}
+<div>
+    <h2 id="title">Matriculas pendentes</h2>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>RA</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Turma</th>
+            <th>Disciplina</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for candidato in candidatos  %}
+        <tr>
+            <td><a href="/professor/alunos/{{ candidato.ra }}">{{ candidato.ra }}</a></td>
+            <td>{{ candidato.nome }}</td>
+            <td>{{ candidato.email }}</td>
+            <td>{{ candidato.turma }}</td>
+            <td>{{ candidato.turma.disciplinaOfertada.disciplina.nome }}</td>
+            <td>
+                <input  onclick="aceitarCandidato(this)" 
+                        data-turma-id="{{turma.id}}" 
+                        data-candidato-id="{{candidato.id}}" 
+                        type="button" value="Aceitar candidato">
+                <input  onclick="removerCandidato(this)" 
+                        data-turma-id="{{turma.id}}" 
+                        data-candidato-id="{{candidato.id}}" 
+                        type="button" value="Remover candidato">
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    
+</script>
+{% endblock %}
