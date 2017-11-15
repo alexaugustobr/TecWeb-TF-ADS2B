@@ -5,12 +5,12 @@ import datetime
 class GerenciadorToken:
 
     def autenticar(self,token):
-        aluno = Aluno.objects.get(id=token.idAluno)
+        aluno = Aluno.objects.filter(id=token.idAluno)
 
         if not aluno:
             return False
 
-        turma = Aluno.objects.get(id=token.idTurma)
+        turma = Aluno.objects.filter(id=token.idTurma)
 
         if not turma:
             return False

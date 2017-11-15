@@ -2,13 +2,13 @@
 class Token:
     idAluno = None
     idTurma = None
-    dataCriacao = None
+    segundos = None
 
 
-    def __init__(self,idAluno,idTurma,dataCriacao):
+    def __init__(self,idAluno,idTurma,segundos):
         self.idAluno = idAluno
         self.idTurma = idTurma
-        self.dataCriacao = dataCriacao
+        self.segundos = segundos
 
     def __str__(self):
-        return "{}.{}.{}".format(self.idAluno,self.idTurma,self.dataCriacao)
+        return "{}.{}.{}".format(self.idAluno,self.idTurma,self.segundos)

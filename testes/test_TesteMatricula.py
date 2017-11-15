@@ -4,76 +4,76 @@ from core.components.GerenciadorToken import *
 import datetime
 class TesteMatricula(TestCase):
     def setUp(self):
-        curso = Curso()
-        curso.nome = "SI"
+        curso       = Curso()
+        curso.nome  = "SI"
         curso.sigla = "SI"
         curso.save()
 
-        aluno = Aluno()
+        aluno       = Aluno()
         aluno.curso = curso
-        aluno.nome = "Alex"
-        aluno.ra = 12356
+        aluno.nome  = "Alex"
+        aluno.ra    = 12356
         aluno.save()
 
-        aluno2 = Aluno()
-        aluno2.curso = curso
-        aluno2.nome = "Dani"
-        aluno2.ra = 1355546
+        aluno2        = Aluno()
+        aluno2.curso  = curso
+        aluno2.nome   = "Dani"
+        aluno2.ra     = 1355546
         aluno2.save()
 
         curso = Curso()
 
         curso.sigla = "ADS"
-        curso.nome = "Analise e desenv de sistemas"
+        curso.nome  = "Analise e desenv de sistemas"
 
         curso.save()
 
-        gc = GradeCurricular()
-        gc.curso = curso
-        gc.ano = 2017
+        gc          = GradeCurricular()
+        gc.curso    = curso
+        gc.ano      = 2017
         gc.semestre = "P"
         gc.save()
 
-        p = Periodo()
-        p.numero = 1
-        p.ano_grade = 2017
+        p                 = Periodo()
+        p.numero          = 1
+        p.ano_grade       = 2017
         p.gradeCurricular = gc
         p.save()
 
-        d = Disciplina()
-        d.nome = "TECWEB"
+        d               = Disciplina()
+        d.nome          = "TECWEB"
         d.carga_horaria = 10
-        d.teoria = 5
-        d.pratica = 5
+        d.teoria        = 5
+        d.pratica       = 5
         d.save()
 
-        pd = PeriodoDisciplina()
-        pd.periodo = p
-        pd.disciplina = d
+        pd              = PeriodoDisciplina()
+        pd.periodo      = p
+        pd.disciplina   = d
         pd.save()
 
-        do = DisciplinaOfertada()
-        do.disciplina = d
-        do.ano = 2017
-        do.semestre = "P"
+        do              = DisciplinaOfertada()
+        do.disciplina   = d
+        do.ano          = 2017
+        do.semestre     = "P"
         do.save()
 
-        p = Professor()
-        p.nome = "Lima"
-        p.apeido = "Lima"
-        p.ra = 123123
-        p.email = "lima@impacta.edu.br"
-        p.celular = 12345678910
+        p           = Professor()
+        p.nome      = "Lima"
+        p.apeido    = "Lima"
+        p.ra        = 123123
+        p.email     = "lima@impacta.edu.br"
+        p.celular   = 12345678910
         p.save()
 
-        t = Turma()
-        t.sigla_turma = "A"
-        t.turno = "Manha"
-        t.professor = p
+        t                    = Turma()
+        t.sigla_turma        = "A"
+        t.turno              = "Manha"
+        t.professor          = p
         t.disciplinaOfertada = do
         t.save()
 
-        m = Matricula()
+        m       = Matricula()
         m.aluno = aluno2
         m.turma = t
         m.save()
@@ -102,17 +102,30 @@ class TesteMatricula(TestCase):
         self.assertEqual(len(matriculas_do_dani), 1)
 
     def test_token(self):
-        aluno = Aluno()
+        aluno    = Aluno()
         aluno.id = 1
-        turma = Turma()
+        turma    = Turma()
         turma.id = 1
-        
-        dataAtual = datetime.datetime.now(datetime.timezone.utc)
-        segundos = dataAtual.strftime('%s')
-        g = GerenciadorToken()
+
+        g     = GerenciadorToken()
         token = g.gerar(aluno,turma)
 
-        self.assertEqual(g.autenticar(token),True)
-        self.assertEqual(token.__str__(),"{}.{}.{}".format(1,1,segundos))
+        segundos = token.segundos
 
+        self.assertEqual(g.autenticar(token),True)
+        #self.assertEqual(token.__str__(),"{}.{}.{}".format(1,1,segundos))
+
+    def test_token_2(self):
+        aluno    = Aluno()
+        aluno.id = 0
+        turma    = Turma()
+        turma.id = 0
+        
+        g     = GerenciadorToken()
+        token = g.gerar(aluno,turma)
+
+        segundos = token.segundos
+
+        self.assertEqual(g.autenticar(token),False)
+        #self.assertEqual(token.__str__(),"{}.{}.{}".format(1,1,segundos))
 
