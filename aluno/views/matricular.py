@@ -4,19 +4,19 @@ from core.components import *
 from core.models import *
 
 def matricular (request):
-    return render(request,"matricula/formMatricula.html")
-
-def confirmarMatricula (request):
-
-    codigo = request.GET.get('codigo')
+   
+    codigo = request.POST.get('codigo')
 
     if not type(codigo) == str:
-        return HttpResponse(status=400)
+        return render(request,"matricula/formMatricula.html")
 
     g = GerenciadorToken()
     token = g.traduzir(codigo)
 
     if not g.autenticar(token):
-        return HttpResponse(status=401)
+        return render(request,"matricula/formMatricula.html")
 
-    return HttpResponse(status=200)
+    #buscar form do request 
+    #Salvar Candidato
+
+    return render(request,"matricula/formMatricula.html")
