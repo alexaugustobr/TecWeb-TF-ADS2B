@@ -10,8 +10,11 @@ from django.http import HttpResponse
 
 def turma(request, idTurma):
     #TODO buscar turma do professor
+
+    #turma = Turma.objects.get(id=idTurma)
+
     contexto = {
-        'alunos': Aluno.objects.all(),
+        'alunos': Aluno.objects.raw('SELECT * FROM ALUNO INNER JOIN MATRICULA ON ALUNO.ID = MATRICULA.ALUNO_ID WHERE MATRICULA.TURMA_ID IS '+idTurma),
     }
     return render(request,"turma/turma.html", contexto)
 
