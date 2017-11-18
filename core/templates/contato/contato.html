@@ -17,7 +17,7 @@
             <fieldset class="field">
             <h2>Fale Conosco</h2>
             <form method="POST" action="/contato/">
-                {{ form.erros }}
+                {{ form.errors }}
                 {% csrf_token %}
                 <label for="nome">Nome*</label>
                     <input class="campo"type="text" name="nome" id="nome" maxlength="150" placeholder="Digite seu nome">

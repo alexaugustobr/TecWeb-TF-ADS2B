@@ -11,7 +11,23 @@
                 <li> <a href="/cursos">Cursos</a></li>
                 <li> <a href="/noticias">Notícias</a></li>
                 <li> <a href="/contato">Contato</a></li>
-                <li> <a href="/login">Login</a></li>
+                {% if request.user.is_authenticated %}
+                <li> 
+                {% if request.user.perfil == 'C' %}
+                    <a href="/admin">{{ request.user.nome }}</a>
+                {% endif %}
+                {% if request.user.perfil == 'P' %}
+                    <a href="/professor">{{ request.user.nome }}</a>
+                {% endif %}
+                {% if request.user.perfil == 'A' %}
+                    <a href="/aluno">{{ request.user.nome }}</a>
+                {% endif %}
+                
+                </li>
+                <li>  <a href="/logout">Logout</a> </li>
+                {% else %}
+                <li> <a href="/login">Login</a> </li>
+                {% endif %}
             <ul>
        </nav>
       
