@@ -50,6 +50,8 @@ urlpatterns = [
     url(r'^confirmar-matricula/$', confirmarMatricula),
     url(r'^detalheNoticia2/$', detalheNoticia2),
     url(r'^professor/matriculas/confirmar/$', confirmar),
+    url(r'^professor/avaliacoes/questao/$', questao),
+    url(r'^professor/avaliacoes/questoes/$', questoes),
     url(r'^matricular/confirmar/$', confirmarMatricula),
     
 ]
