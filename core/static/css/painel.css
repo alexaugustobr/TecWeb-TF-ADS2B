@@ -84,7 +84,7 @@ div#identificacao{
 
 }
 
-div#identificacao button, table.table tbody input[type="button"] {
+div#identificacao button, table.table tbody input[type="button"], table.table tbody button {
     padding: 5px 15px 5px 15px;
     margin-left: 20px;
 	color:#ffffff;
@@ -98,7 +98,7 @@ div#identificacao button, table.table tbody input[type="button"] {
     cursor: pointer;
 }	
 
-div#identificacao button:hover, table.table tbody input[type="button"]:hover{
+div#identificacao button:hover, table.table tbody input[type="button"]:hover, table.table tbody button:hover {
     padding: 5px 15px 5px 15px;
     margin-left: 20px;
 	color:#ffffff;

@@ -43,12 +43,13 @@ urlpatterns = [
     url(r'^detalheCurso/$', detalheCurso),
     url(r'^detalheNoticia/$', detalheNoticia),
     url(r'^professor/turmas/enviar-email/$', enviarEmailTurma),
-    url(r'^confirmaToken/$', confirmaToken),
     url(r'^candidato-matricula/$', candidatoForm),
     url(r'^professor/turmas$', turmas),
     url(r'^professor/turmas/(?P<idTurma>\d+)/$', turma),
     url(r'^professor/matriculas/$', matriculas),
-   
-
+    url(r'^professor/matriculas/confirmar/$', confirmar),
+    url(r'^professor/avaliacoes/questao/$', questao),
+    url(r'^professor/avaliacoes/questoes/$', questoes),
+    url(r'^matricular/confirmar/$', confirmarMatricula),
     
 ]
