@@ -5,6 +5,7 @@ ALUNO = 'A'
 PROFESSOR = 'P'
 PERFIS = ((ALUNO, 'Aluno'), (PROFESSOR, 'Professor'))
 
+
 #Criando a classe do Super Usuário
 class UsuarioManager(BaseUserManager):
     use_in_migrations = True
@@ -12,7 +13,7 @@ class UsuarioManager(BaseUserManager):
     def _create_user(self, ra, password, **extra_fields):
         if not ra:
             raise ValueError('RA precisa ser preenchido')
-        user = self.model(ra=ra, **extra_fields)
+        user = self.model(ra = ra, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
         return user
@@ -22,7 +23,6 @@ class UsuarioManager(BaseUserManager):
 
     def create_superuser(self, ra, password, **extra_fields):
         return self._create_user(ra, password, **extra_fields)
-
 
 
 
@@ -39,7 +39,7 @@ class Usuario(AbstractBaseUser):
     USERNAME_FIELD = 'ra'
     REQUIRED_FIELDS = ['nome', 'email']
 
-    object = UsuarioManager
+    objects = UsuarioManager()
 
     @property 
     def is_staff(self):
