@@ -1,0 +1,35 @@
+{% extends "layoutprofessor.html" %}
+{% load static %}
+
+{% block main %}
+<div>
+    <h2 id="title">Questionário</h2>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Número</th>
+            <th>Questão</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for questao in questoes  %}
+        <tr>
+            <td><a href="turmas/{{ questao.numero }}">{{ questao.numero }}</a></td>
+            <td>{{ questao.descricao }}</td>
+            
+            <td>
+                <input  onclick="" data-turma-id="{{questao.id}}" type="button" value="Detalhes">
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    
+</script>
+{% endblock %}

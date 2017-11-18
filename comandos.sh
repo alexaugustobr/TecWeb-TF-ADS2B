@@ -24,6 +24,7 @@ python manage.py test testes
 
 #senha do bd
 
-usuario root
+ra 123456
 
 senha asdf1234
+
