@@ -7,11 +7,15 @@ from django.core.serializers import serialize
 from core.components.GerenciadorEmail import Email
 from django.http import HttpResponse
 
+from core.components.GerenciadorToken import GerenciadorToken
 
 def turma(request, idTurma):
     #TODO buscar turma do professor
+
+    #turma = Turma.objects.get(id=idTurma)
+
     contexto = {
-        'alunos': Aluno.objects.all(),
+        'alunos': Aluno.objects.raw('SELECT * FROM ALUNO INNER JOIN MATRICULA ON ALUNO.ID = MATRICULA.ALUNO_ID WHERE MATRICULA.TURMA_ID IS '+idTurma),
     }
     return render(request,"turma/turma.html", contexto)
 
@@ -36,7 +40,7 @@ def enviarEmailTurma(request):
     if turma == None:
         return HttpResponse(status=403)
 
-    link = "http://localhost:8000/matricular-aluno/{}".format(turma_id)
+    link = "http://localhost:8000/matricular/"
     
     disciplina = turma.disciplinaOfertada.disciplina
     professor = turma.professor
@@ -46,11 +50,15 @@ def enviarEmailTurma(request):
     for aluno in alunos:
         #TODO
         #gerar token
-        token = "{}.{}.{}".format(aluno.id,turma.id,5654) # =)
+        gt = GerenciadorToken()
+         
+        token = gt.gerar(aluno,turma)
+        s = token.__str__()
+        print(aluno)
         contexto = {
             "aluno":aluno, 
             "professor":professor, 
-            "token":token, 
+            "token":token.__str__(), 
             "turma":turma,
             "link":link
         }
