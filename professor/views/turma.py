@@ -40,8 +40,6 @@ def enviarEmailTurma(request):
     if turma == None:
         return HttpResponse(status=403)
 
-    link = "http://localhost:8000/matricular/"
-    
     disciplina = turma.disciplinaOfertada.disciplina
     professor = turma.professor
 
@@ -54,13 +52,11 @@ def enviarEmailTurma(request):
          
         token = gt.gerar(aluno,turma)
         s = token.__str__()
-        print(aluno)
         contexto = {
             "aluno":aluno, 
             "professor":professor, 
-            "token":token.__str__(), 
-            "turma":turma,
-            "link":link
+            "codigo_acesso":token.__str__(),
+            "turma":turma
         }
         email = Email("contato@handcode.com", "Faculdade Handcode - matricula de {} turma {}".format(disciplina.nome,turma.turma_sigla))
         email.html("emails/solicitacaoMatricula.html", contexto)

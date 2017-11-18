@@ -12,10 +12,20 @@
 {% block main %}
   <div>
     <h2 id="title">Candidatar-se</h2>
+    
   </div>
-  <form action="/matricular/" method="POST" enctype="multipart/form-data">
+   <form action="/matricular/" method="POST" enctype="multipart/form-data">
       {% csrf_token %}
-      {{ form.erros }}
+      <p class="text" style="padding-bottom:6px">{{ form.errors }}</p>
+
+      {% if confrimacao %}
+      <p class="text" style="padding-bottom:6px">{{confrimacao}}</p>
+      {% elif turma %}
+      <p class="text" style="padding-bottom:6px">Turma {{turma.turma_sigla}} disciplina de {{turma.disciplinaOfertada.disciplina.nome}}</p> 
+      {% endif %}
+
+      <input type="hidden" name="turma" id="turma" class="campo" value="{{idTurma}}">
+      <input type="hidden" name="aluno" id="aluno" class="campo" value="{{idAluno}}">
       <label for="nome">Nome Completo</label>
       <input type="text" name="nome" id="nome" class="campo">
       <label for="ra">RA</label>
@@ -25,7 +35,7 @@
       <label for="celular">Celular</label>
       <input type="text" name="celular" id="celular" class="campo">
       <label for="codigo_acesso">Codigo de acesso</label>
-      <input type="text" name="codigo_acesso" id="codigo_acesso" class="campo">
+      <input type="text" name="codigo_acesso" id="codigo_acesso" class="campo" value="{{codigo_acesso}}">
       <label for="foto">Foto</label>  
       <input type="file" name="foto" id="foto" class="campo">
       <button type="submit">Enviar</button>

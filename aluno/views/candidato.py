@@ -9,13 +9,10 @@ from django.http import HttpResponse
 
 def candidatoForm(request):
     form = None
-    print('candidato')
     if request.POST:
-        print('candidato post')
         form = CandidatoForm(request.POST)
         if form.is_valid():
             form.save()
-            print('salvo')
     else:
         form = CandidatoForm()
 
