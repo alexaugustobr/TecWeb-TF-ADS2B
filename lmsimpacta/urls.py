@@ -22,18 +22,18 @@ from core.views import *
 from professor.views import *
 from aluno.views import * 
 from aluno.views.candidato import * 
-
+from django.contrib.auth.views import login, logout
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', index),
+    url(r'^$', index, name="home"),
     url(r'^handcode/$', handcode),
     url(r'^contato/$', contato),
     url(r'^cursos/$', cursos),
     url(r'^cursos/detalhes/$', detalheCurso),
     url(r'^cursos/banco-dados/$', bancoDados),
     url(r'^noticias/$', noticias),
-    url(r'^login/$', login),
+    #url(r'^login/$', loginHome),
     url(r'^esqueci-senha/$', esqueciSenha),
     url(r'^disciplinas/novo/$', disciplinasNovo),
     url(r'^usuarios/novo/$', usuariosNovo),
@@ -53,5 +53,7 @@ urlpatterns = [
     url(r'^professor/avaliacoes/questao/$', questao),
     url(r'^professor/avaliacoes/questoes/$', questoes),
     url(r'^matricular/confirmar/$', confirmarMatricula),
-    
+    url(r"^login/", login, {"template_name":"login/login.html"}), 
+    url(r"^logout/", logout, {'next_page': 'home'}),
 ]
+
