@@ -48,7 +48,8 @@ urlpatterns = [
     url(r'^professor/turmas$', turmas),
     url(r'^professor/turmas/(?P<idTurma>\d+)/$', turma),
     url(r'^professor/matriculas/$', matriculas),
-    
+    url(r'^aluno/avaliacoes/$', questaoAberta),
+    url(r'^aluno/avaliacoes/responder/$', questaoAbertaResponder),
 
     
 ]
