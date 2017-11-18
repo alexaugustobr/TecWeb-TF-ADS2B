@@ -10,26 +10,30 @@
 {% endblock %}
 
 {% block main %}
-<div>
-  <h2 id="title">Matricule-se</h2>
-</div>
-
-<form action="/action_page.php">
-    <label for="nome">Nome Completo</label>
-      <input type="text" name="Nome" id="nome" class="campo">
-    <label for="email">Email</label>
-      <input type="text" name="email" id="email" class="campo">
-    <label for="celular">Celular</label>
+  <div>
+    <h2 id="title">Candidatar-se</h2>
+  </div>
+  <form action="/matricular/" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.erros }}
+      <label for="nome">Nome Completo</label>
+      <input type="text" name="nome" id="nome" class="campo">
+      <label for="ra">RA</label>
+      <input type="text" name="ra" id="ra" class="campo">
+      <label for="email">Email</label>
+      <input type="text" name="email" id="email" class="campo" placeholder="exemplo@exemplo.com">
+      <label for="celular">Celular</label>
       <input type="text" name="celular" id="celular" class="campo">
-    <label for="file">Foto</label>
-      <input type="file" name="file" id="file" class="campo">
-    <button type="submit">Enviar</button>
-  </form> 
-
-{% endblock %}
-
-{% block scripts %}
-  <script>
-    
-  </script>
-{% endblock %}
+      <label for="codigo_acesso">Codigo de acesso</label>
+      <input type="text" name="codigo_acesso" id="codigo_acesso" class="campo">
+      <label for="foto">Foto</label>  
+      <input type="file" name="foto" id="foto" class="campo">
+      <button type="submit">Enviar</button>
+  </form>
+  {% endblock %}
+  
+  {% block scripts %}
+    <script>
+      
+    </script>
+  {% endblock %}
