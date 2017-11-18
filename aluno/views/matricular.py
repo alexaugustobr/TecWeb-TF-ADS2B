@@ -7,8 +7,16 @@ from aluno.forms.CandidatoForm import CandidatoForm
 
 
 def matricular (request):
+
+    codigo = None
+
+    contexto = None
+
+    if request.method == 'POST':
+        codigo = request.POST.get('codigo_acesso')
+    if request.method == 'GET':
+        codigo = request.GET.get('codigo_acesso')
     
-    codigo = request.POST.get('codigo_acesso')
 
     if not type(codigo) == str:
         return render(request,"matricula/formMatricula.html")
@@ -23,20 +31,36 @@ def matricular (request):
 
     if request.POST:
         form = CandidatoForm(request.POST)
-        print(form.is_valid())
         if form.is_valid():
             candidato = form.save()
-            turma = Turma()
-            turma.id = token.idTurma
-            candidato.turma = turma
-            candidato.save()
+            #turma = Turma()
+            #turma.id = token.idTurma
+            #aluno = Aluno()
+            #candidato.turma = turma
+            #candidato.save()
             enviarEmailConfirmacao(candidato)
+            #TODO redirect
+            contexto = {
+                "confrimacao": "Por favor confirme a matricula por email.",
+                "form" : form
+            }
+        else:
+            contexto = {
+                "form" : form
+            }
     else:
+        turma = Turma.objects.get(id=token.idTurma)
+        print(turma)
         form = CandidatoForm()
+        contexto = {
+            "codigo_acesso":token.__str__(),
+            "idTurma":token.idTurma,
+            "idAluno":token.idAluno,
+            "turma": turma,
+            "form" : form
+        }
 
-    contexto = {
-        "form" : form
-    }
+    
 
     #Salvar Candidato
 
