@@ -2,12 +2,7 @@ from django.contrib.auth.models import AbstractBaseUser, UserManager
 
 ALUNO = 'A'
 PROFESSOR = 'P'
-COORDENADOR = 'C'
-PERFIS = (
-     (ALUNO, 'Aluno'),
-     (PROFESSOR, 'Professor'),
-     (COORDENADOR, 'Coordenador')
-)
+PERFIS = ((ALUNO, 'Aluno'), (PROFESSOR, 'Professor'))
 
 #Criando a classe do Super Usuário
 class UsuarioManager(BaseUserManager):
