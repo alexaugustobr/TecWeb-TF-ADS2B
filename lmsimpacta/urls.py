@@ -48,6 +48,6 @@ urlpatterns = [
     url(r'^professor/turmas/(?P<idTurma>\d+)/$', turma),
     url(r'^professor/matriculas/$', matriculas),
     url(r'^professor/matriculas/confirmar/$', confirmar),
-
+    url(r'^matricular/confirmar/$', confirmarMatricula),
     
 ]

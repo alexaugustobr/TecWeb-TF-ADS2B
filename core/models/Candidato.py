@@ -16,7 +16,7 @@ class Candidato(models.Model):
     confirmado = models.BooleanField(default=False)
 
     def __str__(self):
-        return "{} - {}".format(self.nome, self.email)
+        return "{} - {}".format(self.nome, self.email, self.turma)
 
     class Meta:
         db_table = 'Candidado'
