@@ -12,3 +12,4 @@ from .ArquivosResposta import ArquivosResposta
 from .Resposta import Resposta
 from .Candidato import Candidato
 from .ArquivosFoto import ArquivosFoto
+from .Usuario import Usuario
