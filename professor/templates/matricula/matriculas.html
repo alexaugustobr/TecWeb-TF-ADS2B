@@ -27,11 +27,12 @@
             <td>{{ candidato.turma.disciplinaOfertada.disciplina.nome }}</td>
             <td>
                 <input  onclick="aceitarCandidato(this)" 
-                        data-turma-id="{{turma.id}}" 
+                        data-turma-id="{{candidato.turma.id}}" 
                         data-candidato-id="{{candidato.id}}" 
                         type="button" value="Aceitar candidato">
+                        
                 <input  onclick="removerCandidato(this)" 
-                        data-turma-id="{{turma.id}}" 
+                        data-turma-id="{{candidato.turma.id}}" 
                         data-candidato-id="{{candidato.id}}" 
                         type="button" value="Remover candidato">
             </td>
@@ -45,6 +46,22 @@
 
 {% block scripts %}
 <script>
-    
+    function aceitarCandidato(botao) {
+        var turmaId = botao.getAttribute('data-turma-id');
+        var candidatoId = botao.getAttribute('data-candidato-id')
+
+        var array = { turmaId: turmaId, candidatoId: candidatoId, csrfmiddlewaretoken: '{{ csrf_token }}'}
+
+        botao.disabled = false;
+        postAjax('/professor/matriculas/confirmar/', array, 
+                function(data) {
+                    alert("Aceito");
+                }
+            );
+    }
+
+    function removerCandidato(botao) {
+
+    }
 </script>
 {% endblock %}

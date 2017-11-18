@@ -13,3 +13,28 @@ def matriculas(request):
         'candidatos': Candidato.objects.all(),
     }
     return render(request,"matricula/matriculas.html", contexto)
+
+
+def confirmar(request):
+    if request.method != 'POST':
+        return HttpResponse(status=403) 
+    
+    
+    turmaId = request.POST.get('turmaId')
+    candidatoId = request.POST.get('candidatoId')
+
+    candidato = Candidato.objects.get(id=candidatoId)
+
+    turma = Turma.objects.get(id=turmaId)
+
+    aluno = Aluno.objects.get(ra=candidato.ra)
+
+    aluno.turmas.add(turma)
+
+    aluno.save()
+
+    candidato.matricula_aceita = True
+    
+    candidato.save()
+    
+    return HttpResponse(status=200)
