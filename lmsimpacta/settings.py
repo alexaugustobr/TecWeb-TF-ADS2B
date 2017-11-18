@@ -125,5 +125,5 @@ STATIC_URL = '/static/'
 
 
 #Login 
-AUTH_USER_MODEL = 'core.Usuarios'
+AUTH_USER_MODEL = 'core.Usuario'
 LOGIN_URL = 'login'

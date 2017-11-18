@@ -13,4 +13,4 @@ from .ArquivosResposta import ArquivosResposta
 from .Resposta import Resposta
 from .CursoTurma import CursoTurma
 from .Matricula import Matricula
-from .Usuarios import Usuario
+from .Usuario import Usuario

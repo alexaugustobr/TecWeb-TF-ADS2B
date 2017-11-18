@@ -1,4 +1,5 @@
-from django.contrib.auth.models import AbstractBaseUser, UserManager
+from django.db import models
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 ALUNO = 'A'
 PROFESSOR = 'P'
@@ -6,7 +7,7 @@ PERFIS = ((ALUNO, 'Aluno'), (PROFESSOR, 'Professor'))
 
 #Criando a classe do Super Usuário
 class UsuarioManager(BaseUserManager):
-       use_in_migrations = True
+    use_in_migrations = True
 
     def _create_user(self, ra, password, **extra_fields):
         if not ra:
@@ -21,6 +22,8 @@ class UsuarioManager(BaseUserManager):
 
     def create_superuser(self, ra, password, **extra_fields):
         return self._create_user(ra, password, **extra_fields)
+
+
 
 
 #Criando a classe do Usuarios
