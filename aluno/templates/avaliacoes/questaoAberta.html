@@ -19,10 +19,17 @@
     <label >{{questao.descricao}}</label>
     <textarea style="border-radius: 3px;" name="aberto" id="aberto" cols="80" rows="10"></textarea>
     <input onclick="responderQuestao(this)" value="Responder" style="display:block; background-color:aqua; border:0px; color:#000;"type="submit" name="button" data-questao-id="{{questao.id}}" data-aluno-id="{{aluno.id}}">
-    
 
+   
+    {% if anterior_id != None %}
     <a href="/aluno/avaliacoes/?questao_id={{anterior_id}}">Questão anterior</a>
+    {% endif %}
+    
+    
+    {% if proxima_id != None %}
     <a href="/aluno/avaliacoes/?questao_id={{proxima_id}}">Proxima questão</a>
+    {% endif %}
+
 
 
 {% endblock %}

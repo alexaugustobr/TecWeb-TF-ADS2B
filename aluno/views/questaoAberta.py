@@ -15,11 +15,17 @@ def questaoAberta (request):
     aluno = Aluno() 
     aluno.id = 1
 
+    i=0
+
+    t=0
+
     questao_id = request.GET.get('questao_id')
     anterior_questao_id = request.GET.get('anterior_questao_id')
 
     
     questoes = list(Questao.objects.all())
+
+    t=len(questoes)
 
     if len(questoes)>0:
 
@@ -50,6 +56,7 @@ def questaoAberta (request):
         "aluno" : aluno,
         "anterior_id": anterior_id,
         "proxima_id": proxima_id,
+        "i":i,
         }
 
     return render(request,"avaliacoes/questaoAberta.html", contexto)
@@ -58,11 +65,16 @@ def questaoAbertaResponder(request):
     if request.method != 'POST':
         return HttpResponse(status=403)
 
-    resposta = request.POST.get('resposta')
+    descricao = request.POST.get('resposta')
     aluno_id = request.POST.get('aluno_id')
     questao_id = request.POST.get('questao_id')
 
-    
+    resposta = Reposta()
+
+    resposta.descricao = descricao
+
+    reposta.save()
+
 
     return HttpResponse(status=200)
 
