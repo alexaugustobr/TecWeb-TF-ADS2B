@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 
 @login_required(login_url='/login')
 @user_passes_test(lambda user: user.perfil == 'A', login_url='/login?error=acesso', redirect_field_name=None)
-def questaoAberta (request):
+def questaoAberta (request, data):
 
 
     questao = None
@@ -20,7 +20,8 @@ def questaoAberta (request):
     questao_id = request.GET.get('questao_id')
     anterior_questao_id = request.GET.get('anterior_questao_id')
 
-    sql =   'SELECT DISTINCT QUESTAO.* FROM QUESTAO\
+
+    sql =   "SELECT DISTINCT QUESTAO.* FROM QUESTAO\
             INNER JOIN TURMA\
             ON TURMA.ID = QUESTAO.TURMA_ID\
             INNER JOIN CURSOTURMA\
@@ -31,7 +32,7 @@ def questaoAberta (request):
             ON ALUNO.curso_id = CURSO.ID\
             LEFT JOIN RESPOSTA \
             ON RESPOSTA.questao_id = QUESTAO.ID\
-            WHERE RESPOSTA.ID IS NULL AND ALUNO.usuario_ptr_id = {}'.format(request.user.id)
+            WHERE RESPOSTA.ID IS NULL AND ALUNO.usuario_ptr_id = {0} AND DATA_LIMITE_ENTREGA >= '{1}' AND DATA = '{1}'".format(request.user.id, data)
     
     
     questoes = list(Questao.objects.raw(sql))

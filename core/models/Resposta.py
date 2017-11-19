@@ -13,6 +13,11 @@ class Resposta(models.Model):
     descricao = models.TextField(null=False)
     data_de_envio = models.DateField(null=False)
 
+
+    @property
+    def data_formatada(self):
+        return self.data.strftime("%Y-%m-%d")
+
     def __str__(self):
         return "{} - {}: {}".format(self.questao.id, self.aluno.ra, self.descricao)
 

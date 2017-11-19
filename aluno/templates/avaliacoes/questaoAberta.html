@@ -50,7 +50,9 @@
                                                         resposta:resposta,
                                                         csrfmiddlewaretoken: '{{ csrf_token }}'}, 
                         function(data) {
-                            txt.di
+                            txt.disabled = true
+                            botao.disabled = true
+                            botao.value = 'Respondido'
                         }
                     );
 
