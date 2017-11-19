@@ -8,7 +8,10 @@ from core.components.GerenciadorEmail import Email
 from django.http import HttpResponse
 
 from core.components.GerenciadorToken import GerenciadorToken
+from django.contrib.auth.decorators import login_required, user_passes_test
 
+@login_required(login_url='/login')
+@user_passes_test(lambda user: user.perfil == 'P', login_url='/login?error=acesso', redirect_field_name=None)
 def turma(request, idTurma):
     #TODO buscar turma do professor
 
@@ -19,6 +22,8 @@ def turma(request, idTurma):
     }
     return render(request,"turma/turma.html", contexto)
 
+@login_required(login_url='/login')
+@user_passes_test(lambda user: user.perfil == 'P', login_url='/login?error=acesso', redirect_field_name=None)
 def turmas(request):
     #TODO buscar turma do professor
     contexto = {
@@ -26,6 +31,8 @@ def turmas(request):
     }
     return render(request,"turma/turmas.html", contexto)
 
+@login_required(login_url='/login')
+@user_passes_test(lambda user: user.perfil == 'P', login_url='/login?error=acesso', redirect_field_name=None)
 def enviarEmailTurma(request):
     if request.method != 'POST':
         return HttpResponse(status=403) 
