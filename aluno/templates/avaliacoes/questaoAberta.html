@@ -1,0 +1,53 @@
+
+{% extends "layoutAluno.html" %}
+{% load static %}
+
+{% block css %}
+  <!--<link rel="stylesheet" href="{% static 'css/ccs-da-pagina.css' %}"> -->
+{% endblock %}
+
+{% block title %}
+	Cadastro Usuário  - {{ block.super }}
+{% endblock %}
+
+{% block main %}
+      
+
+        
+
+    <h2>Questão {{questao.numero}}</h2>
+    <label >{{questao.descricao}}</label>
+    <textarea style="border-radius: 3px;" name="aberto" id="aberto" cols="80" rows="10"></textarea>
+    <input onclick="responderQuestao(this)" value="Responder" style="display:block; background-color:aqua; border:0px; color:#000;"type="submit" name="button" data-questao-id="{{questao.id}}" data-aluno-id="{{aluno.id}}">
+    
+
+    <a href="/aluno/avaliacoes/?questao_id={{anterior_id}}">Questão anterior</a>
+    <a href="/aluno/avaliacoes/?questao_id={{proxima_id}}">Proxima questão</a>
+
+
+{% endblock %}
+            
+            
+
+
+        {% block scripts %}
+        <script>
+            function responderQuestao(botao) {
+                resposta = document.getElementById('aberto').value;
+                questao_id = botao.getAttribute('data-questao-id');
+                aluno_id = botao.getAttribute('data-aluno-id');
+                
+
+                postAjax('/aluno/avaliacoes/responder/', { questao_id: questao_id, aluno_id:aluno_id,
+                                                        resposta:resposta,
+                                                        csrfmiddlewaretoken: '{{ csrf_token }}'}, 
+                        function(data) {
+                            alert("Resposta enviada ao professor!");
+                        }
+                    );
+
+                        
+            }
+        </script>
+        {% endblock %}
+  
