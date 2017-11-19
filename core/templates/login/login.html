@@ -16,11 +16,14 @@
         
             <fieldset class="field">
                 <h2>Login</h2>
-                <form>
-                    <label for="login">Usuário*</label>
-                        <input class="campo" type="text" name="login" id="login" maxlength="60" required="true" placeholder="Digite seu usuário">
+                {{ form.errors }}
+                
+                <form method="POST" url="/login">
+                    {% csrf_token %}
+                    <label for="login">RA*</label>
+                    <input class="campo" type="text" name="username" id="login" maxlength="60" required="true" placeholder="Digite seu usuário">
                     <label for="senha">Senha*</label>
-                        <input class="campo" type="password" name="senha" id="senha" maxlenght="10" required="true" placeholder="Digite sua senha">
+                    <input class="campo" type="password" name="password" id="senha" maxlenght="10" required="true" placeholder="Digite sua senha">
                     <a class="link" href="/esqueci-senha">Esqueci a senha</a>
                     <div class"check-group">
                         <input class="check" type="checkbox" name="lembrar" id="lembrar">
@@ -35,6 +38,6 @@
 
 {% block scripts %}
   <script>
-    console.log('script home, pos main');
+    
   </script>
 {% endblock %}

@@ -7,18 +7,12 @@ from aluno.forms.CandidatoForm import *
 from django.http import HttpResponse
 
 
-def confirmaToken(request):
-    return render(request,"matricula/confirmaToken.html")
-
 def candidatoForm(request):
     form = None
-    print('candidato')
     if request.POST:
-        print('candidato post')
         form = CandidatoForm(request.POST)
         if form.is_valid():
             form.save()
-            print('salvo')
     else:
         form = CandidatoForm()
 
