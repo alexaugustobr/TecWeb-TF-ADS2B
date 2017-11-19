@@ -18,7 +18,7 @@
     <h2>Questão {{questao.numero}}</h2>
     <label >{{questao.descricao}}</label>
     <textarea style="border-radius: 3px;" name="aberto" id="aberto" cols="80" rows="10"></textarea>
-    <input onclick="responderQuestao(this)" value="Responder" style="display:block; background-color:aqua; border:0px; color:#000;"type="submit" name="button" data-questao-id="{{questao.id}}" data-aluno-id="{{aluno.id}}">
+    <input onclick="responderQuestao(this)" value="Responder" style="display:block; background-color:aqua; border:0px; color:#000;"type="submit" name="button" data-questao-id="{{questao.id}}">
 
    
     {% if anterior_id != None %}
@@ -42,10 +42,9 @@
             function responderQuestao(botao) {
                 resposta = document.getElementById('aberto').value;
                 questao_id = botao.getAttribute('data-questao-id');
-                aluno_id = botao.getAttribute('data-aluno-id');
                 
 
-                postAjax('/aluno/avaliacoes/responder/', { questao_id: questao_id, aluno_id:aluno_id,
+                postAjax('/aluno/avaliacoes/responder/', { questao_id: questao_id, 
                                                         resposta:resposta,
                                                         csrfmiddlewaretoken: '{{ csrf_token }}'}, 
                         function(data) {
