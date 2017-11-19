@@ -30,6 +30,8 @@ def questaoAberta (request, data):
             ON CURSO.ID = CURSOTURMA.curso_id\
             INNER JOIN ALUNO\
             ON ALUNO.curso_id = CURSO.ID\
+            INNER JOIN MATRICULA\
+            ON MATRICULA.turma_id = TURMA.id\
             LEFT JOIN RESPOSTA \
             ON RESPOSTA.questao_id = QUESTAO.ID\
             WHERE RESPOSTA.ID IS NULL AND ALUNO.usuario_ptr_id = {0} AND DATA_LIMITE_ENTREGA >= '{1}' AND DATA = '{1}'".format(request.user.id, data)
