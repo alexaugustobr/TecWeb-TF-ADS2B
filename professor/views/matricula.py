@@ -6,15 +6,17 @@ from datetime import datetime
 from django.core.serializers import serialize
 from core.components.GerenciadorEmail import Email
 from django.http import HttpResponse
-
-
+from django.contrib.auth.decorators import login_required, user_passes_test
+@login_required(login_url='/login')
+@user_passes_test(lambda user: user.perfil == 'P', login_url='/login?error=acesso', redirect_field_name=None)
 def matriculas(request):
     contexto = {
         'candidatos': Candidato.objects.all(),
     }
     return render(request,"matricula/matriculas.html", contexto)
 
-
+@login_required(login_url='/login')
+@user_passes_test(lambda user: user.perfil == 'P', login_url='/login?error=acesso', redirect_field_name=None)
 def confirmar(request):
     if request.method != 'POST':
         return HttpResponse(status=403) 
