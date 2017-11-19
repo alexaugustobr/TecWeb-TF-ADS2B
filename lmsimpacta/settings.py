@@ -109,9 +109,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'localdb',
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': '192.168.1.162',
+        'USER': 'azure',
+        'PASSWORD': '6#vWHD_$',
+        'HOST': '127.0.0.1',
         'PORT': '3306',
     }
 }
