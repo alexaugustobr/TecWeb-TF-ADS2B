@@ -13,11 +13,11 @@
 {% block main %}
       
 
-        
+    {% for questao in questoes %}
 
     <h2>Questão {{questao.numero}}</h2>
     <label >{{questao.descricao}}</label>
-    <textarea style="border-radius: 3px;" name="aberto" id="aberto" cols="80" rows="10"></textarea>
+    <textarea style="border-radius: 3px;" name="txt" id="txt-{{questao.id}}" cols="80" rows="10"></textarea>
     <input onclick="responderQuestao(this)" value="Responder" style="display:block; background-color:aqua; border:0px; color:#000;"type="submit" name="button" data-questao-id="{{questao.id}}">
 
    
@@ -30,7 +30,7 @@
     <a href="/aluno/avaliacoes/?questao_id={{proxima_id}}">Proxima questão</a>
     {% endif %}
 
-
+    {% endfor %}
 
 {% endblock %}
             
@@ -40,15 +40,17 @@
         {% block scripts %}
         <script>
             function responderQuestao(botao) {
-                resposta = document.getElementById('aberto').value;
                 questao_id = botao.getAttribute('data-questao-id');
+                txt = document.getElementById('txt-'+questao_id);
+                resposta = txt.value;
+                
                 
 
                 postAjax('/aluno/avaliacoes/responder/', { questao_id: questao_id, 
                                                         resposta:resposta,
                                                         csrfmiddlewaretoken: '{{ csrf_token }}'}, 
                         function(data) {
-                            alert("Resposta enviada ao professor!");
+                            txt.di
                         }
                     );
 

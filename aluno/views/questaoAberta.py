@@ -16,8 +16,6 @@ def questaoAberta (request):
 
     anterior_id = None
 
-    aluno = Aluno() 
-    aluno.id == request.user.id
 
     questao_id = request.GET.get('questao_id')
     anterior_questao_id = request.GET.get('anterior_questao_id')
@@ -35,38 +33,13 @@ def questaoAberta (request):
             ON RESPOSTA.questao_id = QUESTAO.ID\
             WHERE RESPOSTA.ID IS NULL AND ALUNO.usuario_ptr_id = {}'.format(request.user.id)
     
+    
     questoes = list(Questao.objects.raw(sql))
-    print(questoes)
-    t=len(questoes)
 
-    if len(questoes)>1:
-
-        if questao_id:
-            questao = Questao.objects.get(id=questao_id)
-        else:
-            questao = questoes[0]
-        
-        i=None
-        for q in questoes:
-            if q.id == questao.id:
-                i = questoes.index(q)
-
-        if i == len(questoes)-1:
-            anterior_id = i
-            proxima_id = None
-        elif i < len(questoes)-1:
-            proxima_id = i+2
-            if i > 0:
-                anterior_id = i
-            else:
-                anterior_id = None
-    elif len(questoes)>0:
-        questao = questoes[0]
     
 
     contexto = { 
-        "questao" : questao, 
-        "aluno" : aluno,
+        "questoes" : questoes, 
         "anterior_id": anterior_id,
         "proxima_id": proxima_id,
         }
