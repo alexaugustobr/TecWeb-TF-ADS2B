@@ -3,7 +3,10 @@ from django.http import HttpResponse
 from core.components import *
 from core.models import *
 
+from django.contrib.auth.decorators import login_required, user_passes_test
 
+@login_required(login_url='/login')
+@user_passes_test(lambda user: user.perfil == 'A', login_url='/login?error=acesso', redirect_field_name=None)
 def questaoAberta (request):
 
     questao = None
@@ -54,6 +57,8 @@ def questaoAberta (request):
 
     return render(request,"avaliacoes/questaoAberta.html", contexto)
 
+@login_required(login_url='/login')
+@user_passes_test(lambda user: user.perfil == 'A', login_url='/login?error=acesso', redirect_field_name=None)
 def questaoAbertaResponder(request):
     if request.method != 'POST':
         return HttpResponse(status=403)
