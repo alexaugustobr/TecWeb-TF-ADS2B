@@ -10,26 +10,40 @@
 {% endblock %}
 
 {% block main %}
-<div>
-  <h2 id="title">Matricule-se</h2>
-</div>
-
-<form action="/action_page.php">
-    <label for="nome">Nome Completo</label>
-      <input type="text" name="Nome" id="nome" class="campo">
-    <label for="email">Email</label>
-      <input type="text" name="email" id="email" class="campo">
-    <label for="celular">Celular</label>
-      <input type="text" name="celular" id="celular" class="campo">
-    <label for="file">Foto</label>
-      <input type="file" name="file" id="file" class="campo">
-    <button type="submit">Enviar</button>
-  </form> 
-
-{% endblock %}
-
-{% block scripts %}
-  <script>
+  <div>
+    <h2 id="title">Candidatar-se</h2>
     
-  </script>
-{% endblock %}
+  </div>
+   <form action="/matricular/" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <p class="text" style="padding-bottom:6px">{{ form.errors }}</p>
+
+      {% if confrimacao %}
+      <p class="text" style="padding-bottom:6px">{{confrimacao}}</p>
+      {% elif turma %}
+      <p class="text" style="padding-bottom:6px">Turma {{turma.turma_sigla}} disciplina de {{turma.disciplinaOfertada.disciplina.nome}}</p> 
+      {% endif %}
+
+      <input type="hidden" name="turma" id="turma" class="campo" value="{{idTurma}}">
+      <input type="hidden" name="aluno" id="aluno" class="campo" value="{{idAluno}}">
+      <label for="nome">Nome Completo</label>
+      <input type="text" name="nome" id="nome" class="campo">
+      <label for="ra">RA</label>
+      <input type="text" name="ra" id="ra" class="campo">
+      <label for="email">Email</label>
+      <input type="text" name="email" id="email" class="campo" placeholder="exemplo@exemplo.com">
+      <label for="celular">Celular</label>
+      <input type="text" name="celular" id="celular" class="campo">
+      <label for="codigo_acesso">Codigo de acesso</label>
+      <input type="text" name="codigo_acesso" id="codigo_acesso" class="campo" value="{{codigo_acesso}}">
+      <label for="foto">Foto</label>  
+      <input type="file" name="foto" id="foto" class="campo">
+      <button type="submit">Enviar</button>
+  </form>
+  {% endblock %}
+  
+  {% block scripts %}
+    <script>
+      
+    </script>
+  {% endblock %}

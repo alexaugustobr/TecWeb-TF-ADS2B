@@ -1,0 +1,42 @@
+{% extends "layoutprofessor.html" %}
+{% load static %}
+
+{% block css %}
+  <!--<link rel="stylesheet" href="{% static 'css/ccs-da-pagina.css' %}"> -->
+{% endblock %}
+
+{% block title %}
+	Cadastro Usuário  - {{ block.super }}
+{% endblock %}
+
+{% block main %}
+<h2 id="title">Cadastro de Questão</h2>
+<form action="" method="POST">
+    {% csrf_token %}
+    <label for="turma">Turma</label>
+        <select name="turma_id" id="turna" class="campo">
+            <option value="">-- Selecione --</option>
+            {% for turma in turmas  %}
+                <option value="{{ turma.id }}">{{ turma.turma_sigla }}</option>
+            {% endfor %}
+        </select>
+    <label for="descricao">Descrição</label>
+      <textarea type="text" name="descricao" id="descricao" class="campo"></textarea>
+    <label for="data_limite">Data Limite</label>
+      <input type="date" name="data_limite" id="data_limite" class="campo">
+    <label for="numero">Número da Questão</label>
+      <input type="number" name="numero" id="numero" class="campo">
+    <label for="data">Data</label>  
+      <input type="date" name="data" id="data" class="campo">
+    <button type="submit">Cadastrar</button>
+</form> 
+
+
+
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    
+  </script>
+{% endblock %}

@@ -5,20 +5,16 @@ from core.models.Turma import Turma
 from datetime import datetime
 from aluno.forms.CandidatoForm import *
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required, user_passes_test
 
-
-def confirmaToken(request):
-    return render(request,"matricula/confirmaToken.html")
-
+@login_required(login_url='/login')
+@user_passes_test(lambda user: user.perfil == 'A', login_url='/login?error=acesso', redirect_field_name=None)
 def candidatoForm(request):
     form = None
-    print('candidato')
     if request.POST:
-        print('candidato post')
         form = CandidatoForm(request.POST)
         if form.is_valid():
             form.save()
-            print('salvo')
     else:
         form = CandidatoForm()
 
