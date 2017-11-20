@@ -18,7 +18,7 @@ def turma(request, idTurma):
     #turma = Turma.objects.get(id=idTurma)
 
     contexto = {
-        'alunos': Aluno.objects.raw('SELECT * FROM ALUNO INNER JOIN MATRICULA ON ALUNO.ID = MATRICULA.ALUNO_ID WHERE MATRICULA.TURMA_ID IS '+idTurma),
+        'alunos': Aluno.objects.raw('SELECT * FROM ALUNO INNER JOIN MATRICULA ON aluno.usuario_ptr_id = MATRICULA.ALUNO_ID WHERE MATRICULA.TURMA_ID IS '+idTurma),
     }
     return render(request,"turma/turma.html", contexto)
 
@@ -50,7 +50,7 @@ def enviarEmailTurma(request):
     disciplina = turma.disciplinaOfertada.disciplina
     professor = turma.professor
 
-    alunos = Aluno.objects.raw('SELECT * FROM ALUNO LEFT JOIN MATRICULA ON ALUNO.ID = MATRICULA.ALUNO_ID WHERE MATRICULA.ID IS NULL')
+    alunos = Aluno.objects.raw('SELECT * FROM ALUNO LEFT JOIN MATRICULA ON aluno.usuario_ptr_id = MATRICULA.ALUNO_ID WHERE MATRICULA.ID IS NULL')
     
     for aluno in alunos:
         #TODO
