@@ -47,8 +47,16 @@
                 </div>
                 <div class="painel-box">
                     <div id="identificacao">
-                        Professor: Zezinho | RA: 170012345
-                        <button type="button" id="sair">Sair</button>
+                        Professor: 
+                        {% if request.user.perfil == 'P' %}
+                            {{ request.user.nome }}
+                        {% endif %} 
+                        | RA:
+                        {% if request.user.perfil == 'P' %}
+                            {{ request.user.ra }}
+                         {% endif %} 
+
+
                     </div>
                     <div>
                     {% block main %}
