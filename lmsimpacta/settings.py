@@ -13,9 +13,9 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 from os import path
 import os
 
-mysqlconnstr = os.environ['MYSQLCONNSTR_localdb']
-mysqlconnlst = mysqlconnstr.split(';')
-mysqlconndict = dict(s.split('=',1) for s in mysqlconnlst)
+#mysqlconnstr = os.environ['MYSQLCONNSTR_localdb']
+#mysqlconnlst = mysqlconnstr.split(';')
+#mysqlconndict = dict(s.split('=',1) for s in mysqlconnlst)
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -105,7 +105,7 @@ DATABASES = {
         'USER': 'azure',
         'PASSWORD': '6#vWHD_$',
         'HOST': '127.0.0.1',
-        'PORT': '',
+        'PORT': '50244',
     }
 }
 '''
