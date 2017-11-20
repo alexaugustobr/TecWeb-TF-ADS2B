@@ -167,9 +167,9 @@ ROOT_URLCONF = 'lmsimpacta.urls'
 WSGI_APPLICATION = 'lmsimpacta.wsgi.application'
 
 TEMPLATE_DIRS = (
-    './core/templates/',
-    './aluno/templates/',
-    './professor/templates/',
+    'D:/home/site/wwwroot/core/templates/',
+    'D:/home/site/wwwroot/luno/templates/',
+    'D:/home/site/wwwroot/professor/templates/',
     # Put strings here, like "/home/html/django_templates" or
     # "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
