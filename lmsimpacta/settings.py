@@ -18,6 +18,9 @@ import os
 
 PROJECT_ROOT = path.dirname(path.abspath(path.dirname(__file__)))
 
+DEBUG = True
+TEMPLATE_DEBUG = DEBUG
+
 ALLOWED_HOSTS = {'*'}
 
 ADMINS = (
@@ -42,7 +45,7 @@ DATABASES = {
     }
 }
 
-
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -53,6 +56,7 @@ DATABASES = {
         'PORT': '50244',
     }
 }
+
 '''
 DATABASES = {
     'default': {
@@ -64,8 +68,9 @@ DATABASES = {
         'PORT': '3306',
     }
 }
-
 '''
+'''
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -141,6 +146,12 @@ STATICFILES_FINDERS = (
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'n(bd1f1c%e8=_xad02x5qtfn%wgwpi492e$8_erx+d)!tpeoim'
 
+# List of callables that know how to import templates from various sources.
+TEMPLATE_LOADERS = (
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
+#     'django.template.loaders.eggs.Loader',
+)
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
