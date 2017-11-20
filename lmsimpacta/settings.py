@@ -168,7 +168,7 @@ WSGI_APPLICATION = 'lmsimpacta.wsgi.application'
 
 TEMPLATE_DIRS = (
     'D:/home/site/wwwroot/core/templates/',
-    'D:/home/site/wwwroot/luno/templates/',
+    'D:/home/site/wwwroot/aluno/templates/',
     'D:/home/site/wwwroot/professor/templates/',
     # Put strings here, like "/home/html/django_templates" or
     # "C:/www/django/templates".
