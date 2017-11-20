@@ -31,7 +31,7 @@ ADMINS = (
 )
 
 MANAGERS = ADMINS
-
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -53,7 +53,7 @@ DATABASES = {
         'PORT': '50244',
     }
 }
-
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
