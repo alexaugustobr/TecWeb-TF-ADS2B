@@ -86,8 +86,8 @@ WSGI_APPLICATION = 'lmsimpacta.wsgi.application'
 #}
 
 
-DEBUG = True
-TEMPLATE_DEBUG = DEBUG
+#DEBUG = True
+#TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = {'*'}
 
@@ -105,10 +105,22 @@ DATABASES = {
         'USER': 'azure',
         'PASSWORD': '6#vWHD_$',
         'HOST': '127.0.0.1',
-        'PORT': '53452',
+        'PORT': '50244',
     }
 }
-'''50244
+'''
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'localdb',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': '192.168.1.162',
+        'PORT': '3306',
+    }
+}
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
