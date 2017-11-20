@@ -737,5 +737,5 @@ UNLOCK TABLES;
 -- Dump completed on 2017-11-19 19:32:00
 
 
-INSERT INTO Usuario (id,last_login,ra,nome,email,ativo,perfil,password)
+INSERT INTO Usuario (last_login,ra,nome,email,ativo,perfil,password)
 VALUES ('2017-11-19 21:20:39.000000',123456,'Admin','admin@handcode.com',1,'C','pbkdf2_sha256$36000$Be2EXve4yCqb$/06J85AYBf6ZOjynsrzyzo65TwxYvOsemDqPx32ceYg=');
