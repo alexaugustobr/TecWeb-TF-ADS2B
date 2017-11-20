@@ -28,7 +28,7 @@ ADMINS = (
 )
 
 MANAGERS = ADMINS
-'''
+
 mysqlconnstr = os.environ['MYSQLCONNSTR_localdb']
 mysqlconnlst = mysqlconnstr.split(';')
 mysqlconndict = dict(s.split('=',1) for s in mysqlconnlst)
@@ -53,10 +53,10 @@ DATABASES = {
         'USER': 'azure',
         'PASSWORD': '6#vWHD_$',
         'HOST': '127.0.0.1',
-        'PORT': '',
+        'PORT': '50244',
     }
 }
-
+'''
 '''
 DATABASES = {
     'default': {
