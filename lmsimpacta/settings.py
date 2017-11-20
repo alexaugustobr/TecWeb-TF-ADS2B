@@ -15,9 +15,6 @@ Django settings for lmsimpacta project.
 
 from os import path
 import os
-#mysqlconnstr = os.environ['MYSQLCONNSTR_localdb']
-#mysqlconnlst = mysqlconnstr.split(';')
-#mysqlconndict = dict(s.split('=',1) for s in mysqlconnlst)
 
 PROJECT_ROOT = path.dirname(path.abspath(path.dirname(__file__)))
 
@@ -32,6 +29,11 @@ ADMINS = (
 
 MANAGERS = ADMINS
 '''
+mysqlconnstr = os.environ['MYSQLCONNSTR_localdb']
+mysqlconnlst = mysqlconnstr.split(';')
+mysqlconndict = dict(s.split('=',1) for s in mysqlconnlst)
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -42,6 +44,7 @@ DATABASES = {
         'PORT': mysqlconndict['Data Source'].split(':')[1],
     }
 }
+
 '''
 DATABASES = {
     'default': {
@@ -164,6 +167,9 @@ ROOT_URLCONF = 'lmsimpacta.urls'
 WSGI_APPLICATION = 'lmsimpacta.wsgi.application'
 
 TEMPLATE_DIRS = (
+    './core/templates/',
+    './aluno/templates/',
+    './professor/templates/',
     # Put strings here, like "/home/html/django_templates" or
     # "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
