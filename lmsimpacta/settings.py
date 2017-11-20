@@ -105,7 +105,7 @@ DATABASES = {
         'USER': 'azure',
         'PASSWORD': '6#vWHD_$',
         'HOST': '127.0.0.1',
-        'PORT': '',
+        'PORT': '53452',
     }
 }
 '''50244
