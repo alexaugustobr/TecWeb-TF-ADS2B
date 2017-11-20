@@ -11,6 +11,9 @@
     letter-spacing: 1px;
     padding-bottom: 30px;
 }
+.tarefaNova{
+    background-color: #0000;
+}
 
 
 section h1{
@@ -210,6 +213,7 @@ div.full-width-color img {
     box-shadow: 0px 3px 5px #363636;
     text-align: center;
 }
+
 
 @media screen and (max-width: 1300px) {
     section {

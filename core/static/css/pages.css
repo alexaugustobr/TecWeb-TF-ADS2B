@@ -11,8 +11,37 @@
     letter-spacing: 1px;
     padding-bottom: 30px;
 }
-
-
+.nova{
+    padding-left:10px;
+	padding-right:10px;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	color:#ffffff;
+	background-color:#12b42d;
+    font-size:11px;
+    text-transform: uppercase;
+	font-weight:bold;
+	border: 2px;
+    border-radius: 2px;
+    float: right;
+    cursor: pointer; 
+    
+}
+.nova:hover{
+    padding-left:10px;
+	padding-right:10px;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	color:#ffffff;
+	background-color:#0cf533;
+    font-size:11px;
+    text-transform: uppercase;
+	font-weight:bold;
+	border: 2px;
+    border-radius: 2px;
+    float: right;
+    cursor: pointer; 
+}
 section h1{
     color: #B3B3B3; 
     font-family: "Cutive Mono"; 
