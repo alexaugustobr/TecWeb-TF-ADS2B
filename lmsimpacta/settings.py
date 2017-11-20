@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 """
-Django settings for django_get_started project.
+Django settings for lmsimpacta project.
 """
 
 from os import path
@@ -158,10 +158,10 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'django_get_started.urls'
+ROOT_URLCONF = 'lmsimpacta.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'django_get_started.wsgi.application'
+WSGI_APPLICATION = 'lmsimpacta.wsgi.application'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or
