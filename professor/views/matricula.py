@@ -40,3 +40,18 @@ def confirmar(request):
     candidato.save()
     
     return HttpResponse(status=200)
+
+def recusar(request):
+    if request.method != 'POST':
+        return HttpResponse(status=403) 
+
+    turmaId = request.POST.get('turmaId')
+    candidatoId = request.POST.get('candidatoId')
+    candidato = Candidato.objects.get(id=candidatoId)
+
+    turma = Turma.objects.get(id=turmaId)
+
+    aluno = Aluno.objects.get(ra=candidato.ra)
+    candidato.delete()
+    return HttpResponse(status=200)
+        

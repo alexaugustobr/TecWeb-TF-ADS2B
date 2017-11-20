@@ -19,7 +19,7 @@ class GerenciadorToken:
 
     def gerar(self,aluno,turma):
         dataAtual = datetime.datetime.now(datetime.timezone.utc)
-        segundos = dataAtual.strftime('%s')
+        segundos = 123
         return Token(aluno.usuario_ptr_id,turma.id,segundos)
 
     def traduzir(self, codigo):

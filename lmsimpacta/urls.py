@@ -53,6 +53,7 @@ urlpatterns = [
     url(r'^confirmar-matricula/$', confirmarMatricula),
     url(r'^detalheNoticia2/$', detalheNoticia2),
     url(r'^professor/matriculas/confirmar/$', confirmar),
+     url(r'^professor/matriculas/recusar/$', recusar),
     url(r'^professor/tarefas/cadastraTarefa/$', questao),
     url(r'^professor/tarefas/$', questoes),
     url(r'^matricular/confirmar/$', confirmarMatricula),
