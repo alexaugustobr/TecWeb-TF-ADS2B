@@ -14,27 +14,20 @@ from os import path
 import os
 #mysqlconnstr = os.environ['MYSQLCONNSTR_localdb']
 
-a = open('/home/alex/MYSQLCONNSTR_localdb.ini', 'r')
-mysqlconnstr = a.read()
-a.close()
-mysqlconnlst = mysqlconnstr.split(';')
+#a = open('/home/alex/MYSQLCONNSTR_localdb.ini', 'r')
+#mysqlconnstr = a.read()
+#a.close()
+#mysqlconnlst = mysqlconnstr.split(';')
 
-mysqlconndict = dict(s.split('=',1) for s in mysqlconnlst)
+#mysqlconndict = dict(s.split('=',1) for s in mysqlconnlst)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+#BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = path.dirname(path.abspath(path.dirname(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '#x%4b@+w)5*=f1sj1%(_5zd1nxu7c=n3-4#(mf1s4ir2zb1i62'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
 
 
 # Application definition
