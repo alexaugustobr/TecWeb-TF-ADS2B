@@ -32,10 +32,6 @@ PROJECT_ROOT = path.dirname(path.abspath(path.dirname(__file__)))
 SECRET_KEY = '#x%4b@+w)5*=f1sj1%(_5zd1nxu7c=n3-4#(mf1s4ir2zb1i62'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -109,9 +105,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'localdb',
-        'USER': 'azure',
-        'PASSWORD': '6#vWHD_$',
-        'HOST': '127.0.0.1',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': '192.168.1.162',
         'PORT': '3306',
     }
 }

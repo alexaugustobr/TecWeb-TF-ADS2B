@@ -1,3 +1,4 @@
+#coding:utf-8
 from django.shortcuts import render
 from django.http import HttpResponse
 from core.components import *
@@ -93,14 +94,14 @@ def confirmarMatricula(request):
         candidato = Candidato.objects.get(id=candidatoId)
     except Exception:
         contexto = {
-            "mensagem":"Candidato não encontrado"
-        }
+            
+            }
         return render(request,"matricula/confirmar.html", contexto)
 
     contexto = {
         "candidato":candidato,
         "mensagem":"Matricula confirmada, aguarde a aprovação do professor"
-    }
+        }
 
     candidato.confirmado = True
 
