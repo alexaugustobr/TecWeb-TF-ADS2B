@@ -1,4 +1,3 @@
---find-links wheelhouse
-mysqlclient>1
-django==1.10
+Django==1.11.7
+mysqlclient==1.3.12
 pytz==2017.3
