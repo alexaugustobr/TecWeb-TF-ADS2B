@@ -31,24 +31,29 @@
                     <h2>Acesso Rápido</h2>    
                     <nav  id="side-menu" class = "side-menu">
                         <ul>
-                            <li> <a href="">Aplicar Testes Online</a></li>
-                            <li> <a href="">Turmas</a></li>
+                            <li><a href="#">Aplicar Testes Online</a>
+                                <ul class="sub-menu">
+                                    <li><a href="/professor/avaliacoes/questao">Cadastro de Questões</a></li>
+                                    <li><a href="/professor/avaliacoes/questoes">Questionarios</a></li>
+                                </ul>
+                            </li>
+                            <li> <a href="/professor/turmas">Turmas</a></li>
                             <li> <a href="">Disponibilizar Materiais Instrucionais</a></li>
                             <li> <a href="">Disponibilizar Trabalhos</a></li>
-                            <li> <a href="">Disponibilizar Exercícios</a></li>
+                            <li> <a href="/professor/tarefas">Disponibilizar Tarefas</a></li>
                             <li> <a href="">Trabalhos Recebidos</a></li>
                             <li> <a href="">Exercícios Recebidos</a></li>
                             <li> <a href="">Avaliação Participativa</a></li>
                             <li> <a href="">Controle de Entregas de Artefatos por Projeto</a></li>
-                            <li> <a href="">Solicitar Matrícula</a></li>
+                            <li> <a href="/professor/turmas">Solicitar Matrícula</a></li>
                             <li> <a href="">Cancelamento de Matrícula</a></li>
-                        <ul>
+                        </ul>
                     </nav>
                 </div>
                 <div class="painel-box">
                     <div id="identificacao">
-                        Professor: Zezinho | RA: 170012345
-                        <button type="button" id="sair">Sair</button>
+                        Professor: {{ request.user.nome }} | RA: {{ request.user.ra }}
+                        <button id="sair" ><a href="/logout">Sair</a></button>
                     </div>
                     <div>
                     {% block main %}
