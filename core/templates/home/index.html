@@ -30,7 +30,7 @@
   <div class="links">
     {% for curso in cursos %}
     <div class="curso-box">
-        <a href="{{curso.sigla}}">
+        <a href="/cursos/{{curso.sigla}}">
             <figure class="img_bt">
                 <img src="{% static 'img/graduacoes/' %}{{curso.sigla}}.jpg"/>
                 <figcaption><h3>{{curso.nome}}</h3></figcaption>
