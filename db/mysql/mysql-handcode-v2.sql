@@ -1,6 +1,5 @@
-CREATE DATABASE HANDCODE;
 
-USE HANDCODE;
+USE localdb;
 -- MySQL dump 10.16  Distrib 10.1.26-MariaDB, for debian-linux-gnu (x86_64)
 --
 -- Host: 192.168.1.162    Database: localdb
