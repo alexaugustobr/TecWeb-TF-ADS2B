@@ -12,14 +12,11 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 from os import path
 import os
-#mysqlconnstr = os.environ['MYSQLCONNSTR_localdb']
 
-#a = open('/home/alex/MYSQLCONNSTR_localdb.ini', 'r')
-#mysqlconnstr = a.read()
-#a.close()
-#mysqlconnlst = mysqlconnstr.split(';')
+mysqlconnstr = os.environ['MYSQLCONNSTR_localdb']
+mysqlconnlst = mysqlconnstr.split(';')
+mysqlconndict = dict(s.split('=',1) for s in mysqlconnlst)
 
-#mysqlconndict = dict(s.split('=',1) for s in mysqlconnlst)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -100,7 +97,7 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -111,7 +108,17 @@ DATABASES = {
         'PORT': '3306',
     }
 }
-
+'''
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': mysqlconndict['Database'],
+        'USER': mysqlconndict['User Id'],
+        'PASSWORD': mysqlconndict['Password'],
+        'HOST': mysqlconndict['Data Source'].split(':')[0],
+        'PORT': mysqlconndict['Data Source'].split(':')[1],
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
