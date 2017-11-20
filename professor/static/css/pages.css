@@ -11,6 +11,9 @@
     letter-spacing: 1px;
     padding-bottom: 30px;
 }
+.tarefaNova{
+    background-color: #0000;
+}
 
 
 section h1{
@@ -211,6 +214,7 @@ div.full-width-color img {
     text-align: center;
 }
 
+
 @media screen and (max-width: 1300px) {
     section {
         width: 90%;
@@ -403,4 +407,7 @@ input.check {
 div.check-group{
     float: left;
     
+}
+.tarefaNova{
+    background-color: #0000;
 }
