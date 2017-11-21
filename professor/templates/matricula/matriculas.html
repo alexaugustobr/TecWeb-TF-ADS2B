@@ -61,6 +61,17 @@
     }
 
     function removerCandidato(botao) {
+        var turmaId = botao.getAttribute('data-turma-id');
+        var candidatoId = botao.getAttribute('data-candidato-id')
+
+        var array = { turmaId: turmaId, candidatoId: candidatoId, csrfmiddlewaretoken: '{{ csrf_token }}'}
+
+        botao.disabled = false;
+        postAjax('/professor/matriculas/recusar/', array, 
+                function(data) {
+                    alert("Recusado");
+                }
+            );
 
     }
 </script>
