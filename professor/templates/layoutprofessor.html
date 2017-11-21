@@ -46,6 +46,7 @@
                             <li> <a href="">Avaliação Participativa</a></li>
                             <li> <a href="">Controle de Entregas de Artefatos por Projeto</a></li>
                             <li> <a href="/professor/turmas">Solicitar Matrícula</a></li>
+                            <li> <a href="/professor/matriculas">Matrículas Pendentes</a></li>
                             <li> <a href="">Cancelamento de Matrícula</a></li>
                         </ul>
                     </nav>
@@ -53,7 +54,6 @@
                 <div class="painel-box">
                     <div id="identificacao">
                         Professor: {{ request.user.nome }} | RA: {{ request.user.ra }}
-                        <button id="sair" ><a href="/logout">Sair</a></button>
                     </div>
                     <div>
                     {% block main %}
