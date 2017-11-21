@@ -21,7 +21,6 @@ from professor.views import *
 from core.views import *
 from professor.views import *
 from aluno.views import * 
-from aluno.views.candidato import * 
 from django.contrib.auth.views import login, logout
 
 urlpatterns = [
@@ -43,7 +42,6 @@ urlpatterns = [
     url(r'^detalheCurso/$', detalheCurso),
     url(r'^detalheNoticia/$', detalheNoticia),
     url(r'^professor/turmas/enviar-email/$', enviarEmailTurma),
-    url(r'^candidato-matricula/$', candidatoForm),
     url(r'^professor/turmas$', turmas),
     url(r'^professor/turmas/(?P<idTurma>\d+)/$', turma),
     url(r'^professor/matriculas/$', matriculas),
