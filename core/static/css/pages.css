@@ -66,6 +66,21 @@ h2{
     width: 10%;
     white-space: nowrap;
 }
+h2#title-text{
+    color: #494949; 
+    font-family: "Cutive Mono"; 
+    font-size: 30px;
+    font-weight: 600; 
+    text-align: justify;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    padding-bottom: 30px;
+    margin-bottom: 20px;
+    border-bottom: 3px solid #00C1CF;
+    width: 100%;
+    white-space: normal;
+}
+
 h2.title_page{
     color: #FFFFFF; 
     font-family: "Cutive Mono"; 

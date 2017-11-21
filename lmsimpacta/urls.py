@@ -29,7 +29,7 @@ urlpatterns = [
     url(r'^handcode/$', handcode),
     url(r'^contato/$', contato),
     url(r'^cursos/$', cursos),
-    url(r'^cursos/detalhes/$', detalheCurso),
+    url(r'^cursos/([A-Z]+)', detalheCurso),
     url(r'^cursos/banco-dados/$', bancoDados),
     url(r'^noticias/$', noticias),
     #url(r'^login/$', loginHome),
