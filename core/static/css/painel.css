@@ -111,6 +111,7 @@ div#identificacao a{
 
 div#identificacao button, 
 table.table tbody input[type="button"], 
+table.table tbody input[type="submit"], 
 table.table tbody button {
     padding: 5px 15px 5px 15px;
     margin-left: 20px;
@@ -127,6 +128,7 @@ table.table tbody button {
 
 div#identificacao button:hover, 
 table.table tbody input[type="button"]:hover, 
+table.table tbody input[type="submit"]:hover, 
 table.table tbody button:hover {
     padding: 5px 15px 5px 15px;
     margin-left: 20px;
