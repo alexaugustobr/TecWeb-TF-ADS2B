@@ -111,8 +111,8 @@ CREATE TABLE GradeCurricular (
   semestre varchar(1) NOT NULL,
   curso_id int(11) NOT NULL,
   PRIMARY KEY (id),
-  KEY GradeCurricular_curso_id_92730f1c_fk_Curso_id (curso_id),
-  CONSTRAINT GradeCurricular_curso_id_92730f1c_fk_Curso_id FOREIGN KEY (curso_id) REFERENCES Curso (id)
+  KEY FK_GRADE_CURRICULAR_CURSO_ID (curso_id),
+  CONSTRAINT FK_GRADE_CURRICULAR_CURSO_ID FOREIGN KEY (curso_id) REFERENCES Curso (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE Matricula (
@@ -120,10 +120,10 @@ CREATE TABLE Matricula (
   aluno_id int(11) NOT NULL,
   turma_id int(11) NOT NULL,
   PRIMARY KEY (id),
-  UNIQUE KEY Matricula_aluno_id_turma_id_460cd5b1_uniq (aluno_id,turma_id),
-  KEY Matricula_turma_id_262a5d60_fk_Turma_id (turma_id),
-  CONSTRAINT Matricula_aluno_id_ef0199a0_fk_Aluno_usuario_ptr_id FOREIGN KEY (aluno_id) REFERENCES Aluno (usuario_ptr_id),
-  CONSTRAINT Matricula_turma_id_262a5d60_fk_Turma_id FOREIGN KEY (turma_id) REFERENCES Turma (id)
+  UNIQUE KEY UN_TURMA_ALUNO (aluno_id,turma_id),
+  KEY FK_MATRICULA_ID (turma_id),
+  CONSTRAINT FK_MATRICULA_USUARIO_ID FOREIGN KEY (aluno_id) REFERENCES Aluno (usuario_ptr_id),
+  CONSTRAINT FK_MATRICULA_ID FOREIGN KEY (turma_id) REFERENCES Turma (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE Periodo (
