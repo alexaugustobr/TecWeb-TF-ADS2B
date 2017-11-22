@@ -17,8 +17,8 @@
 
     <h2>Questão {{questao.numero}}</h2>
     <label >{{questao.descricao}}</label>
-    <textarea style="border-radius: 3px;" name="txt" id="txt-{{questao.id}}" cols="80" rows="10"></textarea>
-    <input onclick="responderQuestao(this)" value="Responder" style="display:block; cursor:hand; padding:5px; border-radius:3px; background-color:aqua; border:0px; color:#000;"type="submit" name="button" data-questao-id="{{questao.id}}">
+    <textarea class="text_area" name="txt" id="txt-{{questao.id}}" cols="80" rows="10"></textarea>
+    <input onclick="responderQuestao(this)" value="Responder" type="submit" name="button" data-questao-id="{{questao.id}}">
 
    
     {% if anterior_id != None %}
