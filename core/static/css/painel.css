@@ -109,8 +109,9 @@ div#identificacao a{
     text-decoration: none;
 }
 
-div#identificacao button, 
-table.table tbody input[type="button"], 
+div#identificacao button,
+input[type="submit"], 
+table.table tbody input[type="button"],
 table.table tbody button {
     padding: 5px 15px 5px 15px;
     margin-left: 20px;
@@ -123,9 +124,11 @@ table.table tbody button {
     border-radius: 2px;
     float: right;
     cursor: pointer;
-}	
+}
 
-div#identificacao button:hover, 
+
+div#identificacao button:hover,
+input[type="submit"]:hover, 
 table.table tbody input[type="button"]:hover, 
 table.table tbody button:hover {
     padding: 5px 15px 5px 15px;

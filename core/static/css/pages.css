@@ -138,6 +138,9 @@ div.links {
     display: -webkit-flex;
     display: flex;
 }
+div.questao {
+    margin: 10px 0px;
+}
 
 figure.img_bt {
     position: relative;
