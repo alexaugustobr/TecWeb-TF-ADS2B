@@ -131,8 +131,8 @@ CREATE TABLE Periodo (
   numero smallint(6) NOT NULL,
   gradeCurricular_id int(11) NOT NULL,
   PRIMARY KEY (id),
-  KEY Periodo_gradeCurricular_id_e07688d0_fk_GradeCurricular_id (gradeCurricular_id),
-  CONSTRAINT Periodo_gradeCurricular_id_e07688d0_fk_GradeCurricular_id FOREIGN KEY (gradeCurricular_id) REFERENCES GradeCurricular (id)
+  KEY FK_PERIODO_GRADE_CURRICULAR (gradeCurricular_id),
+  CONSTRAINT FK_PERIODO_GRADE_CURRICULAR FOREIGN KEY (gradeCurricular_id) REFERENCES GradeCurricular (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE PeriodoDisicplina (
@@ -141,9 +141,9 @@ CREATE TABLE PeriodoDisicplina (
   disciplina_id int(11) NOT NULL,
   PRIMARY KEY (id),
   UNIQUE KEY PeriodoDisicplina_periodo_id_disciplina_id_4d696e73_uniq (periodo_id,disciplina_id),
-  KEY PeriodoDisicplina_disciplina_id_4fd67309_fk_Disciplina_id (disciplina_id),
-  CONSTRAINT PeriodoDisicplina_disciplina_id_4fd67309_fk_Disciplina_id FOREIGN KEY (disciplina_id) REFERENCES Disciplina (id),
-  CONSTRAINT PeriodoDisicplina_periodo_id_54aa0b41_fk_Periodo_id FOREIGN KEY (periodo_id) REFERENCES Periodo (id)
+  KEY FK_PERIODO_DISCIPLINA_DISICPLINA (disciplina_id),
+  CONSTRAINT FK_PERIODO_DISCIPLINA_DISICPLINA FOREIGN KEY (disciplina_id) REFERENCES Disciplina (id),
+  CONSTRAINT FK_PERIODO_DISCIPLINA_PERIODO FOREIGN KEY (periodo_id) REFERENCES Periodo (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE Professor (
@@ -152,7 +152,7 @@ CREATE TABLE Professor (
   celular varchar(11) NOT NULL,
   PRIMARY KEY (usuario_ptr_id),
   UNIQUE KEY apelido (apelido),
-  CONSTRAINT Professor_usuario_ptr_id_d7315225_fk_Usuario_id FOREIGN KEY (usuario_ptr_id) REFERENCES Usuario (id)
+  CONSTRAINT FK_PROFESSOR_USUARIO FOREIGN KEY (usuario_ptr_id) REFERENCES Usuario (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE Questao (
@@ -163,8 +163,8 @@ CREATE TABLE Questao (
   data date NOT NULL,
   turma_id int(11) NOT NULL,
   PRIMARY KEY (id),
-  KEY Questao_turma_id_2697c4b4_fk_Turma_id (turma_id),
-  CONSTRAINT Questao_turma_id_2697c4b4_fk_Turma_id FOREIGN KEY (turma_id) REFERENCES Turma (id)
+  KEY FK_QUESTAO_TURMA (turma_id),
+  CONSTRAINT FK_QUESTAO_TURMA FOREIGN KEY (turma_id) REFERENCES Turma (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE Resposta (
@@ -177,10 +177,10 @@ CREATE TABLE Resposta (
   questao_id int(11) NOT NULL,
   aluno_id int(11) NOT NULL,
   PRIMARY KEY (id),
-  KEY Resposta_questao_id_85f566c5_fk_Questao_id (questao_id),
-  KEY Resposta_aluno_id_0279393c_fk_Aluno_usuario_ptr_id (aluno_id),
-  CONSTRAINT Resposta_aluno_id_0279393c_fk_Aluno_usuario_ptr_id FOREIGN KEY (aluno_id) REFERENCES Aluno (usuario_ptr_id),
-  CONSTRAINT Resposta_questao_id_85f566c5_fk_Questao_id FOREIGN KEY (questao_id) REFERENCES Questao (id)
+  KEY FK_RESPOSTA_QUESTAO (questao_id),
+  KEY FK_RESPOSTA_ALUNO (aluno_id),
+  CONSTRAINT FK_RESPOSTA_ALUNO FOREIGN KEY (aluno_id) REFERENCES Aluno (usuario_ptr_id),
+  CONSTRAINT FK_RESPOSTA_QUESTAO FOREIGN KEY (questao_id) REFERENCES Questao (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE Turma (
@@ -190,10 +190,10 @@ CREATE TABLE Turma (
   disciplinaOfertada_id int(11) NOT NULL,
   professor_id int(11) NOT NULL,
   PRIMARY KEY (id),
-  KEY Turma_disciplinaOfertada_id_df16d165_fk_DisciplinaOfertada_id (disciplinaOfertada_id),
-  KEY Turma_professor_id_9202676b_fk_Professor_usuario_ptr_id (professor_id),
-  CONSTRAINT Turma_disciplinaOfertada_id_df16d165_fk_DisciplinaOfertada_id FOREIGN KEY (disciplinaOfertada_id) REFERENCES DisciplinaOfertada (id),
-  CONSTRAINT Turma_professor_id_9202676b_fk_Professor_usuario_ptr_id FOREIGN KEY (professor_id) REFERENCES Professor (usuario_ptr_id)
+  KEY FK_TURMA_DISCIPLINA_OFERTADA (disciplinaOfertada_id),
+  KEY FK_TURMA_PROFESSOR_USUARIO (professor_id),
+  CONSTRAINT FK_TURMA_DISCIPLINA_OFERTADA FOREIGN KEY (disciplinaOfertada_id) REFERENCES DisciplinaOfertada (id),
+  CONSTRAINT FK_TURMA_PROFESSOR_USUARIO FOREIGN KEY (professor_id) REFERENCES Professor (usuario_ptr_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE Usuario (
