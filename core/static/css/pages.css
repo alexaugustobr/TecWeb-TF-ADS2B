@@ -377,6 +377,18 @@ legend{
     font-size: 15px;
 }
 
+input.nota{
+    background-color:#ffffff;
+    border:1px solid #D2D2D2;
+	border-radius: 2px;
+    padding:3px;
+	margin: auto;
+    box-sizing:border-box;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 15px;
+    width: 50px;
+}
+
 .form-group{
     width: 100%;
     

@@ -19,7 +19,7 @@ def avaliacoes (request):
             ON MATRICULA.turma_id = TURMA.id\
             LEFT JOIN RESPOSTA \
             ON RESPOSTA.questao_id = QUESTAO.ID\
-            WHERE RESPOSTA.aluno_id != {0} AND MATRICULA.aluno_id = {0} AND DATA_LIMITE_ENTREGA >= '{1}' GROUP BY DATA".format(request.user.id,str(datetime.date.today()))
+            WHERE DATA_LIMITE_ENTREGA >= '{1}' GROUP BY DATA".format(request.user.id,str(datetime.date.today()))
 
     questoes = list(Questao.objects.raw(sql))
 
