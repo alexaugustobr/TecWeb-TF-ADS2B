@@ -6,6 +6,7 @@ from datetime import datetime
 from django.core.serializers import serialize
 from core.components.GerenciadorEmail import Email
 from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 
 from core.components.GerenciadorToken import GerenciadorToken
 from django.contrib.auth.decorators import login_required, user_passes_test
@@ -14,8 +15,18 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 @user_passes_test(lambda user: user.perfil == 'P', login_url='/login?error=acesso', redirect_field_name=None)
 def turma(request, idTurma):
     #TODO buscar turma do professor
+    turma = None
+    try:
+        turma = Turma.objects.get(id=idTurma)
+    except expression as identifier:
+        return HttpResponseRedirect("/professor/turmas")
+   
 
-    #turma = Turma.objects.get(id=idTurma)
+    if turma:
+        if turma.professor.usuario_ptr_id != request.user.id:
+             return HttpResponseRedirect("/professor/turmas")
+    else:
+        return HttpResponseRedirect("/professor/turmas")
 
     contexto = {
         'alunos': Aluno.objects.raw('SELECT * FROM ALUNO INNER JOIN MATRICULA ON aluno.usuario_ptr_id = MATRICULA.ALUNO_ID WHERE MATRICULA.TURMA_ID IS '+idTurma),
