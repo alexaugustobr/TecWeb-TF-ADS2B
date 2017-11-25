@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from core.components import *
 from core.models import *
 import datetime
@@ -9,6 +10,17 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 @user_passes_test(lambda user: user.perfil == 'P', login_url='/login?error=acesso', redirect_field_name=None)
 def exerciciosRecebidos (request, idTurma):
 
+    turma = None
+    try:
+        turma = Turma.objects.get(id=idTurma)
+    except expression as identifier:
+        return HttpResponseRedirect("/professor/exercicios/turmas")
+   
+
+    if turma:
+        if turma.professor.usuario_ptr_id != request.user.id:
+             return HttpResponseRedirect("/professor/exercicios/turmas/")
+    
 
     resposta = None
 
@@ -25,7 +37,7 @@ def exerciciosRecebidos (request, idTurma):
             ON Matricula.aluno_id = Aluno.usuario_ptr_id\
             INNER JOIN Turma\
             ON Turma.id = Matricula.turma_id\
-            WHERE RESPOSTA.nota IS NULL AND Matricula.turma_id ={}".format(idTurma)
+            WHERE RESPOSTA.nota IS NULL AND Matricula.turma_id ={} AND Turma.professor_id ={}".format(idTurma, request.user.id)
             
     
     respostas = list(Resposta.objects.raw(sql))
