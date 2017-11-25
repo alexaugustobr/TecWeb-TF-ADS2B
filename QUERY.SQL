@@ -17,3 +17,11 @@ INNER JOIN CURSO
 ON CURSO.id = CURSOTURMA.turma_id
 WHERE ANO = 2018 AND CURSO.sigla = 'ADS'
 
+select questao.* from questao 
+left join resposta
+on questao.id = resposta.questao_id
+where questao.id not in
+    (select questao_id from resposta 
+    inner join aluno 
+    on aluno.usuario_ptr_id = resposta.aluno_id 
+    where aluno.usuario_ptr_id = 5)
