@@ -37,9 +37,15 @@ def turma(request, idTurma):
 @user_passes_test(lambda user: user.perfil == 'P', login_url='/login?error=acesso', redirect_field_name=None)
 def turmas(request):
     #TODO buscar turma do professor
+    sql =   "SELECT * FROM Turma\
+            WHERE Turma.professor_id ={}".format(request.user.id)
+    
+    turmas = Turma.objects.raw(sql)
+    
     contexto = {
-        'turmas': Turma.objects.all(),
+        'turmas': turmas,
     }
+
     return render(request,"turma/turmas.html", contexto)
 
 @login_required(login_url='/login')

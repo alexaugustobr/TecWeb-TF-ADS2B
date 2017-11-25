@@ -6,7 +6,12 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 @login_required(login_url='/login')
 @user_passes_test(lambda user: user.perfil == 'P', login_url='/login?error=acesso', redirect_field_name=None)
 def questao (request):
-    turmas = Turma.objects.all()
+
+        
+    sql =   "SELECT * FROM Turma\
+            WHERE Turma.professor_id ={}".format(request.user.id)
+    
+    turmas = Turma.objects.raw(sql)
 
     form = None
     if request.POST:

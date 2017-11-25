@@ -16,9 +16,9 @@
     <label for="turma">Turma</label>
         <select name="turma_id" id="turna" class="campo">
             <option value="">-- Selecione --</option>
-            {% for turma in turmas  %}
-                <option value="{{ turma.id }}">{{ turma.turma_sigla }}</option>
-            {% endfor %}
+                {% for turma in turmas  %}
+                  <option value="{{ turma.id }}">{{  turma.disciplinaOfertada.disciplina.nome }} - Turma {{ turma.turma_sigla }}</option>
+                {% endfor %}
         </select>
     <label for="descricao">Descrição</label>
       <textarea type="text" name="descricao" id="descricao" class="campo"></textarea>
