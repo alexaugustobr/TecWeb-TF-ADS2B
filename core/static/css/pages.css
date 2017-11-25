@@ -241,7 +241,7 @@ div.full-width-color {
     background-color: #F3F3F3;
     padding-top: 60px;
     padding-bottom: 60px;
-    
+      
 }
 
 div.col_left {
@@ -258,6 +258,33 @@ div.full-width-color img {
     text-align: center;
 }
 
+.grid-curso{
+    width: 296px;
+    margin-top: 0;
+    margin-bottom: 10px;
+    display:inline-block;
+    position: relative;
+}
+
+.grid-curso ul li{
+    list-style: none;
+    margin: 0px;
+    padding: 0px 0px 15px 0px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #CCCCCC;
+}
+.grid-curso ul li > p{
+    font-family: 'Source Sans Pro', sans-serif;
+    height: 100%;
+    align-items: center;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 600;
+    color: #363636;
+    overflow-wrap: break-word;
+    padding: 0px, 20px;
+}
+
 @media screen and (max-width: 1300px) {
     section {
         width: 90%;
@@ -271,6 +298,9 @@ div.full-width-color img {
     div.full-width-color img {
         width: 550px;
         
+    }
+    .grid-curso{
+        width: 33%;
     }
 }
 
@@ -293,6 +323,9 @@ div.full-width-color img {
         -webkit-flex-flow: column;
         flex-flow: column;
     }
+    .grid-curso{
+        width: 48%;
+    }
 }
 
 @media screen and (max-width: 420px) {
@@ -300,6 +333,9 @@ div.full-width-color img {
         padding:20% 50px 50px 50px; 
     } 
     div.full-width-color img {
+        width: 100%;
+    }
+    .grid-curso{
         width: 100%;
     }
  
