@@ -10,21 +10,22 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 def exerciciosRecebidos (request, idTurma):
 
 
-    questao = None
+    resposta = None
 
     
 
-    questao_id = request.GET.get('questao_id')
+    resposta_id = request.GET.get('resposta_id')
     
 
     
-    sql =   "SELECT turma.id, TURMA.turma_sigla\
-            FROM RESPOSTA\
-            INNER JOIN QUESTAO\
-            ON QUESTAO.id = RESPOSTA.questao_id\
-            INNER JOIN turma\
-            ON QUESTAO.turma_id = turma.id\
-            WHERE RESPOSTA.nota IS NULL AND TURMA.ID ={}".format(idTurma)
+    sql =   "SELECT * FROM RESPOSTA\
+            INNER JOIN Aluno\
+            ON Aluno.usuario_ptr_id = resposta.aluno_id\
+            INNER JOIN Matricula\
+            ON Matricula.aluno_id = Aluno.usuario_ptr_id\
+            INNER JOIN Turma\
+            ON Turma.id = Matricula.turma_id\
+            WHERE RESPOSTA.nota IS NULL AND Matricula.turma_id ={}".format(idTurma)
             
     
     respostas = list(Resposta.objects.raw(sql))
