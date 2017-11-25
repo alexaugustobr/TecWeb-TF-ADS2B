@@ -61,7 +61,6 @@ def matricular (request):
             "form" : form
         }
 
-    print(contexto)
 
     #Salvar Candidato
 
@@ -109,8 +108,6 @@ def confirmarMatricula(request):
 
     return render(request,"matricula/confirmar.html", contexto)
     
-@login_required(login_url='/login')
-@user_passes_test(lambda user: user.perfil == 'A', login_url='/login?error=acesso', redirect_field_name=None)
 def enviarEmailConfirmacao(candidato):
     contexto = {
         "candidato":candidato
