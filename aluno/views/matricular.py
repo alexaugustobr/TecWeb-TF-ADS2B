@@ -4,8 +4,10 @@ from core.components import *
 from core.models import *
 from django.http import HttpResponse
 from aluno.forms.CandidatoForm import CandidatoForm
+from django.contrib.auth.decorators import login_required, user_passes_test
 
-
+@login_required(login_url='/login')
+@user_passes_test(lambda user: user.perfil == 'A', login_url='/login?error=acesso', redirect_field_name=None)
 def matricular (request):
 
     codigo = None
@@ -33,11 +35,10 @@ def matricular (request):
         form = CandidatoForm(request.POST)
         if form.is_valid():
             candidato = form.save()
-            #turma = Turma()
-            #turma.id = token.idTurma
-            #aluno = Aluno()
-            #candidato.turma = turma
-            #candidato.save()
+            turma = Turma()
+            turma.id = token.idTurma
+            candidato.turma = turma
+            candidato.save()
             enviarEmailConfirmacao(candidato)
             #TODO redirect
             contexto = {

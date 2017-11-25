@@ -62,14 +62,33 @@ h2#title{
     font-weight: 700;
 }
 
+.sub-menu {
+    display: none;
+    float:left;
+    position: absolute;
+    width: 180px;
+    left: 160px;
+    background: #dbdbdb;
+    margin: 0;
+    padding: 30px 30px 0px 30px;
+    border: 1px #b1b1b1 solid;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.40);
+}
+
+
 .side-menu a:link, .side-menu a:visited {
     color:#5e5e5e;
     text-decoration:none;
 }
+
 .side-menu a:hover, .side-menu a:active {
     color:#00C1CF;
     text-decoration:none;
 }
+li:hover ul.sub-menu{
+    display: block;
+}
+
 .painel-box div{
     padding: 20px 0px 0px 0px;
 }
@@ -83,8 +102,17 @@ div#identificacao{
     padding: 0px 0px 20px 0px;
 
 }
+div#identificacao a{
+    text-transform: uppercase;
+    color:#ffffff;
+    font-weight:bold;
+    text-decoration: none;
+}
 
-div#identificacao button, table.table tbody input[type="button"], table.table tbody button {
+div#identificacao button,
+input[type="submit"], 
+table.table tbody input[type="button"],
+table.table tbody button {
     padding: 5px 15px 5px 15px;
     margin-left: 20px;
 	color:#ffffff;
@@ -96,9 +124,13 @@ div#identificacao button, table.table tbody input[type="button"], table.table tb
     border-radius: 2px;
     float: right;
     cursor: pointer;
-}	
+}
 
-div#identificacao button:hover, table.table tbody input[type="button"]:hover, table.table tbody button:hover {
+
+div#identificacao button:hover,
+input[type="submit"]:hover, 
+table.table tbody input[type="button"]:hover, 
+table.table tbody button:hover {
     padding: 5px 15px 5px 15px;
     margin-left: 20px;
 	color:#ffffff;

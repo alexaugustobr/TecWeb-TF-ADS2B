@@ -84,12 +84,12 @@ class TesteMatricula(TestCase):
         self.assertEqual(len(alunos), 2)
 
     def test_aluno_nao_matriculados(self):
-        alunos = Aluno.objects.raw('SELECT * FROM ALUNO LEFT JOIN MATRICULA ON ALUNO.ID = MATRICULA.ALUNO_ID WHERE MATRICULA.ID IS NULL')
+        alunos = Aluno.objects.raw('SELECT * FROM ALUNO LEFT JOIN MATRICULA ON aluno.usuario_ptr_id = MATRICULA.ALUNO_ID WHERE MATRICULA.ID IS NULL')
         for aluno in alunos:
             self.assertEqual(aluno.nome, "Alex")
 
     def test_aluno_matriculados(self):
-        alunos = Aluno.objects.raw('SELECT * FROM ALUNO INNER JOIN MATRICULA ON ALUNO.ID = MATRICULA.ALUNO_ID')
+        alunos = Aluno.objects.raw('SELECT * FROM ALUNO INNER JOIN MATRICULA ON aluno.usuario_ptr_id = MATRICULA.ALUNO_ID')
         for aluno in alunos:
             self.assertEqual(aluno.nome, "Dani")
 
@@ -100,7 +100,7 @@ class TesteMatricula(TestCase):
 
     def test_token(self):
         aluno    = Aluno()
-        aluno.id = 1
+        aluno.usuario_ptr_id = 1
         turma    = Turma()
         turma.id = 1
 
@@ -114,7 +114,7 @@ class TesteMatricula(TestCase):
 
     def test_token_2(self):
         aluno    = Aluno()
-        aluno.id = 0
+        aluno.usuario_ptr_id = 0
         turma    = Turma()
         turma.id = 0
         

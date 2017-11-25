@@ -24,7 +24,7 @@
                 {% endif %}
                 
                 </li>
-                <li>  <a href="/logout">Logout</a> </li>
+                <li>  <a href="/logout"><img id = "img2" src="{% static 'img/logout1.png' %}"></a> </li>
                 {% else %}
                 <li> <a href="/login">Login</a> </li>
                 {% endif %}
@@ -44,6 +44,7 @@
           document.getElementById("menu").className = "menu2";
           document.getElementById("logo").className = "logo2";
           document.getElementById("img").src = "{% static 'img/handcodeicon2.png' %}";
+          document.getElementById("img2").src = "{% static 'img/logout.png' %}";
           
                                           
       } else {
@@ -51,6 +52,7 @@
           document.getElementById("menu").className = "menu";
           document.getElementById("logo").className = "logo";
           document.getElementById("img").src = "{% static 'img/handcodeicon1.png' %}";
+          document.getElementById("img2").src = "{% static 'img/logout1.png' %}";
 
       }
   }

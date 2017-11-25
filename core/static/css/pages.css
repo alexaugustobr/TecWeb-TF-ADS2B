@@ -11,8 +11,37 @@
     letter-spacing: 1px;
     padding-bottom: 30px;
 }
-
-
+.nova{
+    padding-left:10px;
+	padding-right:10px;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	color:#ffffff;
+	background-color:#12b42d;
+    font-size:11px;
+    text-transform: uppercase;
+	font-weight:bold;
+	border: 2px;
+    border-radius: 2px;
+    float: right;
+    cursor: pointer; 
+    
+}
+.nova:hover{
+    padding-left:10px;
+	padding-right:10px;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	color:#ffffff;
+	background-color:#0cf533;
+    font-size:11px;
+    text-transform: uppercase;
+	font-weight:bold;
+	border: 2px;
+    border-radius: 2px;
+    float: right;
+    cursor: pointer; 
+}
 section h1{
     color: #B3B3B3; 
     font-family: "Cutive Mono"; 
@@ -37,6 +66,21 @@ h2{
     width: 10%;
     white-space: nowrap;
 }
+h2#title-text{
+    color: #494949; 
+    font-family: "Cutive Mono"; 
+    font-size: 30px;
+    font-weight: 600; 
+    text-align: justify;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    padding-bottom: 30px;
+    margin-bottom: 20px;
+    border-bottom: 3px solid #00C1CF;
+    width: 100%;
+    white-space: normal;
+}
+
 h2.title_page{
     color: #FFFFFF; 
     font-family: "Cutive Mono"; 
@@ -93,6 +137,9 @@ div.links {
     text-align: center;
     display: -webkit-flex;
     display: flex;
+}
+div.questao {
+    margin: 10px 0px;
 }
 
 figure.img_bt {
@@ -328,6 +375,18 @@ legend{
     box-sizing:border-box;
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 15px;
+}
+
+input.nota{
+    background-color:#ffffff;
+    border:1px solid #D2D2D2;
+	border-radius: 2px;
+    padding:3px;
+	margin: auto;
+    box-sizing:border-box;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 15px;
+    width: 50px;
 }
 
 .form-group{

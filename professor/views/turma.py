@@ -8,17 +8,22 @@ from core.components.GerenciadorEmail import Email
 from django.http import HttpResponse
 
 from core.components.GerenciadorToken import GerenciadorToken
+from django.contrib.auth.decorators import login_required, user_passes_test
 
+@login_required(login_url='/login')
+@user_passes_test(lambda user: user.perfil == 'P', login_url='/login?error=acesso', redirect_field_name=None)
 def turma(request, idTurma):
     #TODO buscar turma do professor
 
     #turma = Turma.objects.get(id=idTurma)
 
     contexto = {
-        'alunos': Aluno.objects.raw('SELECT * FROM ALUNO INNER JOIN MATRICULA ON ALUNO.ID = MATRICULA.ALUNO_ID WHERE MATRICULA.TURMA_ID IS '+idTurma),
+        'alunos': Aluno.objects.raw('SELECT * FROM ALUNO INNER JOIN MATRICULA ON aluno.usuario_ptr_id = MATRICULA.ALUNO_ID WHERE MATRICULA.TURMA_ID IS '+idTurma),
     }
     return render(request,"turma/turma.html", contexto)
 
+@login_required(login_url='/login')
+@user_passes_test(lambda user: user.perfil == 'P', login_url='/login?error=acesso', redirect_field_name=None)
 def turmas(request):
     #TODO buscar turma do professor
     contexto = {
@@ -26,6 +31,8 @@ def turmas(request):
     }
     return render(request,"turma/turmas.html", contexto)
 
+@login_required(login_url='/login')
+@user_passes_test(lambda user: user.perfil == 'P', login_url='/login?error=acesso', redirect_field_name=None)
 def enviarEmailTurma(request):
     if request.method != 'POST':
         return HttpResponse(status=403) 
@@ -43,7 +50,7 @@ def enviarEmailTurma(request):
     disciplina = turma.disciplinaOfertada.disciplina
     professor = turma.professor
 
-    alunos = Aluno.objects.raw('SELECT * FROM ALUNO LEFT JOIN MATRICULA ON ALUNO.ID = MATRICULA.ALUNO_ID WHERE MATRICULA.ID IS NULL')
+    alunos = Aluno.objects.raw('SELECT * FROM ALUNO LEFT JOIN MATRICULA ON aluno.usuario_ptr_id = MATRICULA.ALUNO_ID WHERE MATRICULA.ID IS NULL')
     
     for aluno in alunos:
         #TODO

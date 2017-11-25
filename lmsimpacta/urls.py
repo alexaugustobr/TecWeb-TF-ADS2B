@@ -21,7 +21,6 @@ from professor.views import *
 from core.views import *
 from professor.views import *
 from aluno.views import * 
-from aluno.views.candidato import * 
 from django.contrib.auth.views import login, logout
 
 urlpatterns = [
@@ -30,7 +29,7 @@ urlpatterns = [
     url(r'^handcode/$', handcode),
     url(r'^contato/$', contato),
     url(r'^cursos/$', cursos),
-    url(r'^cursos/detalhes/$', detalheCurso),
+    url(r'^cursos/([A-Z,a-z]+)', detalheCurso),
     url(r'^cursos/banco-dados/$', bancoDados),
     url(r'^noticias/$', noticias),
     #url(r'^login/$', loginHome),
@@ -43,15 +42,21 @@ urlpatterns = [
     url(r'^detalheCurso/$', detalheCurso),
     url(r'^detalheNoticia/$', detalheNoticia),
     url(r'^professor/turmas/enviar-email/$', enviarEmailTurma),
-    url(r'^candidato-matricula/$', candidatoForm),
     url(r'^professor/turmas$', turmas),
     url(r'^professor/turmas/(?P<idTurma>\d+)/$', turma),
     url(r'^professor/matriculas/$', matriculas),
+    url(r'^avaliacoes/$', avaliacoes),
+    url(r'^avaliacoes/(?P<data>\d{4}-\d{2}-\d{2})/$', questaoAberta),
+    url(r'^aluno/avaliacoes/responder/$', questaoAbertaResponder),
     url(r'^confirmar-matricula/$', confirmarMatricula),
     url(r'^detalheNoticia2/$', detalheNoticia2),
     url(r'^professor/matriculas/confirmar/$', confirmar),
-    url(r'^professor/avaliacoes/questao/$', questao),
-    url(r'^professor/avaliacoes/questoes/$', questoes),
+    url(r'^professor/matriculas/recusar/$', recusar),
+    url(r'^professor/exercicios/cadastrar-exercicio/$', questao),
+    url(r'^professor/exercicios/$', questoes),
+    url(r'^professor/exercicios/turmas/(?P<idTurma>\d+)/recebidos', exerciciosRecebidos),
+    url(r'^professor/exercicios/avaliar/$', exerciciosRecebidosAvaliar),
+    url(r'^professor/exercicios/turmas/$', exercicios),
     url(r'^matricular/confirmar/$', confirmarMatricula),
     url(r"^login/", login, {"template_name":"login/login.html"}), 
     url(r"^logout/", logout, {'next_page': 'home'}),

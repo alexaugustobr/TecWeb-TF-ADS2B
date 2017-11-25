@@ -20,5 +20,9 @@ def cursosListar (request):
 def bancoDados (request):
     return render(request,"cursos/cursoBancoDados.html")
 
-def detalheCurso (request):
-    return render(request,"cursos/detalheCurso.html")
+def detalheCurso (request, sigla):
+    
+    contexto = {
+        "curso":Curso.objects.get(sigla=sigla)
+    }
+    return render(request,"cursos/detalheCurso.html", contexto)

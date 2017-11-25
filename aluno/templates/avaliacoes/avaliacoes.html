@@ -1,0 +1,33 @@
+{% extends "layoutAluno.html" %}
+{% load static %}
+
+{% block main %}
+<div>
+    <h2 id="title">Lista de Avaliações por data</h2>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Data da ativade</th>
+            <th>Data de limite para entrega</th>
+            <th>Disciplina</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for questao in questoes  %}
+        <tr>
+            <td><a class="link" style="font-size:12px;" href="{{ questao.data_formatada }}">{{ questao.data }}</a></td>
+            <td>{{ questao.data_limite_entrega }}</td>
+            <td>{{ questao.turma.disciplinaOfertada.disciplina.nome}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    
+</script>
+{% endblock %}

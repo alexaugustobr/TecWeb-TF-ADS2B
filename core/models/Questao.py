@@ -11,6 +11,10 @@ class Questao(models.Model):
     numero = models.IntegerField()
     data = models.DateField()
 
+    @property
+    def data_formatada(self):
+        return self.data.strftime("%Y-%m-%d")
+
     def __str__(self):
         return "{} - {}: {}".format(self.turma.turma_sigla, self.id, self.descricao)
 
