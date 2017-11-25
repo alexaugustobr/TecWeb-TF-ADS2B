@@ -21,21 +21,17 @@ def questaoAberta (request, data):
     anterior_questao_id = request.GET.get('anterior_questao_id')
 
 
-    sql =   "SELECT DISTINCT QUESTAO.* FROM QUESTAO\
+    
+    sql =   "SELECT QUESTAO.* FROM QUESTAO\
             INNER JOIN TURMA\
             ON TURMA.ID = QUESTAO.TURMA_ID\
             INNER JOIN CURSOTURMA\
             ON TURMA.ID = CURSOTURMA.turma_id\
-            INNER JOIN CURSO\
-            ON CURSO.ID = CURSOTURMA.curso_id\
-            INNER JOIN ALUNO\
-            ON ALUNO.curso_id = CURSO.ID\
             INNER JOIN MATRICULA\
             ON MATRICULA.turma_id = TURMA.id\
             LEFT JOIN RESPOSTA \
             ON RESPOSTA.questao_id = QUESTAO.ID\
-            WHERE RESPOSTA.ID IS NULL AND ALUNO.usuario_ptr_id = {0} AND DATA_LIMITE_ENTREGA >= '{1}' AND DATA = '{1}'".format(request.user.id, data)
-    
+            WHERE DATA_LIMITE_ENTREGA >= '{1}' GROUP BY DATA".format(request.user.id,str(datetime.date.today()))
     
     questoes = list(Questao.objects.raw(sql))
 

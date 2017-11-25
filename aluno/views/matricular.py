@@ -36,11 +36,10 @@ def matricular (request):
         form = CandidatoForm(request.POST)
         if form.is_valid():
             candidato = form.save()
-            #turma = Turma()
-            #turma.id = token.idTurma
-            #aluno = Aluno()
-            #candidato.turma = turma
-            #candidato.save()
+            turma = Turma()
+            turma.id = token.idTurma
+            candidato.turma = turma
+            candidato.save()
             enviarEmailConfirmacao(candidato)
             #TODO redirect
             contexto = {

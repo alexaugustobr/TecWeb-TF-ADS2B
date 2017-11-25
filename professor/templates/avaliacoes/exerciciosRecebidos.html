@@ -1,0 +1,66 @@
+{% extends "layoutprofessor.html" %}
+{% load static %}
+
+{% block css %}
+  <!--<link rel="stylesheet" href="{% static 'css/ccs-da-pagina.css' %}"> -->
+{% endblock %}
+
+{% block title %}
+	Cadastro Usuário  - {{ block.super }}
+{% endblock %}
+
+{% block main %}
+<div>
+    <div>
+        <h2 id="title">Questões Respondidas</h2>
+    </div>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Aluno</th>
+                <th>Questão</th>
+                <th>Resposta</th>
+                <th>Data de Envio</th>
+                <th>Nota</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            {% for resposta in respostas %}
+            <tr id="tr-{{resposta.id}}">
+                <td>{{ resposta.aluno.nome }}</td>
+                <td>{{ resposta.questao.descricao }}</td>
+                <td>{{ resposta.descricao }}</td>
+                <td>{{ resposta.data_de_envio }}</td>
+                <td><input class="nota" type="number" id="txt-{{resposta.id}}" name="txt"></td>
+                <td><input onclick="atribuirNota(this)" value="Avaliar" type="submit" name="button" data-resposta-id="{{resposta.id}}"></td>
+                </form>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+        function atribuirNota(botao) {
+            resposta_id = botao.getAttribute('data-resposta-id');
+            txt = document.getElementById('txt-'+resposta_id);
+            nota = txt.value;
+            
+            postAjax('/professor/exercicios/avaliar/', { resposta_id: resposta_id, 
+                                                    nota:nota,
+                                                    csrfmiddlewaretoken: '{{ csrf_token }}'}, 
+                    function(data) {
+                        txt.disabled = true
+                        botao.disabled = true
+                        botao.value = 'Avaliado'
+                        document.getElementById('tr-'+resposta_id).remove();
+                    }
+                );
+        }
+    </script>        
+{% endblock %}

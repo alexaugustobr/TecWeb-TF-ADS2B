@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block main %}
-<h2 id="title">Cadastro de Questão</h2>
+<h2 id="title">Cadastro de Exercício</h2>
 <form action="" method="POST">
     {% csrf_token %}
     <label for="turma">Turma</label>
@@ -24,7 +24,7 @@
       <textarea type="text" name="descricao" id="descricao" class="campo"></textarea>
     <label for="data_limite">Data Limite</label>
       <input type="date" name="data_limite" id="data_limite" class="campo">
-    <label for="numero">Número da Questão</label>
+    <label for="numero">Número do Exercício</label>
       <input type="number" name="numero" id="numero" class="campo">
     <label for="data">Data</label>  
       <input type="date" name="data" id="data" class="campo">

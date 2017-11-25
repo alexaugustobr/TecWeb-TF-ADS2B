@@ -32,15 +32,23 @@
                     <nav  id="side-menu" class = "side-menu">
                         <ul>
                             <li> <a href="">Consulta de Boletim</a></li>
-                            <li> <a href="">Avaliações</a></li>
+                            <li> <a href="/avaliacoes">Avaliações</a></li>
                            
                         <ul>
                     </nav>
                 </div>
                 <div class="painel-box">
                     <div id="identificacao">
-                        Aluno: Fabio | RA: 1700603
-                        <button type="button" id="sair">Sair</button>
+                        Aluno: 
+                        {% if request.user.perfil == 'A' %}
+                            {{ request.user.nome }}
+                        {% endif %}
+                        | RA:
+                        {% if request.user.perfil == 'A' %}
+                            {{ request.user.ra }}
+                        {% endif %}
+                        <button id="sair" ><a href="/logout">Sair</a></button>
+                    
                     </div>
                     <div>
                     {% block main %}

@@ -1,15 +1,16 @@
-{% extends "layoutAluno.html" %}
+{% extends "layoutProfessor.html" %}
 {% load static %}
 
 {% block main %}
 <div>
-    <h2 id="title">Lista de Avaliações por data</h2>
+    <h2 id="title">Exercícios recebidos por turma</h2>
 </div>
 
 <table class="table">
     <thead>
         <tr>
-            <th>Data da ativade</th>
+            <th>Turma</th>
+            <th>Número do Exercício</th>
             <th>Data de limite para entrega</th>
             <th>Disciplina</th>
         </tr>
@@ -17,7 +18,8 @@
     <tbody>
         {% for questao in questoes  %}
         <tr>
-            <td><a class="link" style="font-size:12px;" href="{{ questao.data_formatada }}">{{ questao.data }}</a></td>
+            <td><a class="link" style="font-size:12px;" href="/professor/exercicios/turmas/{{ questao.turma.id }}/recebidos/">{{ questao.turma.turma_sigla }}</a></td>
+            <td>{{ questao.numero }}</td>
             <td>{{ questao.data_limite_entrega }}</td>
             <td>{{ questao.turma.disciplinaOfertada.disciplina.nome}}</td>
         </tr>
