@@ -59,7 +59,7 @@ def confirmar(request):
     if alunos:
         q = len(alunos)
         if len(alunos) > 30:
-            mensagem = "Aluno matricula na turma, total de alunos {}, atenção esta turma esta com a capacidade de alunos acima da capacidade recomendável de 30 alunos.".format(q)
+            mensagem = "Aluno matricula na turma, total de alunos {}, atencao esta turma esta com a capacidade de alunos acima da capacidade recomendavel de 30 alunos.".format(q)
         else:
             mensagem = "Aluno matricula na turma, total de alunos {}".format(q)
             
