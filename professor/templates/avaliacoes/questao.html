@@ -13,21 +13,25 @@
 <h2 id="title">Cadastro de Exercício</h2>
 <form action="" method="POST">
     {% csrf_token %}
+    <label for="curso">Curso</label>
+    <select name="curso" id="curso" class="campo" onchange="mudarCurso(this)">
+      <option value="">-- Selecione --</option>
+      {% for curso in cursos  %}
+        <option value="{{ curso.id }}">{{  curso.nome }}</option>
+      {% endfor %}
+    </select>
     <label for="turma">Turma</label>
-        <select name="turma_id" id="turna" class="campo">
-            <option value="">-- Selecione --</option>
-            {% for turma in turmas  %}
-                <option value="{{ turma.id }}">{{ turma.turma_sigla }}</option>
-            {% endfor %}
-        </select>
+    <select name="turma_id" id="turma" class="campo">
+      <option value="">-- Selecione --</option>
+    </select>
     <label for="descricao">Descrição</label>
-      <textarea type="text" name="descricao" id="descricao" class="campo"></textarea>
+    <textarea type="text" name="descricao" id="descricao" class="campo"></textarea>
     <label for="data_limite">Data Limite</label>
-      <input type="date" name="data_limite" id="data_limite" class="campo">
+    <input type="date" name="data_limite" id="data_limite" class="campo">
     <label for="numero">Número do Exercício</label>
-      <input type="number" name="numero" id="numero" class="campo">
+    <input type="number" name="numero" id="numero" class="campo">
     <label for="data">Data</label>  
-      <input type="date" name="data" id="data" class="campo">
+    <input type="date" name="data" id="data" class="campo">
     <button type="submit">Cadastrar</button>
 </form> 
 
@@ -37,6 +41,47 @@
 
 {% block scripts %}
   <script>
+
+   
+    function removerTodasTurmas(selectTurma) {
+      while (selectTurma.firstChild) {
+        selectTurma.removeChild(selectTurma.firstChild);
+      }
+    }
+
+    function criarOptionTurma (turma) {
+      var option = document.createElement('option');
+      option.value = turma.id;
+      option.text = turma.turma_sigla;
+      return option;
+    }
+
+    function popularSelectTurma(selectTurma, turmas) {
+      removerTodasTurmas(selectTurma);
+
+      var option = document.createElement('option');
+      option.value = '';
+      option.text = '-- Selecione --';
+      selectTurma.appendChild(option);
+
+      turmas.forEach( function(turma) {
+        var option = criarOptionTurma(turma);
+        selectTurma.appendChild(option);
+      });
+    }
+
+    function buscarTurmas(cursoSelect, selectTurma) {
+      getAjax('/api/professor/turmas?cursoId='+cursoSelect.value, function(data) { 
+        var json = JSON.parse(data);
+        popularSelectTurma(selectTurma, json.turmas);
+      });
+    }
+
+    function mudarCurso(cursoSelect) {
+      selectTurma = document.getElementById('turma');
+      buscarTurmas(cursoSelect, selectTurma);
+    }
+
     
   </script>
 {% endblock %}

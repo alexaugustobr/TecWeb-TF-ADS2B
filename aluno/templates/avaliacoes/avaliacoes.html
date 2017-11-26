@@ -17,7 +17,7 @@
     <tbody>
         {% for questao in questoes  %}
         <tr>
-            <td><a class="link" style="font-size:12px;" href="{{ questao.data_formatada }}">{{ questao.data }}</a></td>
+            <td><a class="link" href="{{ questao.data_formatada }}">{{ questao.data }}</a></td>
             <td>{{ questao.data_limite_entrega }}</td>
             <td>{{ questao.turma.disciplinaOfertada.disciplina.nome}}</td>
         </tr>

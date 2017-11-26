@@ -4,10 +4,13 @@ from django.template import RequestContext
 from core.models import *
 from datetime import datetime
 from django.core.serializers import serialize
+from django.core import serializers
 from core.components.GerenciadorEmail import Email
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
+from django.http import JsonResponse
 
+import json
 from core.components.GerenciadorToken import GerenciadorToken
 from django.contrib.auth.decorators import login_required, user_passes_test
 
@@ -37,9 +40,15 @@ def turma(request, idTurma):
 @user_passes_test(lambda user: user.perfil == 'P', login_url='/login?error=acesso', redirect_field_name=None)
 def turmas(request):
     #TODO buscar turma do professor
+    sql =   "SELECT * FROM Turma\
+            WHERE Turma.professor_id ={}".format(request.user.id)
+    
+    turmas = Turma.objects.raw(sql)
+    
     contexto = {
-        'turmas': Turma.objects.all(),
+        'turmas': turmas,
     }
+
     return render(request,"turma/turmas.html", contexto)
 
 @login_required(login_url='/login')
@@ -61,11 +70,17 @@ def enviarEmailTurma(request):
     disciplina = turma.disciplinaOfertada.disciplina
     professor = turma.professor
 
-    alunos = Aluno.objects.raw('SELECT * FROM ALUNO LEFT JOIN MATRICULA ON aluno.usuario_ptr_id = MATRICULA.ALUNO_ID WHERE MATRICULA.ID IS NULL')
-    
+    alunos = Aluno.objects.raw('SELECT ALUNO.* FROM ALUNO \
+                                LEFT JOIN MATRICULA \
+                                ON aluno.usuario_ptr_id = MATRICULA.ALUNO_ID \
+                                LEFT JOIN TURMA \
+                                ON turma.id = MATRICULA.turma_id \
+                                LEFT JOIN DisciplinaOfertada \
+                                ON DisciplinaOfertada.id = TURMA.disciplinaOfertada_id \
+                                WHERE disciplinaOfertada_id NOT IN (SELECT disciplinaOfertada_id FROM TURMA WHERE TURMA.ID = {}) OR disciplinaOfertada_id IS NULL'.format(turma_id))
+                                    
     for aluno in alunos:
-        #TODO
-        #gerar token
+        print(aluno.usuario_ptr_id)
         gt = GerenciadorToken()
          
         token = gt.gerar(aluno,turma)
@@ -76,6 +91,7 @@ def enviarEmailTurma(request):
             "codigo_acesso":token.__str__(),
             "turma":turma
         }
+        print(token.__str__())
         email = Email("contato@handcode.com", "Faculdade Handcode - matricula de {} turma {}".format(disciplina.nome,turma.turma_sigla))
         email.html("emails/solicitacaoMatricula.html", contexto)
         email.enviar(aluno.email)
@@ -85,3 +101,21 @@ def enviarEmailTurma(request):
     }
     
     return HttpResponse(status=200)
+
+
+
+@login_required(login_url='/login')
+@user_passes_test(lambda user: user.perfil == 'P', login_url='/login?error=acesso', redirect_field_name=None)
+def APIturmas(request):
+
+    curso_id = request.GET.get('cursoId')
+
+    print(curso_id)
+
+    professor_id = request.user.id
+
+    turmas = list(Turma.objects.filter().values())
+
+
+
+    return JsonResponse({'turmas': turmas})

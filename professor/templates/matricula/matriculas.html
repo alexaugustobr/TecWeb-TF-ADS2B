@@ -29,12 +29,12 @@
                 <input  onclick="aceitarCandidato(this)" 
                         data-turma-id="{{candidato.turma.id}}" 
                         data-candidato-id="{{candidato.id}}" 
-                        type="button" value="Aceitar candidato">
+                        type="button" value="Aceitar">
                         
                 <input  onclick="removerCandidato(this)" 
                         data-turma-id="{{candidato.turma.id}}" 
                         data-candidato-id="{{candidato.id}}" 
-                        type="button" value="Remover candidato">
+                        type="button" value="Remover">
             </td>
         </tr>
         {% endfor %}
@@ -55,7 +55,9 @@
         botao.disabled = false;
         postAjax('/professor/matriculas/confirmar/', array, 
                 function(data) {
-                    alert("Aceito");
+                    botao.closest('tr').remove();
+                    var json = JSON.parse(data);
+                    alert(json.mensagem);
                 }
             );
     }
@@ -69,7 +71,9 @@
         botao.disabled = false;
         postAjax('/professor/matriculas/recusar/', array, 
                 function(data) {
-                    alert("Recusado");
+                    botao.closest('tr').remove();
+                    var json = JSON.parse(data);
+                    alert(json.mensagem);
                 }
             );
 
