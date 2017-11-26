@@ -18,7 +18,9 @@ def exercicios (request):
             ON questao.id == resposta.questao_id\
             INNER JOIN Turma\
             On questao.turma_id = Turma.id\
-            WHERE RESPOSTA.nota IS NULL AND Turma.professor_id ={}".format(request.user.id)
+            WHERE RESPOSTA.nota IS NULL AND Turma.professor_id ={}\
+            GROUP BY questao.data_limite_entrega".format(request.user.id)\
+            
     
     questoes = Questao.objects.raw(sql)
 
