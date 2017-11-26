@@ -9,7 +9,6 @@ from core.components.GerenciadorEmail import Email
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.http import JsonResponse
-from django.forms.models import model_to_dict
 
 import json
 from core.components.GerenciadorToken import GerenciadorToken
@@ -71,14 +70,14 @@ def enviarEmailTurma(request):
     disciplina = turma.disciplinaOfertada.disciplina
     professor = turma.professor
 
-    alunos = Aluno.objects.raw('SELECT * FROM ALUNO \
+    alunos = Aluno.objects.raw('SELECT ALUNO.* FROM ALUNO \
                                 LEFT JOIN MATRICULA \
                                 ON aluno.usuario_ptr_id = MATRICULA.ALUNO_ID \
                                 LEFT JOIN TURMA \
                                 ON turma.id = MATRICULA.turma_id \
                                 LEFT JOIN DisciplinaOfertada \
                                 ON DisciplinaOfertada.id = TURMA.disciplinaOfertada_id \
-                                WHERE disciplinaOfertada_id NOT IN (SELECT disciplinaOfertada_id FROM TURMA WHERE TURMA.ID = {}) OR disciplinaOfertada_id IS NULL').format(turma_id)
+                                WHERE disciplinaOfertada_id NOT IN (SELECT disciplinaOfertada_id FROM TURMA WHERE TURMA.ID = {}) OR disciplinaOfertada_id IS NULL'.format(turma_id))
                                     
     for aluno in alunos:
         print(aluno.usuario_ptr_id)

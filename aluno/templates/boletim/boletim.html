@@ -11,7 +11,28 @@
 
 {% block main %}
 <div>
-    <!-- conteudo -->
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Data de envio</th>
+                <th>Data de Correção</th>
+                <th>Disciplina</th>
+                <th>Nota</th>
+                <th>Correção</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for resposta in respostas  %}
+            <tr>
+                <td>{{ resposta.data_de_envio }}</td>
+                <td>{{ resposta.data_avaliacao }}</td>
+                <td>{{ resposta.questao.turma.disciplinaOfertada.disciplina.nome }}</td>
+                <td>{{ resposta.nota }}</td>
+                <td>{{ resposta.avaliacao }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </div>
 {% endblock %}
 

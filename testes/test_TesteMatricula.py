@@ -11,15 +11,18 @@ class TesteMatricula(TestCase):
 
         aluno       = Aluno()
         aluno.curso = curso
+        aluno.email = 'alex2@alex.com'
         aluno.nome  = "Alex"
         aluno.ra    = 12356
         aluno.save()
 
         aluno2        = Aluno()
         aluno2.curso  = curso
+        aluno2.email = 'Dani2@Dani.com'
         aluno2.nome   = "Dani"
         aluno2.ra     = 1355546
         aluno2.save()
+
 
         curso = Curso()
 
@@ -72,14 +75,21 @@ class TesteMatricula(TestCase):
         t.cursos.add(curso)
         t.save()
 
+        t                    = Turma()
+        t.sigla_turma        = "B"
+        t.turno              = "Manha"
+        t.professor          = p
+        t.disciplinaOfertada = do
+        t.save()
+        t.cursos.add(curso)
+        t.save()
+
         aluno2.turmas.add(t)
         aluno2.save()
 
     def test_aluno_cadastrado(self):
         aluno = Aluno.objects.get(nome="Alex")
-        #cat = Animal.objects.get(name="cat")
         self.assertEqual(aluno.nome, "Alex")
-        #self.assertEqual(cat.speak(), 'The cat says "meow"')
         alunos = Aluno.objects.all()
         self.assertEqual(len(alunos), 2)
 
@@ -110,8 +120,7 @@ class TesteMatricula(TestCase):
         segundos = token.segundos
 
         self.assertEqual(g.autenticar(token),True)
-        #self.assertEqual(token.__str__(),"{}.{}.{}".format(1,1,segundos))
-
+        
     def test_token_2(self):
         aluno    = Aluno()
         aluno.usuario_ptr_id = 0
@@ -124,7 +133,7 @@ class TesteMatricula(TestCase):
         segundos = token.segundos
 
         self.assertEqual(g.autenticar(token),False)
-        #self.assertEqual(token.__str__(),"{}.{}.{}".format(1,1,segundos))
+        
     def test_token_3(self):
         
         g     = GerenciadorToken()
@@ -138,3 +147,17 @@ class TesteMatricula(TestCase):
         token = g.traduzir("0.0.324343")
 
         self.assertEqual(g.autenticar(token),False)
+
+
+
+    def test_matricula_mesma_disciplina(self):
+        alunos = Aluno.objects.raw('SELECT ALUNO.* FROM ALUNO \
+                                LEFT JOIN MATRICULA \
+                                ON aluno.usuario_ptr_id = MATRICULA.ALUNO_ID \
+                                LEFT JOIN TURMA \
+                                ON turma.id = MATRICULA.turma_id \
+                                LEFT JOIN DisciplinaOfertada \
+                                ON DisciplinaOfertada.id = TURMA.disciplinaOfertada_id \
+                                WHERE disciplinaOfertada_id NOT IN (SELECT disciplinaOfertada_id FROM TURMA WHERE TURMA.ID = {}) OR disciplinaOfertada_id IS NULL'.format(1))
+        for aluno in alunos:
+            self.assertEqual(aluno.nome,'Alex')
