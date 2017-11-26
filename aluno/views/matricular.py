@@ -10,6 +10,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 @user_passes_test(lambda user: user.perfil == 'A', login_url='/login?error=acesso', redirect_field_name=None)
 def matricular (request):
 
+
     codigo = None
 
     contexto = None
@@ -28,7 +29,7 @@ def matricular (request):
 
     if not g.autenticar(token):
         return render(request,"matricula/formMatricula.html")
-
+    
     #buscar form do request 
 
     if request.POST:
@@ -51,22 +52,22 @@ def matricular (request):
             }
     else:
         turma = Turma.objects.get(id=token.idTurma)
-        print(turma)
+        aluno = Aluno.objects.get(id=token.idAluno)
         form = CandidatoForm()
         contexto = {
             "codigo_acesso":token.__str__(),
-            "idTurma":token.idTurma,
-            "idAluno":token.idAluno,
+            "aluno": aluno,
             "turma": turma,
             "form" : form
         }
 
-    
 
     #Salvar Candidato
 
     return render(request,"matricula/formMatricula.html", contexto)
 
+@login_required(login_url='/login')
+@user_passes_test(lambda user: user.perfil == 'A', login_url='/login?error=acesso', redirect_field_name=None)
 def confirmarMatricula(request):
 
     codigo = request.GET.get('token')
@@ -107,7 +108,6 @@ def confirmarMatricula(request):
 
     return render(request,"matricula/confirmar.html", contexto)
     
-
 def enviarEmailConfirmacao(candidato):
     contexto = {
         "candidato":candidato

@@ -1,0 +1,55 @@
+{% extends "layoutprofessor.html" %}
+{% load static %}
+
+{% block css %}
+  <!--<link rel="stylesheet" href="{% static 'css/ccs-da-pagina.css' %}"> -->
+{% endblock %}
+
+{% block title %}
+	Cadastro Usuário  - {{ block.super }}
+{% endblock %}
+
+{% block main %}
+<div>
+    <div>
+        <h2 id="title">Exercícios Pendentes</h2>
+    </div>
+    <label for "turma">Turma:</label>
+    <select class="campo" id="turma" onChange="window.location.href=this.value"><!--window.location.href=this.value-->
+        <option value="">--Selecione--</option>
+        {% for turma in turmas %}
+        <option value="/professor/exercicios/turmas/{{ turma.turma_id }}/pendentes">
+            {{ turma.curso }}-{{ turma.turma}}-{{ turma.disciplina }}
+        </option>
+        {% endfor %}
+    </select>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Aluno</th>
+                <th>Turma</th>
+                <th>Disciplina</th>
+                <th>Exercício</th>
+                <th>Data de Limite</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            {% for usuario in usuarios %}
+            <tr>
+                <td>{{ usuario.nome }}</td>
+                <td>{{ usuario.curso }}-{{ usuario.turma}}</td>
+                <td>{{ usuario.disciplina }}</td>
+                <td>{{ usuario.exercicio }}</td>
+                <td>{{ usuario.data_limite }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+{% block scripts %}
+      
+{% endblock %}

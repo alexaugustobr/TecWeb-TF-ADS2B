@@ -9,24 +9,20 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 @user_passes_test(lambda user: user.perfil == 'P', login_url='/login?error=acesso', redirect_field_name=None)
 def exercicios (request):
 
-
     questao = None
-
-    
-
     questao_id = request.GET.get('questao_id')
-    
-
     
     sql =   "SELECT distinct questao.id, turma_id, questao.data_limite_entrega\
             FROM Questao\
             INNER JOIN Resposta\
             ON questao.id == resposta.questao_id\
-            WHERE RESPOSTA.nota IS NULL"
-    
+            INNER JOIN Turma\
+            On questao.turma_id = Turma.id\
+            WHERE RESPOSTA.nota IS NULL AND Turma.professor_id ={}\
+            GROUP BY questao.data_limite_entrega".format(request.user.id)\
+            
     
     questoes = Questao.objects.raw(sql)
-
 
     contexto = {"questoes" : questoes}
 

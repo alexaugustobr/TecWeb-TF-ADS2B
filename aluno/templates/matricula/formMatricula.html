@@ -24,16 +24,16 @@
       <p class="text" style="padding-bottom:6px">Turma {{turma.turma_sigla}} disciplina de {{turma.disciplinaOfertada.disciplina.nome}}</p> 
       {% endif %}
 
-      <input type="hidden" name="turma" id="turma" class="campo" value="{{idTurma}}">
-      <input type="hidden" name="aluno" id="aluno" class="campo" value="{{idAluno}}">
+      <input type="hidden" name="turma" id="turma" class="campo" value="{{turma.id}}">
+      <input type="hidden" name="aluno" id="aluno" class="campo" value="{{aluno.usario_ptr_id}}">
       <label for="nome">Nome Completo</label>
-      <input type="text" name="nome" id="nome" class="campo">
+      <input type="text" name="nome" id="nome" class="campo" value="{{aluno.nome}}">
       <label for="ra">RA</label>
-      <input type="text" name="ra" id="ra" class="campo">
+      <input type="text" name="ra" id="ra" class="campo" value="{{aluno.ra}}">
       <label for="email">Email</label>
-      <input type="text" name="email" id="email" class="campo" placeholder="exemplo@exemplo.com">
+      <input type="text" name="email" id="email" class="campo" placeholder="exemplo@exemplo.com" value="{{aluno.email}}">
       <label for="celular">Celular</label>
-      <input type="text" name="celular" id="celular" class="campo">
+      <input type="text" name="celular" id="celular" class="campo" value="">
       <label for="codigo_acesso">Codigo de acesso</label>
       <input type="text" name="codigo_acesso" id="codigo_acesso" class="campo" value="{{codigo_acesso}}">
       <label for="foto">Foto</label>  

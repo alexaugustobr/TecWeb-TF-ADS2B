@@ -12,6 +12,7 @@
         <tr>
             <th>Número</th>
             <th>Questão</th>
+            <th>Data Limite</th>
             <th><input class = "nova" type="button" onclick="window.location.href='cadastrar-exercicio';"  value="Novo Exercício +"></th>
             
         </tr>
@@ -20,13 +21,11 @@
         
         {% for questao in questoes  %}
         <tr>
-            <td><a href="turmas/{{ questao.numero }}">{{ questao.numero }}</a></td>
+            <td>{{ questao.numero }}</td>
             <td>{{ questao.descricao }}</td>
-            
-            <td>
-                <input  onclick="" data-turma-id="{{questao.id}}" type="button" value="Detalhes">
-                
-            </td>
+            <td>{{ questao.data_limite_entrega}}</td>
+            <td><input  onclick="" data-turma-id="{{questao.id}}" type="button" value="Excluir"></td>
+            <!--<td><input  onclick="" data-turma-id="{{questao.id}}" type="button" value="Detalhes"></td>-->
         </tr>
         {% endfor %}
     </tbody>
