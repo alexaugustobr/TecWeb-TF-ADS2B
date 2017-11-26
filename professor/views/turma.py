@@ -77,7 +77,7 @@ def enviarEmailTurma(request):
                                 ON turma.id = MATRICULA.turma_id \
                                 LEFT JOIN DisciplinaOfertada \
                                 ON DisciplinaOfertada.id = TURMA.disciplinaOfertada_id \
-                                WHERE disciplinaOfertada_id NOT IN (SELECT disciplinaOfertada_id FROM TURMA WHERE TURMA.ID = {}) OR disciplinaOfertada_id IS NULL').format(turma_id)
+                                WHERE disciplinaOfertada_id NOT IN (SELECT disciplinaOfertada_id FROM TURMA WHERE TURMA.ID = {}) OR disciplinaOfertada_id IS NULL'.format(turma_id))
                                     
     for aluno in alunos:
         print(aluno.usuario_ptr_id)

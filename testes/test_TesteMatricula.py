@@ -23,12 +23,6 @@ class TesteMatricula(TestCase):
         aluno2.ra     = 1355546
         aluno2.save()
 
-        aluno3        = Aluno()
-        aluno3.curso  = curso
-        aluno3.email = 'cicinth2@cicinth.com'
-        aluno3.nome   = "cicinth"
-        aluno3.ra     = 4334
-        aluno3.save()
 
         curso = Curso()
 
@@ -97,7 +91,7 @@ class TesteMatricula(TestCase):
         aluno = Aluno.objects.get(nome="Alex")
         self.assertEqual(aluno.nome, "Alex")
         alunos = Aluno.objects.all()
-        self.assertEqual(len(alunos), 3)
+        self.assertEqual(len(alunos), 2)
 
     def test_aluno_nao_matriculados(self):
         alunos = Aluno.objects.raw('SELECT * FROM ALUNO LEFT JOIN MATRICULA ON aluno.usuario_ptr_id = MATRICULA.ALUNO_ID WHERE MATRICULA.ID IS NULL')
@@ -157,13 +151,13 @@ class TesteMatricula(TestCase):
 
 
     def test_matricula_mesma_disciplina(self):
-        alunos = list(Aluno.objects.raw('SELECT ALUNO.* FROM ALUNO \
-                                        LEFT JOIN MATRICULA \
-                                        ON aluno.usuario_ptr_id = MATRICULA.ALUNO_ID \
-                                        LEFT JOIN TURMA \
-                                        ON turma.id = MATRICULA.turma_id \
-                                        LEFT JOIN DisciplinaOfertada \
-                                        ON DisciplinaOfertada.id = TURMA.disciplinaOfertada_id \
-                                        WHERE TURMA.id IS NULL AND disciplinaOfertada_id NOT IN (SELECT disciplinaOfertada_id FROM TURMA WHERE TURMA.ID = {}) OR disciplinaOfertada_id IS NULL'.format(1)).values())
+        alunos = Aluno.objects.raw('SELECT ALUNO.* FROM ALUNO \
+                                LEFT JOIN MATRICULA \
+                                ON aluno.usuario_ptr_id = MATRICULA.ALUNO_ID \
+                                LEFT JOIN TURMA \
+                                ON turma.id = MATRICULA.turma_id \
+                                LEFT JOIN DisciplinaOfertada \
+                                ON DisciplinaOfertada.id = TURMA.disciplinaOfertada_id \
+                                WHERE disciplinaOfertada_id NOT IN (SELECT disciplinaOfertada_id FROM TURMA WHERE TURMA.ID = {}) OR disciplinaOfertada_id IS NULL'.format(1))
         for aluno in alunos:
-            self.assertEqual(aluno.nome,'cicinth')
+            self.assertEqual(aluno.nome,'Alex')
