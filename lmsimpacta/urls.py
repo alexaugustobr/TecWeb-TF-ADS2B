@@ -43,6 +43,7 @@ urlpatterns = [
     url(r'^detalheNoticia/$', detalheNoticia),
     url(r'^professor/turmas/enviar-email/$', enviarEmailTurma),
     url(r'^professor/turmas$', turmas),
+    url(r'^api/professor/turmas$', APIturmas),
     url(r'^professor/turmas/(?P<idTurma>\d+)/$', turma),
     url(r'^professor/matriculas/$', matriculas),
     url(r'^avaliacoes/$', avaliacoes),

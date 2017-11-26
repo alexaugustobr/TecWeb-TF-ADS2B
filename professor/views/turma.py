@@ -4,10 +4,14 @@ from django.template import RequestContext
 from core.models import *
 from datetime import datetime
 from django.core.serializers import serialize
+from django.core import serializers
 from core.components.GerenciadorEmail import Email
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
+from django.http import JsonResponse
+from django.forms.models import model_to_dict
 
+import json
 from core.components.GerenciadorToken import GerenciadorToken
 from django.contrib.auth.decorators import login_required, user_passes_test
 
@@ -98,3 +102,10 @@ def enviarEmailTurma(request):
     }
     
     return HttpResponse(status=200)
+
+
+
+@login_required(login_url='/login')
+@user_passes_test(lambda user: user.perfil == 'P', login_url='/login?error=acesso', redirect_field_name=None)
+def APIturmas(request):
+       return JsonResponse({'turmas': list(Turma.objects.filter(professor_id=request.user.id).values())})
