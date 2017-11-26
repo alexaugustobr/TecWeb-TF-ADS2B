@@ -4,6 +4,9 @@ from django.template import RequestContext
 from core.models import *
 from datetime import datetime
 from django.core.serializers import serialize
+from django.http import JsonResponse
+
+import json
 from core.components.GerenciadorEmail import Email
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required, user_passes_test
@@ -14,7 +17,7 @@ def matriculas(request):
     sql =   "SELECT Candidado.* FROM Candidado\
             INNER JOIN TURMA\
             ON Candidado.turma_id = Turma.id\
-            WHERE Turma.professor_id ={}".format(request.user.id)
+            WHERE Turma.professor_id = {} ".format(request.user.id)
     
     candidatos = Candidato.objects.raw(sql);
 
@@ -32,10 +35,7 @@ def confirmar(request):
     
     turmaId = request.POST.get('turmaId')
     candidatoId = request.POST.get('candidatoId')
-
-    print(turmaId)
-    print(candidatoId)
-
+    
     candidato = Candidato.objects.get(id=candidatoId)
 
     turma = Turma.objects.get(id=turmaId)
@@ -45,12 +45,25 @@ def confirmar(request):
     aluno.turmas.add(turma)
 
     aluno.save()
-
-    candidato.matricula_aceita = True
     
-    candidato.save()
+    candidato.delete()
     
-    return HttpResponse(status=200)
+    alunos = list(Aluno.objects.raw('SELECT ALUNO.* FROM ALUNO \
+                                    INNER JOIN TURMA \
+                                    ON TURMA.ID = MATRICULA.turma_id\
+                                    INNER JOIN MATRICULA \
+                                    ON MATRICULA.aluno_id = ALUNO.usuario_ptr_id\
+                                    WHERE TURMA.ID = {}'.format(turmaId)))
+    q = 0
+    mensagem = ''
+    if alunos:
+        q = len(alunos)
+        if len(alunos) > 30:
+            mensagem = "Aluno matricula na turma, total de alunos {}, atenção esta turma esta com a capacidade de alunos acima da capacidade recomendável de 30 alunos.".format(q)
+        else:
+            mensagem = "Aluno matricula na turma, total de alunos {}".format(q)
+            
+    return JsonResponse({'mensagem': mensagem})
 
 def recusar(request):
     if request.method != 'POST':
@@ -59,5 +72,5 @@ def recusar(request):
     candidatoId = request.POST.get('candidatoId')
     candidato = Candidato.objects.get(id=candidatoId)
     candidato.delete()
-    return HttpResponse(status=200)
+    return JsonResponse({'mensagem': 'Candidatura removida.'})
         

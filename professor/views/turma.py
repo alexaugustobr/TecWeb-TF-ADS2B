@@ -9,7 +9,6 @@ from core.components.GerenciadorEmail import Email
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.http import JsonResponse
-from django.forms.models import model_to_dict
 
 import json
 from core.components.GerenciadorToken import GerenciadorToken
