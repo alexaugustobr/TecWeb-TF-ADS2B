@@ -12,21 +12,14 @@
             <th>RA</th>
             <th>Nome</th>
             <th>Email</th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
         {% for aluno in alunos  %}
         <tr>
-            <td><a href="/professor/alunos/{{ aluno.ra }}">{{ aluno.ra }}</a></td>
+            <td>{{ aluno.ra }}</td>
             <td>{{ aluno.nome }}</td>
             <td>{{ aluno.email }}</td>
-            <td>
-                <input  onclick="removerAluno(this)" 
-                        data-turma-id="{{turma.id}}" 
-                        data-aluno-id="{{aluno.usuario_ptr_id}}" 
-                        type="button" value="Remover aluno">
-            </td>
         </tr>
         {% endfor %}
     </tbody>
