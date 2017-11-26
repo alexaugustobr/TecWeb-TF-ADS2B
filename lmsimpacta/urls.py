@@ -46,6 +46,7 @@ urlpatterns = [
     url(r'^professor/turmas/(?P<idTurma>\d+)/$', turma),
     url(r'^professor/matriculas/$', matriculas),
     url(r'^avaliacoes/$', avaliacoes),
+    url(r'^avaliacoes/$', boletim),
     url(r'^avaliacoes/(?P<data>\d{4}-\d{2}-\d{2})/$', questaoAberta),
     url(r'^aluno/avaliacoes/responder/$', questaoAbertaResponder),
     url(r'^confirmar-matricula/$', confirmarMatricula),
