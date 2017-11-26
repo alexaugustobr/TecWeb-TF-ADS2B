@@ -65,6 +65,8 @@ def confirmar(request):
             
     return JsonResponse({'mensagem': mensagem})
 
+@login_required(login_url='/login')
+@user_passes_test(lambda user: user.perfil == 'P', login_url='/login?error=acesso', redirect_field_name=None)
 def recusar(request):
     if request.method != 'POST':
         return HttpResponse(status=403) 
