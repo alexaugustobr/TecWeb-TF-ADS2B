@@ -1,0 +1,40 @@
+{% extends "layoutprofessor.html" %}
+{% load static %}
+
+{% block css %}
+  <!--<link rel="stylesheet" href="{% static 'css/ccs-da-pagina.css' %}"> -->
+{% endblock %}
+
+{% block title %}
+	Cadastro Usuário  - {{ block.super }}
+{% endblock %}
+
+{% block main %}
+<div>
+    <div>
+        <h2 id="title">Turmas com Pendências</h2>
+    </div>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Turmas</th>
+                <th>Disciplina</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            {% for usuario in usuarios %}
+            <tr>
+                <td><a class="link" href="/professor/exercicios/turmas/{{ usuario.turma_id }}/pendentes">{{ usuario.curso }}-{{ usuario.turma}}</a></td>
+                <td>{{ usuario.disciplina }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+{% block scripts %}
+      
+{% endblock %}
