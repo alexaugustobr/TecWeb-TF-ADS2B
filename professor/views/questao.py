@@ -8,10 +8,14 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 def questao (request):
 
         
-    sql =   "SELECT * FROM Turma\
+    sql =   "SELECT * FROM Curso\
+            INNER JOIN CursoTurma\
+            ON CursoTurma.curso_id = Curso.id\
+            INNER JOIN TURMA\
+            ON CursoTurma.turma_id = Turma.id\
             WHERE Turma.professor_id ={}".format(request.user.id)
     
-    turmas = Turma.objects.raw(sql)
+    cursos = Curso.objects.raw(sql);
 
     form = None
     if request.POST:
@@ -35,7 +39,8 @@ def questao (request):
         form = QuestaoForm()
 
     contexto = {
-        "turmas":turmas,
+
+        "cursos":cursos,
         "form" : form
     }
 

@@ -48,7 +48,7 @@ urlpatterns = [
     url(r'^professor/matriculas/$', matriculas),
     url(r'^aluno/avaliacoes/$', avaliacoes),
     url(r'^aluno/boletim/$', boletim),
-    url(r'^avaliacoes/(?P<data>\d{4}-\d{2}-\d{2})/$', questaoAberta),
+    url(r'^aluno/avaliacoes/(?P<data>\d{4}-\d{2}-\d{2})/$', questaoAberta),
     url(r'^aluno/avaliacoes/responder/$', questaoAbertaResponder),
     url(r'^confirmar-matricula/$', confirmarMatricula),
     url(r'^detalheNoticia2/$', detalheNoticia2),

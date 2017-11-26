@@ -108,4 +108,15 @@ def enviarEmailTurma(request):
 @login_required(login_url='/login')
 @user_passes_test(lambda user: user.perfil == 'P', login_url='/login?error=acesso', redirect_field_name=None)
 def APIturmas(request):
-       return JsonResponse({'turmas': list(Turma.objects.filter(professor_id=request.user.id).values())})
+
+    curso_id = request.GET.get('cursoId')
+
+    print(curso_id)
+
+    professor_id = request.user.id
+
+    turmas = list(Turma.objects.filter().values())
+
+
+
+    return JsonResponse({'turmas': turmas})
