@@ -70,7 +70,7 @@ def enviarEmailTurma(request):
     disciplina = turma.disciplinaOfertada.disciplina
     professor = turma.professor
 
-    alunos = Aluno.objects.raw('SELECT * FROM ALUNO \
+    alunos = Aluno.objects.raw('SELECT ALUNO.* FROM ALUNO \
                                 LEFT JOIN MATRICULA \
                                 ON aluno.usuario_ptr_id = MATRICULA.ALUNO_ID \
                                 LEFT JOIN TURMA \
