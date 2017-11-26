@@ -5,4 +5,6 @@ from .matricula import *
 from .questao import *
 from .questoes import *
 from .exerciciosRecebidos import *
+from .turmasPendentes import *
+from .exerciciosPendentes import *
 from .exercicios import *
