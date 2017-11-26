@@ -55,7 +55,7 @@
         botao.disabled = false;
         postAjax('/professor/matriculas/confirmar/', array, 
                 function(data) {
-                    alert("Aceito");
+                    botao.closest('tr').remove();
                 }
             );
     }
@@ -69,7 +69,7 @@
         botao.disabled = false;
         postAjax('/professor/matriculas/recusar/', array, 
                 function(data) {
-                    alert("Recusado");
+                    botao.closest('tr').remove();
                 }
             );
 

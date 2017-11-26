@@ -10,8 +10,16 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 @login_required(login_url='/login')
 @user_passes_test(lambda user: user.perfil == 'P', login_url='/login?error=acesso', redirect_field_name=None)
 def matriculas(request):
+
+    sql =   "SELECT Candidado.* FROM Candidado\
+            INNER JOIN TURMA\
+            ON Candidado.turma_id = Turma.id\
+            WHERE Turma.professor_id ={}".format(request.user.id)
+    
+    candidatos = Candidato.objects.raw(sql);
+
     contexto = {
-        'candidatos': Candidato.objects.all(),
+        'candidatos': candidatos,
     }
     return render(request,"matricula/matriculas.html", contexto)
 
@@ -24,6 +32,9 @@ def confirmar(request):
     
     turmaId = request.POST.get('turmaId')
     candidatoId = request.POST.get('candidatoId')
+
+    print(turmaId)
+    print(candidatoId)
 
     candidato = Candidato.objects.get(id=candidatoId)
 
@@ -44,14 +55,9 @@ def confirmar(request):
 def recusar(request):
     if request.method != 'POST':
         return HttpResponse(status=403) 
-
-    turmaId = request.POST.get('turmaId')
+    
     candidatoId = request.POST.get('candidatoId')
     candidato = Candidato.objects.get(id=candidatoId)
-
-    turma = Turma.objects.get(id=turmaId)
-
-    aluno = Aluno.objects.get(ra=candidato.ra)
     candidato.delete()
     return HttpResponse(status=200)
         
