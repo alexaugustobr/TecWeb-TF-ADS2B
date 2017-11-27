@@ -13,16 +13,14 @@
 <h2 id="title">Cadastro de Exercício</h2>
 <form action="" method="POST">
     {% csrf_token %}
-    <label for="curso">Curso</label>
-    <select name="curso" id="curso" class="campo" onchange="mudarCurso(this)">
-      <option value="">-- Selecione --</option>
-      {% for curso in cursos  %}
-        <option value="{{ curso.id }}">{{  curso.nome }}</option>
-      {% endfor %}
-    </select>
-    <label for="turma">Turma</label>
-    <select name="turma_id" id="turma" class="campo">
-      <option value="">-- Selecione --</option>
+    <label for "turma_id">Curso/Turma:</label>
+    <select class="campo" name="turma_id" id="turma_id"><!--window.location.href=this.value-->
+        <option value="">--Selecione--</option>
+        {% for turma in turmas %}
+        <option value="{{ turma.id }}">
+            {{ turma.curso }}-{{ turma.turma }}-{{ turma.disciplina }}
+        </option>
+        {% endfor %}
     </select>
     <label for="descricao">Descrição</label>
     <textarea type="text" name="descricao" id="descricao" class="campo"></textarea>
