@@ -13,6 +13,7 @@
 <h2 id="title">Cadastro de Exercício</h2>
 <form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
+    {{form.errors}}
     <label for "turma_id">Curso/Turma:</label>
     <select class="campo" name="turma_id" id="turma_id"><!--window.location.href=this.value-->
         <option value="">--Selecione--</option>

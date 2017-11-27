@@ -45,12 +45,18 @@ def questao (request):
             q = Questao()
             q.turma = turma
             q.descricao = form.cleaned_data['descricao']
-            q.arquivo = form.cleaned_data['arquivo']
+            
+            
             q.data_limite_entrega = form.cleaned_data['data_limite']
             q.numero = form.cleaned_data['numero']
             q.data = form.cleaned_data['data']
             q.save()
-            print(form)
+
+            if form.cleaned_data['arquivo']:
+                a = ArquivosQuestao()
+                a.arquivo = form.cleaned_data['arquivo']
+                a.questao = q
+                a.save()
 
     else:
         form = QuestaoForm()
