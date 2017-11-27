@@ -17,8 +17,8 @@
     <select class="campo" name="turma_id" id="turma_id"><!--window.location.href=this.value-->
         <option value="">--Selecione--</option>
         {% for turma in turmas %}
-        <option value="{{ turma.turma_id }}">
-            {{ turma.curso }}-{{ turma.turma}}-{{ turma.disciplina }}
+        <option value="{{ turma.id }}">
+            {{ turma.curso }}-{{ turma.turma }}-{{ turma.disciplina }}
         </option>
         {% endfor %}
     </select>

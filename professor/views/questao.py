@@ -10,13 +10,7 @@ def questao (request):
         
     
 
-    sql =  "SELECT usuario.id, curso.sigla as 'curso', turma_sigla as 'turma', turma.id as turma_id, Disciplina.nome as 'disciplina' FROM usuario \
-            INNER JOIN ALUNO \
-            ON Aluno.usuario_ptr_id = usuario.id\
-            INNER JOIN Matricula\
-            On Aluno.usuario_ptr_id = Matricula.aluno_id\
-            INNER JOIN TURMA\
-            ON Matricula.turma_id = Turma.id\
+    sql =  "SELECT turma.id, curso.sigla as 'curso', turma_sigla as 'turma', Disciplina.nome as 'disciplina' FROM Turma\
             INNER JOIN QUESTAO\
             ON Turma.id = Questao.turma_id\
             INNER JOIN Professor\
@@ -34,7 +28,7 @@ def questao (request):
             Where Resposta.aluno_id is NULL and Professor.usuario_ptr_id = {}\
             GROUP By turma".format(request.user.id)
             
-    turmas = Usuario.objects.raw(sql);
+    turmas = Turma.objects.raw(sql);
     
     
 
