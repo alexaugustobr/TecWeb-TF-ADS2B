@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
 #metodo alternativo, importando pasta inteira
 #from core.views import index 
 from professor.views import *
@@ -66,3 +68,5 @@ urlpatterns = [
     url(r"^logout/", logout, {'next_page': 'home'}),
 ]
 
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
