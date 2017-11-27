@@ -8,19 +8,34 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 def questao (request):
 
         
-    sql =   "SELECT * FROM Curso\
-            INNER JOIN CursoTurma\
-            ON CursoTurma.curso_id = Curso.id\
-            INNER JOIN TURMA\
-            ON CursoTurma.turma_id = Turma.id\
-            WHERE Turma.professor_id ={}".format(request.user.id)
     
-    cursos = Curso.objects.raw(sql);
+
+    sql =  "SELECT turma.id, curso.sigla as 'curso', turma_sigla as 'turma', Disciplina.nome as 'disciplina' FROM Turma\
+            INNER JOIN QUESTAO\
+            ON Turma.id = Questao.turma_id\
+            INNER JOIN Professor\
+            ON Turma.professor_id = Professor.usuario_ptr_id\
+            INNER JOIN DisciplinaOfertada as 'DO'\
+            ON Turma.disciplinaOfertada_id = DO.id\
+            INNER JOIN Disciplina\
+            On DO.disciplina_id = Disciplina.id\
+            Inner Join CursoTurma\
+            On CursoTurma.turma_id = Turma.id\
+            INNER JOIN Curso\
+            On Curso.id = CursoTurma.curso_id\
+            LEFT JOin Resposta\
+            On Resposta.questao_id = questao.id\
+            Where Resposta.aluno_id is NULL and Professor.usuario_ptr_id = {}\
+            GROUP By turma".format(request.user.id)
+            
+    turmas = Turma.objects.raw(sql);
+    
+    
 
     form = None
     if request.POST:
 
-        form = QuestaoForm(request.POST)
+        form = QuestaoForm(request.POST, request.FILES)
 
 
         if form.is_valid():
@@ -30,17 +45,25 @@ def questao (request):
             q = Questao()
             q.turma = turma
             q.descricao = form.cleaned_data['descricao']
+            
+            
             q.data_limite_entrega = form.cleaned_data['data_limite']
             q.numero = form.cleaned_data['numero']
             q.data = form.cleaned_data['data']
             q.save()
+
+            if form.cleaned_data['arquivo']:
+                a = ArquivosQuestao()
+                a.arquivo = form.cleaned_data['arquivo']
+                a.questao = q
+                a.save()
 
     else:
         form = QuestaoForm()
 
     contexto = {
 
-        "cursos":cursos,
+        "turmas":turmas,
         "form" : form
     }
 

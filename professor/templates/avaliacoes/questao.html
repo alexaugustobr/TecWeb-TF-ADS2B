@@ -11,21 +11,22 @@
 
 {% block main %}
 <h2 id="title">Cadastro de Exercício</h2>
-<form action="" method="POST">
+<form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    <label for="curso">Curso</label>
-    <select name="curso" id="curso" class="campo" onchange="mudarCurso(this)">
-      <option value="">-- Selecione --</option>
-      {% for curso in cursos  %}
-        <option value="{{ curso.id }}">{{  curso.nome }}</option>
-      {% endfor %}
-    </select>
-    <label for="turma">Turma</label>
-    <select name="turma_id" id="turma" class="campo">
-      <option value="">-- Selecione --</option>
+    {{form.errors}}
+    <label for "turma_id">Curso/Turma:</label>
+    <select class="campo" name="turma_id" id="turma_id"><!--window.location.href=this.value-->
+        <option value="">--Selecione--</option>
+        {% for turma in turmas %}
+        <option value="{{ turma.id }}">
+            {{ turma.curso }}-{{ turma.turma }}-{{ turma.disciplina }}
+        </option>
+        {% endfor %}
     </select>
     <label for="descricao">Descrição</label>
     <textarea type="text" name="descricao" id="descricao" class="campo"></textarea>
+    <label for="arquivo">Arquivo</label>
+    <input type="file" id="arquivo" name="arquivo" class="campo">
     <label for="data_limite">Data Limite</label>
     <input type="date" name="data_limite" id="data_limite" class="campo">
     <label for="numero">Número do Exercício</label>

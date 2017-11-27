@@ -122,6 +122,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# FileUpload
+MEDIA_URL = '/arquivos/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'arquivos')
+
 # LOGIN
 
 

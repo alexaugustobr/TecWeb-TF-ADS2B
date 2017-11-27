@@ -27,6 +27,8 @@
             <td><input  onclick="" data-turma-id="{{questao.id}}" type="button" value="Excluir"></td>
             <!--<td><input  onclick="" data-turma-id="{{questao.id}}" type="button" value="Detalhes"></td>-->
         </tr>
+        {% empty %}
+            <p>Não há questões cadastradas</p>
         {% endfor %}
     </tbody>
 </table>
