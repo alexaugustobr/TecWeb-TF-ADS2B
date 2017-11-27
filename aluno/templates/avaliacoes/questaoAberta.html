@@ -20,15 +20,7 @@
     <textarea class="text_area" name="txt" id="txt-{{questao.id}}" cols="80" rows="10"></textarea>
     <input onclick="responderQuestao(this)" value="Responder" type="submit" name="button" data-questao-id="{{questao.id}}">
     </div>
-   
-    {% if anterior_id != None %}
-    <a href="/aluno/avaliacoes/?questao_id={{anterior_id}}">Questão anterior</a>
-    {% endif %}
-    
-    
-    {% if proxima_id != None %}
-    <a href="/aluno/avaliacoes/?questao_id={{proxima_id}}">Proxima questão</a>
-    {% endif %}
+
 
     {% endfor %}
 
