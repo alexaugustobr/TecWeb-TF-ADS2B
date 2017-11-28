@@ -32,6 +32,7 @@ ra: 654321
 
 #aluno
 ra: 1700072
+    1700603
 
 #senhas todas são
 senha: asdf1234
