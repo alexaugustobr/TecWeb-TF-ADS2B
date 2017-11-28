@@ -71,8 +71,44 @@ class ProfessorAdmin(UserAdmin):
     ordering = ('ra',)
     filter_horizontal = ()
 
+
+
+
+
+
+
+class NovoUsuarioForm(forms.ModelForm):
+    class Meta:
+        model = Usuario
+        fields = ('ra','email', 'nome')
+
+    def save(self, commit=True):
+        user = super(NovoUsuarioForm, self).save(commit=False)
+        user.set_password('asdf1234')
+        user.perfil = 'C'
+        if commit:
+            user.save()
+        return user
+
+class AlterarUsuarioForm(forms.ModelForm):
+     class Meta:
+         model = Usuario
+         fields = ('email', 'nome')
+
+class UsuarioAdmin(UserAdmin):
+    form = AlterarUsuarioForm
+    add_form = NovoUsuarioForm
+    list_display = ('email', 'nome')
+    list_filter = ('perfil',)
+    fieldsets = ( (None, {'fields': ('email', 'nome')}),)
+    add_fieldsets = ((None, { 'fields': ('ra', 'email', 'nome')} ),)
+    search_fields = ('ra ',)
+    ordering = ('ra',)
+    filter_horizontal = ()
+
+
 admin.site.register(Aluno,AlunoAdmin)
-admin.site.register(Usuario) 
+admin.site.register(Usuario,UsuarioAdmin) 
 admin.site.register(Curso)
 admin.site.register(ArquivosQuestao)
 admin.site.register(ArquivosResposta)
