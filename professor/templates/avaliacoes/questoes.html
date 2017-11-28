@@ -24,8 +24,9 @@
             <td>{{ questao.numero }}</td>
             <td>{{ questao.descricao }}</td>
             <td>{{ questao.data_limite_entrega}}</td>
-            <td><input  onclick="" data-turma-id="{{questao.id}}" type="button" value="Excluir"></td>
+            <td><input  onclick="excluirExercicio(this)" data-turma-id="{{questao.turma_id}}" data-questao-id="{{questao.id}}" type="button" value="Excluir"></td>
             <!--<td><input  onclick="" data-turma-id="{{questao.id}}" type="button" value="Detalhes"></td>-->
+            
         </tr>
         {% empty %}
             <p>Não há questões cadastradas</p>
@@ -36,6 +37,23 @@
 
 {% block scripts %}
 <script>
-    
+    function excluirExercicio(botao) {
+        var turmaId = botao.getAttribute('data-turma-id');
+        var questaoId = botao.getAttribute('data-questao-id')
+
+        var array = { turmaId: turmaId, questaoId: questaoId, csrfmiddlewaretoken: '{{ csrf_token }}'}
+
+        botao.disabled = false;
+        postAjax('/professor/exercicios/excluir/', array, 
+                function(data) {
+                    botao.closest('tr').remove();
+                    var json = JSON.parse(data);
+                    alert(json.mensagem);
+                    
+                }
+                
+            );
+
+    }
 </script>
 {% endblock %}

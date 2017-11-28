@@ -58,6 +58,7 @@ urlpatterns = [
     url(r'^professor/matriculas/recusar/$', recusar),
     url(r'^professor/exercicios/cadastrar-exercicio/$', questao),
     url(r'^professor/exercicios/$', questoes),
+    url(r'^professor/exercicios/excluir/$', excluirExercicio),
     url(r'^professor/exercicios/turmas/(?P<idTurma>\d+)/recebidos', exerciciosRecebidos),
     url(r'^professor/exercicios/turmas/pendentes', turmasPendentes),
     url(r'^professor/exercicios/turmas/(?P<idTurma>\d+)/pendentes', exerciciosPendentes),
