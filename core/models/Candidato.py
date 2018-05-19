@@ -7,11 +7,11 @@ class Candidato(models.Model):
     email = models.CharField(max_length =  80, null=True)
     celular = models.CharField(max_length =  11, null=True)
     codigo_acesso = models.CharField(max_length =  120, null=True)
-    foto = models.ForeignKey(to='ArquivosFoto', related_name="candidatos", null=True, blank=True) #onetomany
+    foto = models.ForeignKey(on_delete=models.CASCADE, to='ArquivosFoto', related_name="candidatos", null=True, blank=True) #onetomany
     
     #via token
-    turma = models.ForeignKey(to='Turma', related_name="candidatos", null=True, blank=True) #onetomany
-    aluno = models.ForeignKey(to='Aluno', related_name="candidatos", null=True, blank=True) #onetomany
+    turma = models.ForeignKey(on_delete=models.CASCADE, to='Turma', related_name="candidatos", null=True, blank=True) #onetomany
+    aluno = models.ForeignKey(on_delete=models.CASCADE, to='Aluno', related_name="candidatos", null=True, blank=True) #onetomany
 
     #nao entra no form
     matricula_aceita = models.BooleanField(default=False)

@@ -3,7 +3,7 @@ from django.db import models
 from .Curso import Curso
 
 class ArquivosResposta(models.Model):
-    resposta = models.ForeignKey(to='Resposta', related_name="arquivosResposta", null=False, blank=False) #onetomany
+    resposta = models.ForeignKey(on_delete=models.CASCADE, to='Resposta', related_name="arquivosResposta", null=False, blank=False) #onetomany
     arquivo = models.CharField(max_length=500)
 
     def __str__(self):
